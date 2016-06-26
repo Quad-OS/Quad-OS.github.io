@@ -7,6 +7,19 @@
             body {
                 background-color: darkgray;
             }
+            .button {
+            background-color: #34A7C1;
+            color: white;
+            border: none;
+            padding: 15px;
+            margin: 4px 2px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            width: 15%;
+            z-index-: 2;
             * {
   margin: 0;
   padding: 0;
@@ -44,7 +57,6 @@ a {
         <body>
             <h1>Quad-OS Game</h1>
             <canvas id="canvas"></canvas>
-            <a href = "home.html" class = button>Home</a>
             <script>
                 
 /* Customisable map data */
@@ -676,5 +688,6 @@ var Loop = function() {
 
 Loop();
             </script>
+            <a href = "home.html" class = "button">Home</a>
         </body>
     </html>
