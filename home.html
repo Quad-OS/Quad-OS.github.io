@@ -90,6 +90,12 @@
 }
     </style>
     <body id = "body1">
+        <script>
+            var boxAllowed = document.getElementById("boxButton").value;
+            if(boxAllowed = 1){
+                document.getElementById("boxButton").style.visibility = "hidden";
+            }
+        </script>
         <center>
             <h1>Quad-OS<br>(DEVELOPMENT)</h1>
         </center>
@@ -107,12 +113,6 @@
     <label class="onoffswitch-label" for="myonoffswitch">
         <span class="onoffswitch-inner"></span>
         <span class="onoffswitch-switch"></span>
-        <script>
-            var boxAllowed = document.getElementById("boxButton").value
-            if(boxAllowed = 1){
-                document.getElementById("boxButton").style.visibility = "hidden";
-            }
-        </script>
     </label>
 </div>
 <h1>Something</h1>
@@ -123,5 +123,11 @@
         <span class="onoffswitch-switch"></span>
     </label>
 </div>
+        <script>
+            var boxAllowed = document.getElementById("boxButton").value;
+            if(boxAllowed = 1){
+                document.getElementById("boxButton").style.visibility = "hidden";
+            }
+        </script>
     </body>
 </html>
