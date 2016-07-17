@@ -107,6 +107,12 @@
     <label class="onoffswitch-label" for="myonoffswitch">
         <span class="onoffswitch-inner"></span>
         <span class="onoffswitch-switch"></span>
+        <script>
+            var boxAllowed = document.getElementById("boxButton").value
+            if(boxAllowed = 1){
+                document.getElementById("boxButton").style.visibility = "hidden";
+            }
+        </script>
     </label>
 </div>
 <h1>Something</h1>
