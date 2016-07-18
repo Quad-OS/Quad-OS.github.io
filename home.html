@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
     <head>
-        <title>Quad - OS</title>
+        <title>Quad-OS</title>
         <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
@@ -125,7 +125,13 @@
 </div>
         <script>
             function boxAllowed() {
-                document.getElementById("boxButton").style.visibility = "hidden";
+                var bstate = document.getElementById("myonoffswitch").value;
+                if(bstate = 0){
+                    document.getElementById("boxButton").style.visibility = "hidden";
+                }
+                if(bstate = 1){
+                    document.getElementById("boxButton").style.visibility = "visible";
+                }
             }
         </script>
     </body>
