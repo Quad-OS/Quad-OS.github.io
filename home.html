@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
     <head>
-        <title>Quad-OS</title>
+        <title>Quad- OS</title>
         <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
@@ -109,7 +109,7 @@
             <br>
             <h1>Allow Box</h1>
             <div class="onoffswitch">
-    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+    <input type="checkbox" onclick="if(this.checked){(boxAllowed)}" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
     <label class="onoffswitch-label" for="myonoffswitch">
         <span class="onoffswitch-inner"></span>
         <span class="onoffswitch-switch"></span>
@@ -124,12 +124,8 @@
     </label>
 </div>
         <script>
-            var boxAllowed = document.getElementById("myonoffswitch").value
-            if(boxAllowed = 0){
-                document.getElementById("boxButton").disabled = true;
-            }
-            if(boxAllowed = 1){
-                document.getElementById("boxButton").disabled = false;
+            function myFunction() {
+                document.getElementById("boxButton").style.visibility = "hidden";
             }
         </script>
     </body>
