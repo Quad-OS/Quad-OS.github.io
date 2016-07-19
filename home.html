@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
     <head>
-        <title>Quad-OS</title>
+        <title>Quad- OS</title>
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
@@ -133,11 +133,19 @@ canvas {
     </label>
 </div>
         <script>
+            var boxStatus = 1;
             function boxAllowed() {
                 document.getElementById("boxButton").style.visibility = "visible";
+                boxStatus = 1;
             }
             function boxNotAllowed() {
                 document.getElementById("boxButton").style.visibility = "hidden";
+                boxStatus = 0;
+            }
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem("isBoxAllowed", boxStatus.value);
+            } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
             }
         </script>
     </body>
