@@ -134,12 +134,12 @@ canvas {
 </div>
         <script>
             var boxStatus = 1;
-            /*document.getElementById("example").innerHTML = localStorage.getItem("isBoxAllowed");
-            if ("isBoxAllowed" = 1) {
+            var siBoxAllowed = localStorage.getItem("isBoxAllowed");
+            if (siBoxAllowed = 1) {
                 document.getElementById("myonoffswitch").checked = true;
             } else {
                 document.getElementById("myonoffswitch").checked = false;
-            }*/
+            }
             function boxAllowed() {
                 document.getElementById("boxButton").style.visibility = "visible";
                 boxStatus = 1;
