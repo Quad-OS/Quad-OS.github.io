@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
     <head>
-        <title>Quad -OS</title>
+        <title>Quad-OS</title>
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
@@ -135,20 +135,10 @@ canvas {
         <script>
             var boxStatus = 1;
             var siBoxAllowed = localStorage.getItem("isBoxAllowed");
-            if (siBoxAllowed = 1) {
+            if (siBoxAllowed == 1){
                 document.getElementById("myonoffswitch").checked = true;
             } else {
                 document.getElementById("myonoffswitch").checked = false;
-            }
-            function boxAllowed() {
-                document.getElementById("boxButton").style.visibility = "visible";
-                boxStatus = 1;
-                if (typeof(Storage) !== "undefined") {
-                    localStorage.setItem("isBoxAllowed", boxStatus);
-                    document.getElementById("example").innerHTML = localStorage.getItem("isBoxAllowed");
-                } else {
-                    document.getElementById("example").innerHTML = "Sorry, your browser does not support Web Storage...";
-                }
             }
             function boxNotAllowed() {
                 document.getElementById("boxButton").style.visibility = "hidden";
@@ -159,6 +149,16 @@ canvas {
                 } else {
                     document.getElementById("example").innerHTML = "Sorry, your browser does not support Web Storage...";
                 }
+            function boxAllowed() {
+                document.getElementById("boxButton").style.visibility = "visible";
+                boxStatus = 1;
+                if (typeof(Storage) !== "undefined") {
+                    localStorage.setItem("isBoxAllowed", boxStatus);
+                    document.getElementById("example").innerHTML = localStorage.getItem("isBoxAllowed");
+                } else {
+                    document.getElementById("example").innerHTML = "Sorry, your browser does not support Web Storage...";
+                }
+            }
             }
         </script>
     </body>
