@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
     <head>
-        <title>Quad-OS</title>
+        <title>Quad -OS</title>
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
@@ -134,12 +134,31 @@ canvas {
 </div>
         <script>
             var boxStatus = 1;
-            var siBoxAllowed = localStorage.getItem("isBoxAllowed");
+            /*var siBoxAllowed = localStorage.getItem("isBoxAllowed");
             if (siBoxAllowed == 1){
                 document.getElementById("myonoffswitch").checked = true;
             } else {
                 document.getElementById("myonoffswitch").checked = false;
-            }
+            }*/
+            $('.onoffswitch-checkbox').on('click', function() {
+var fav, favs = [];
+$('.onoffswitch-checkbox').each(function() { // run through each of the checkboxes
+fav = {id: $(this).attr('id'), value: $(this).prop('checked')};
+    favs.push(fav);
+  });
+  localStorage.setItem("favorites", JSON.stringify(favs));
+});
+
+$(document).ready(function() {
+  var favorites = JSON.parse(localStorage.getItem('favorites'));
+  if (!favorites.length) {return};
+  console.debug(favorites);
+
+  for (var i=0; i<favorites.length; i++) {
+    console.debug(favorites[i].value == 'on');
+    $('#' + favorites[i].id ).prop('checked', favorites[i].value);
+  }
+});
             function boxNotAllowed() {
                 document.getElementById("boxButton").style.visibility = "hidden";
                 boxStatus = 0;
