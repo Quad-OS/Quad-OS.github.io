@@ -134,6 +134,14 @@ canvas {
 </div>
         <script>
             var boxStatus = 0;
+            function boxNotAllowed() {
+                document.getElementById("boxButton").style.visibility = "hidden";
+                boxStatus = 0;
+            }
+            function boxAllowed() {
+                document.getElementById("boxButton").style.visibility = "visible";
+                boxStatus = 1;
+            }
             (function() {
     var boxes = document.querySelectorAll("input[type='checkbox']");
     for (var i = 0; i < boxes.length; i++) {
@@ -154,14 +162,6 @@ canvas {
         });
     }
 })();
-            function boxNotAllowed() {
-                document.getElementById("boxButton").style.visibility = "hidden";
-                boxStatus = 0;
-            }
-            function boxAllowed() {
-                document.getElementById("boxButton").style.visibility = "visible";
-                boxStatus = 1;
-            }
             if(boxStatus = 1){
                 boxAllowed();
                 
