@@ -131,15 +131,35 @@ canvas {
         <span class="onoffswitch-switch"></span>
     </label>
 </div>
-<h1>Something</h1>
+<h1>Fullscreen</h1>
 <div class="onoffswitch">
-    <input type='checkbox' store="checkbox2" name="onoffswitch2" class="onoffswitch-checkbox" id="myonoffswitch2" checked>
+    <input type='checkbox' store="checkbox2" onclick="toggleFullScreen()" name="onoffswitch2" class="onoffswitch-checkbox" id="myonoffswitch2" checked>
     <label class="onoffswitch-label" for="myonoffswitch2">
         <span class="onoffswitch-inner"></span>
         <span class="onoffswitch-switch"></span>
     </label>
 </div>
         <script>
+            function toggleFullScreen() {
+  if ((document.fullScreenElement && document.fullScreenElement !== null) ||    
+   (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+    if (document.documentElement.requestFullScreen) {  
+      document.documentElement.requestFullScreen();  
+    } else if (document.documentElement.mozRequestFullScreen) {  
+      document.documentElement.mozRequestFullScreen();  
+    } else if (document.documentElement.webkitRequestFullScreen) {  
+      document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);  
+    }  
+  } else {  
+    if (document.cancelFullScreen) {  
+      document.cancelFullScreen();  
+    } else if (document.mozCancelFullScreen) {  
+      document.mozCancelFullScreen();  
+    } else if (document.webkitCancelFullScreen) {  
+      document.webkitCancelFullScreen();  
+    }  
+  }  
+}
             var boxStatus = 0;
             function boxNotAllowed() {
                 document.getElementById("boxButton").style.visibility = "hidden";
