@@ -2,18 +2,6 @@
 <html>
         <head>
                 <title>Q-Scribble</title>
-                <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<meta http-equiv="Content-Script-Type" content="text/javascript">
-<script type="text/javascript">
-function formatText(el,tag){
-var selectedText = document.selection?document.selection.createRange().text:el.value.substring(el.selectionStart,el.selectionEnd);
-if(selectedText!=''){
-var newText='<'+tag+'>'+selectedText+'</'+tag+'>';
-el.value=el.value.replace(selectedText,newText)
-}
-} 
-</script>
         </head>
         <style>
                 body {
@@ -34,11 +22,6 @@ el.value=el.value.replace(selectedText,newText)
                 <center>
                         <h1>Scribble</h1>
                 </center>
-                <form action="" id="myForm">
-<textarea name="myTextarea"></textarea><br>
-<input type="button" value="Bold" onclick="formatText(myTextarea,'b')">
-<input type="button" value="Italic" onclick="formatText(myTextarea,'i')">
-<input type="button" value="Underline" onclick="formatText(myTextarea,'u')">
-</form>
+                <textarea></textarea>
         </body>
 </home>
