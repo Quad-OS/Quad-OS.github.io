@@ -21,7 +21,27 @@
         <body>
                 <center>
                         <h1>Scribble</h1>
+                        <button onclick = "bold()">Bold</button>
                 </center>
                 <textarea></textarea>
+                <script>
+                function bold() {
+                function getSelectedText() {
+        var text = "";
+        if (typeof window.getSelection != "undefined") {
+            text = window.getSelection().toString();
+        } else if (typeof document.selection != "undefined" && document.selection.type == "Text") {
+            text = document.selection.createRange().text;
+        }
+        return text;
+    }
+    function doSomethingWithSelectedText() {
+        var selectedText = getSelectedText();
+                if (selectedText) {
+            document.getElementById("myP").style.fontWeight = "700";
+        }
+    }
+                }
+                </script>
         </body>
 </home>
