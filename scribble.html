@@ -2,6 +2,12 @@
 <html>
         <head>
                 <title>Q-Scribble</title>
+                <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+                <script>
+                        tinymce.init({
+                                selector: '#mytextarea'
+                        });
+                </script>
         </head>
         <style>
                 body {
@@ -22,6 +28,8 @@
                 <center>
                         <h1>Scribble</h1>
                 </center>
-                <textarea></textarea>
+                <form method="post">
+                        <textarea id="mytextarea"></textarea>
+                </form>
         </body>
 </home>
