@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
         <head>
-                <title>Q- Scribble</title>
+                <title>Q-Scribble</title>
         </head>
         <style>
                 body {
@@ -17,24 +17,36 @@
                         background-color: #f8f8f8;
                         resize: none;
                 }
-                #Bold{
-                  font-weigth: bold;
-                }
+                #editor1 {
+      border: 3px inset grey;
+      height: 100px;
+      width: 381px;
+      margin: 10px auto 0;
+     }
+    fieldset {
+      margin: 2px auto 15px;
+      width: 358px;
+    }
+    button {
+      width: 5ex;
+      text-align: center;
+      padding: 1px 3px;
+    }
         </style>
         <body>
                 <center>
                         <h1>Scribble</h1>
                 </center>
-                <button id="Bold"><b>B</b></button>
-                <textarea id = 'text' contenteditable></textarea>
-                <script>
-                //Bolding
-                $(document).ready(function() {
-                $('#Bold').click(function() {
-                document.execCommand('bold');
-                });
-                });
-
-                </script>
+                <fieldset>
+    <button class="fontStyle" onclick="document.execCommand('italic',false,null);" title="Italicize Highlighted Text"><i>I</i>
+    </button>
+    <button class="fontStyle" onclick="document.execCommand( 'bold',false,null);" title="Bold Highlighted Text"><b>B</b>
+    </button>
+    <button class="fontStyle" onclick="document.execCommand( 'underline',false,null);"><u>U</u>
+    </button>
+  </fieldset>
+                <div id="editor1" contenteditable="true">
+     The quick brown fox jumped over the lazy dog.
+  </div>
         </body>
 </home>
