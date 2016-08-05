@@ -51,14 +51,36 @@
                 <div id="editor1" contenteditable="true">
   </div>
   <script>
-          function createLink() 
-{ 
-	var szURL = prompt("Enter a URL:", "http://");
-	if ((szURL != null) && (szURL != "")) {
-		document.execCommand("CreateLink",false,szURL);
-	}
+  function createLink() {
+  var reIMG = /(.*<[Ii][Mm][Gg].*)/ ;
+  if (!validateMode()) return;
+  
+  var isA = getEl("A",Composition.document.selection.createRange().pare  ntElement());
+  var str=prompt("Enter link location (e.g. http://www.sbpa.com):", isA ? isA.href : "http:\/\/");
+  
+  if ((str!=null) && (str!="http://")) {
+    if (Composition.document.selection.type=="None") {
+      var sel=Composition.document.selection.createRange();
+      sel.pasteHTML("<A HREF=\""+str+"\" target=nw>"+str+"</A> ");
+      sel.select();
+    } else if (Composition.document.selection.type=="Text") {
+      var sel=Composition.document.selection.createRange();
+      if (sel.text.length > 0) {
+  sel.pasteHTML("<A HREF=\""+str+"\" target=nw>"+sel.text+"</A> ");
+      } else {
+  if (reIMG.test(sel.htmlText)) {
+   sel.pasteHTML("<A HREF=\""+str+"\" target=nw>"+sel.htmlText.replace(/(.*<A[^<]*)(<IMG[^<]*).*$/,'$2')+"</A> ");
+  } else {
+   format("CreateLink",str);
+  }
+      }
+      sel.select();
+    } else {
+  format("CreateLink",str);
+ }
+  }
+  else Composition.focus();
 }
-// --> 
   </script>
         </body>
 </home>
