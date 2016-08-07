@@ -33,19 +33,34 @@
       text-align: center;
       padding: 1px 3px;
     }
+    .menuButton {
+  width: 60px;
+  display: inline-block;
+  margin-right: -4px;
+  border: 3px solid green;
+  background-color: green;
+  padding: 15px 32px;
+  font-size: 15px;
+  text-decoration: none;
+  color: white;
+}
+.menuButton:Hover {
+  border: 3px solid black;
+  background-color: black;
+}
         </style>
         <body>
                 <center>
                         <h1>Scribble</h1>
                 </center>
                 <fieldset>
-    <button class = "fontStyle" onclick = "document.execCommand('italic', false, null);" title="Italicize Highlighted Text"><i>I</i>
+    <button class = "menuButton" onclick = "document.execCommand('italic', false, null);" title="Italicize Highlighted Text"><i>I</i>
     </button>
-    <button class = "fontStyle" onclick = "document.execCommand( 'bold', false, null);" title="Bold Highlighted Text"><b>B</b>
+    <button class = "menuButton" onclick = "document.execCommand( 'bold', false, null);" title="Bold Highlighted Text"><b>B</b>
     </button>
-    <button class = "fontStyle" onclick = "document.execCommand( 'underline', false, null);"><u>U</u>
+    <button class = "menuButton" onclick = "document.execCommand( 'underline', false, null);"><u>U</u>
     </button>
-    <button class = "fontStyle" onclick = "document.execComand( 'strikethrough', false, null);"><strike>S</strike>
+    <button class = "menuButton" onclick = "document.execComand( 'strikethrough', false, null);"><strike>S</strike>
     </button>
     </fieldset>
                 <div id="editor1" contenteditable="true">
