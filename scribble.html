@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
         <head>
-                <title>Q- Scribble</title>
+                <title>Q-Scribble</title>
         </head>
         <style>
                 body {
@@ -56,7 +56,9 @@
     </button>
     <button class = "menuButton" onclick = "document.execCommand( 'underline', false, null);"><u>U</u>
     </button>
-    <button class = "menuButton" onclick = "strike()"><strike>S</strike>
+    <button class = "menuButton" onclick = "document.execCommand()"><Strike>S</strike>
+    </button>
+    <button class = "menuButton" value="link" onclick="document.execCommand('createLink', false, 'http://google.com');">link
     </button>
     </fieldset>
                 <div id="editor1" contenteditable="true">
