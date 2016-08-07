@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
         <head>
-                <title>Q-Scribble</title>
+                <title>Q -Scribble</title>
         </head>
         <style>
                 body {
@@ -58,7 +58,7 @@
     </button>
     <button class = "menuButton" onclick = "document.execCommand()"><Strike>S</strike>
     </button>
-    <button class = "menuButton" value="link" onclick="document.execCommand('createLink', false, 'http://google.com');">link
+    <button class = "menuButton" value="link" onclick="addLink()">link
     </button>
     </fieldset>
                 <div id="editor1" contenteditable="true">
@@ -96,6 +96,13 @@
 }
 /*<button class="fontStyle" onclick="createLink()"><img src = "http://static1.squarespace.com/static/50eca855e4b0939ae8bb12d9/t/54552279e4b09bd49fd4a4c8/1414865530616/" width = "25px" length = "25px"></img>
     </button>*/
+    
+    function addLink() {
+    var linkURL = prompt('Enter a URL:', 'http://');
+    var sText = editorWindow.document.getSelection();
+
+    editorWindow.document.execCommand('insertHTML', false, '<a href="' + linkURL + '" target="_blank">' + sText + '</a>');
+}
   </script>
         </body>
 </home>
