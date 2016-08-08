@@ -48,6 +48,16 @@
     width: 160px;
 }
 
+.dropbtnX {
+    background-color: black;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 160px;
+}
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -83,6 +93,10 @@
     background-color: gray;
 }
 
+.dropdown:hover .dropbtnX {
+    background-color: gray;
+}
+
 /*DROPDOWN MENU*/
         </style>
         <body>
@@ -98,7 +112,7 @@
   </div>
 </div>
 <div class="dropdown">
-  <button><strike>Copying</strike></button> <!--Removed due to issues with web browser security, will be added back when Manifest Permissions are set  https://developer.chrome.com/extensions/manifest#permissions-->
+  <button class="dropbtnX"><strike>Copying</strike></button> <!--Removed due to issues with web browser security, will be added back when Manifest Permissions are set  https://developer.chrome.com/extensions/manifest#permissions-->
    <!--class="dropbtn"-->
   <div class="dropdown-content">
     <button onclick = "document.execCommand('Copy');">Copy</button>
