@@ -79,7 +79,7 @@
     z-index: 2;
 }
 
-.dropdown a:hover {background-color: #f1f1f1}
+.dropdown button:hover {background-color: #f1f1f1}
 
 .show {display:block;}
         </style>
@@ -89,17 +89,16 @@
                 </center>
                 <fieldset>
     <div class="dropdown">
-<button onclick="myFunction()" class="dropbtn">Dropdown</button>
+<button onclick="myFunction()" class="dropbtn">Highlighting</button>
   <div id="myDropdown" class="dropdown-content">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+    <button onclick = "document.execCommand('SelectAll');">Select All</button>
+    <button onclick = "document.execCommand('Unselect');">Unselect All</button>
   </div>
 </div>
 <br>
     <button class = "menuButton" onclick = "document.execCommand('bold');" title="Bold Highlighted Text"><b>B</b>
     </button>
-    <button class = "menuButton" onclick = "document.execCommand('italic', false, null);" title="Italicize Highlighted Text"><i>I</i>
+    <button class = "menuButton" onclick = "document.execCommand('italic');" title="Italicize Highlighted Text"><i>I</i>
     </button>
     <button class = "menuButton" onclick = "document.execCommand('underline');"><u>U</u>
     </button>
