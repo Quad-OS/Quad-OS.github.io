@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
         <head>
-                <title>Q- Scribble</title>
+                <title>Q-Scribble</title>
         </head>
         <style>
                 body {
@@ -79,6 +79,11 @@
     z-index: 2;
 }
 
+.dropbutton {
+        font-size: 16px;
+        border: 3px solid gray;
+        background-color: gray;
+}
 .dropdown button:hover {background-color: #f1f1f1}
 
 .show {display:block;}
@@ -91,8 +96,8 @@
     <div class="dropdown">
 <button onclick="myFunction()" class="dropbtn">Highlighting</button>
   <div id="myDropdown" class="dropdown-content">
-    <button onclick = "document.execCommand('SelectAll');">Select All</button>
-    <button onclick = "document.execCommand('Unselect');">Unselect All</button>
+    <button class = "dropbutton" onclick = "document.execCommand('SelectAll');">Select All</button>
+    <button class = "dropbutton" onclick = "document.execCommand('Unselect');">Unselect All</button>
   </div>
 </div>
 <br>
