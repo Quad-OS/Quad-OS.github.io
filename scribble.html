@@ -37,12 +37,59 @@
   border: 3px solid black;
   background-color: black;
 }
+
+/*DROPDOWN MENU*/
+.dropbtn {
+    background-color: green;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: black;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: lightgray;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
         </style>
         <body>
                 <center>
                         <h1>Scribble</h1>
                 </center>
                 <fieldset>
+                        <div class="dropdown">
+<button onclick="myFunction()" class="dropbtn">Dropdown</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
     <button class = "menuButton" onclick = "document.execCommand( 'bold', false, null);" title="Bold Highlighted Text"><b>B</b>
     </button>
     <button class = "menuButton" onclick = "document.execCommand( 'italic', false, null);" title="Italicize Highlighted Text"><i>I</i>
@@ -54,46 +101,24 @@
     </fieldset>
                 <div id="editor1" contenteditable="true">SCRIBBLE IS A WORK-IN-PROGRESS!</div>
   <script>
-  //Script not necessary now
-  /*function createLink() {
-  var reIMG = /(.*<[Ii][Mm][Gg].*)/ ;
-  if (!validateMode()) return;
-  
-  var isA = getEl("A",Composition.document.selection.createRange().pare  ntElement());
-  var str=prompt("Enter link location (e.g. http://www.sbpa.com):", isA ? isA.href : "http:\/\/");
-  
-  if ((str!=null) && (str!="http://")) {
-    if (Composition.document.selection.type=="None") {
-      var sel=Composition.document.selection.createRange();
-      sel.pasteHTML("<A HREF=\""+str+"\" target=nw>"+str+"</A> ");
-      sel.select();
-    } else if (Composition.document.selection.type=="Text") {
-      var sel=Composition.document.selection.createRange();
-      if (sel.text.length > 0) {
-  sel.pasteHTML("<A HREF=\""+str+"\" target=nw>"+sel.text+"</A> ");
-      } else {
-  if (reIMG.test(sel.htmlText)) {
-   sel.pasteHTML("<A HREF=\""+str+"\" target=nw>"+sel.htmlText.replace(/(.*<A[^<]*)(<IMG[^<]*).*$/,'$2')+"</A> ");
-  } else {
-   format("CreateLink",str);
-  }
-      }
-      sel.select();
-    } else {
-  format("CreateLink",str);
- }
-  }
-  else Composition.focus();
-}*/
-/*<button class="fontStyle" onclick="createLink()"><img src = "http://static1.squarespace.com/static/50eca855e4b0939ae8bb12d9/t/54552279e4b09bd49fd4a4c8/1414865530616/" width = "25px" length = "25px"></img>
-    </button>*/
-    
-/*    function addLink() {
-    var linkURL = prompt('Enter a URL:', 'http://');
-    var sText = editorWindow.document.getSelection();
+//DROPDOWN MENU
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
 
-    editorWindow.document.execCommand('insertHTML', false, '<a href="' + linkURL + '" target="_blank">' + sText + '</a>');
-} */
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
   </script>
         </body>
 </home>
