@@ -37,37 +37,27 @@
   border: 3px solid black;
   background-color: black;
 }
-
 /*DROPDOWN MENU*/
 .dropbtn {
-    background-color: gray;
+    background-color: #4CAF50;
     color: white;
     padding: 16px;
     font-size: 16px;
     border: none;
     cursor: pointer;
-    width: 200px;
-    z-index: 2;
-}
-
-.dropbtn:hover, .dropbtn:focus {
-    background-color: black;
 }
 
 .dropdown {
     position: relative;
     display: inline-block;
-    /*z-index: 2;*/
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f2f2f2;
+    background-color: #f9f9f9;
     min-width: 160px;
-    overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 2;
 }
 
 .dropdown-content button {
@@ -75,28 +65,29 @@
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    z-index: 2;
 }
 
-.dropbutton {
-        font-size: 16px;
-        border: 3px solid gray;
-        background-color: gray;
-}
-.dropdown button:hover {background-color: gray}
+.dropdown-content button:hover {background-color: #f1f1f1}
 
-.show {display:block;}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+/*DROPDOWN MENU*/
         </style>
         <body>
                 <center>
                         <h1>Scribble</h1>
                 </center>
                 <fieldset>
-    <div class="dropdown">
-<button onclick="myFunction()" class="dropbtn">Highlighting</button>
-  <div id="myDropdown" class="dropdown-content">
-    <button class = "dropbutton" onclick = "document.execCommand('SelectAll');">Select All</button>
-    <button class = "dropbutton" onclick = "document.execCommand('Unselect');">Unselect All</button>
+<div class="dropdown">
+  <button class="dropbtn">Dropdown</button>
+  <div class="dropdown-content">
+    <button onclick = "document.execCommand('SelectAll');">Select All</button>
+    <button onclick = "document.execCommand('Unselect');">Unselect All</button>
   </div>
 </div>
 <br>
@@ -110,25 +101,5 @@
     </button>
     </fieldset>
                 <div id="editor1" contenteditable="true">SCRIBBLE IS A WORK-IN-PROGRESS!</div>
-  <script>
-//DROPDOWN MENU
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-  </script>
         </body>
 </home>
