@@ -158,7 +158,7 @@ canvas {
             <a href = "scribble.html" class = button>Scribble</a>
             <br>
             <!-- Trigger/Open The Modal -->
-<button id="myBtn">Open Modal</button>
+<button id = "mybtn">Box</button>
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -166,7 +166,464 @@ canvas {
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">×</span>
-    <p>Some text in the Modal..</p>
+            <style type="text/css">
+            body {
+                background-color: darkgray;
+            }
+            h1, h3 {
+                color: black;
+                float: center;
+            }
+            hr {
+                display: block;
+                margin: 0.5em;
+                border-style: inset;
+                border-width: 1px;
+            }
+            .button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 15px;
+            margin: 4px 2px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            width: 15%;
+            z-index-: 2;
+            }
+            input[type=text] {
+                position: relative;
+                width: 25%;
+                box-sizing: border-box;
+                border: 2px solid #ccc;
+                border-radius: 4px;
+                font-size: 16px;
+                background-color: white;
+                background-image: url('search_button.png');
+                background-position: 4px 5px;
+                background-repeat: no-repeat;
+                padding: 12px 20px 12px 40px;
+                -moz-transition: width 0.4s ease-in-out;
+                -webkit-transition: width 0.4s ease-in-out;
+                -o-transition: width 0.4s ease-in-out;
+                transition: width 0.4s ease-in-out;
+            }
+            input[type=text]:focus {
+                width: 70%;
+            }
+            .speech {
+                position: 4px 5px;
+            }
+            .divboxout {
+                position: absolute;
+                width: 120px;
+                height: 120px;
+                left: 50%;
+                top: 190px;
+                transform: translateX(-50%);
+                -wekbit-animation-name: boxin;
+                -wekbit-animation-duration: 10s;
+                -wekbit-animation-iteration-count: infinite;
+                z-index: -2;
+                animation-name: boxout;
+                animation-duration: 10s;
+                animation-iteration-count: infinite;
+            }
+            .divboxin {
+                position: absolute;
+                width: 110px;
+                height: 110px;
+                left: 50%;
+                top: 195px;
+                transform: translateX(-50%);
+                -wekbit-animation-name: boxout;
+                -wekbit-animation-duration: 10s;
+                -wekbit-animation-iteration-count: infinite;
+                z-index: -1;
+                animation-name: boxin;
+                animation-duration: 10s;
+                animation-iteration-count: infinite;
+            }
+            @keyframes boxout {
+                0% {
+                    background-color: #000000;
+                }
+                25% {
+                    background-color: darkgray;
+                }
+                50% {
+                    background-color: #00ff00;
+                }
+                75% {
+                    background-color: darkgray;
+                }
+                100% {
+                    background-color: #000000;
+                }
+            }
+            @keyframes boxin {
+                0% {
+                    background-color: #00ff00;
+                }
+                25% {
+                    background-color: darkgray;
+                }
+                50% {
+                    background-color: #000000;
+                }
+                75% {
+                    background-color: darkgray;
+                }
+                100% {
+                    background-color: #00ff00;
+                }
+            }
+            #canvas {
+                display:block;
+                margin: 40px auto 20px;
+                border: 1px solid #333;
+                box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.8);
+            }
+            .speech img {
+                float:width: 40px;
+            }
+        </style>
+        <center>
+           <h1>BOX</h1>
+
+            </a>
+
+             <h3>Hello user! I am box. What can I do for you?</h3>
+             <br>
+             <div class="divboxout"></div>
+             <div class="divboxin"></div>
+             <div class="divboxborder1"></div>
+             <div class="divboxborder2"></div>
+             
+             <a href = "home.html" class = "button">Home</a>
+             <br><br><br><br><br><br><br><br><br><br>
+             <form id="labnol" method="get" action="https://www.google.com/search">
+             <div class="speech">
+                <img onclick="startDictation()" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-mic-128.png" width = 25px />
+             </div>
+             </form>
+             <div class = "file">
+                 <input type="file" id="fileinput">
+            </div>
+            <p>Question (Searched in DataBase)</p>
+            <p>
+                    <input type="text" id="uq"/>
+                    <button class = "button" onclick="question();" href="javascript:;">Submit</button>
+            </p>
+        </center>
+        <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+        <script>
+        var keytermm = "asd";
+        var answerd = "asd";
+        function readMultipleFiles(evt) {
+            //Retrieve all the files from the FileList object
+            var files = evt.target.files; 
+    		
+            if (files) {
+                for (var i=0, f; f=files[i]; i++) {
+	                var r = new FileReader();
+                    r.onload = (function(f) {
+                        return function(e) {
+                            var contentsd = e.target.result;
+                            alert(contentsd);
+                            var array = contentsd.split(',');
+                            keytermm = array.slice(0,(array.length / 2));
+                            answerd = array.slice((array.length / 2),array.length);
+                            
+                        };
+                    })(f);
+
+                r.readAsText(f);
+                }   
+        } else {
+	          alert("Failed to load files"); 
+        }
+      }
+  
+      document.getElementById('fileinput').addEventListener('change', readMultipleFiles, false);
+            var audio;
+            var das = 0;
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+
+
+            function startDictation() {
+
+                if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+                    var recognition = new webkitSpeechRecognition();
+
+                    recognition.continuous = false;
+                    recognition.interimResults = false;
+
+                    recognition.lang = "en-US";
+                    recognition.start();
+
+                    recognition.onresult = function(e) {
+                        document.getElementById('uq').value = e.results[0][0].transcript;
+                        recognition.stop();
+                        var u = document.getElementById('uq').value;
+                        document.getElementById('uq').value = u;
+                        question();
+                    };
+
+                    recognition.onerror = function(e) {
+                        window.alert("err");
+                        recognition.stop();
+                    }
+
+                }
+            }
+
+            function wow() {
+                var sounds = document.getElementsByTagName('audio');
+                for (i = 0; i < sounds.length; i++) sounds[i].pause();
+            };
+
+
+
+            var ng = 0;
+
+            function question() {
+                var aodio = das % 10;
+                audio = new Audio("snd" + aodio + '.mp3');
+                audio.load();
+                var currentTime = new Date()
+                var hours = currentTime.getHours()
+                var minutes = currentTime.getMinutes()
+
+                if (minutes < 10) {
+                    minutes = "0" + minutes;
+                }
+                if (document.getElementById('uq').value == "/time") {
+                    window.alert("its " + hours + ":" + minutes);
+
+                }
+                if (document.getElementById('uq').value.indexOf("/music") > -1) {
+                    audio.pause();
+                    audio.currentTime = 0;
+                    window.alert("changing music..");
+                    das = document.getElementById('uq').value.charAt(6);
+                    window.alert("soundtrack is now soundtrack " + das % 10);
+                    audio.pause();
+                    return;
+
+                }
+                if (document.getElementById('uq').value == "/clear") {
+                    localStorage.clear();
+                    window.alert("loacal storage cleared");
+                    return;
+
+                }
+                audio.pause();
+                audio.currentTime = 0.0;
+                var empty = [];
+                var i = 0;
+                var greeting_results = "";
+                var found = false;
+                var greetingWords = ["hello box", "hi box", "good morning box", "good evening box", "good night box"];
+                var fivequestions = [];
+                var result = [];
+                wow();
+
+                function greeting(wordlist, main, resultlist, different) {
+                    empty = [];
+                    i = 0;
+                    greeting_results = main.join(" ");
+                    while (i <= greeting_results.length) {
+                        if (greeting_results.indexOf(wordlist[i]) > -1) {
+                            result = [/*wordlist[i]*/ "Hello" + " to you also!", "I'm good!", "I dont know how", "Im box, your personal assistant", "I don't know who they are", "I dont know your name, but I know your my friend :)", "I dont know who", "use /time to find the time", "Bored? do /game to play our game", "Did I hear the word game? I love games! do /game to play our featured game", "I don't know when"]
+                             if ((greeting_results[greeting_results.indexOf(wordlist[i])-1] == " "  ||greeting_results.indexOf(wordlist[i])-1 < 0) && (greeting_results[greeting_results.indexOf(wordlist[i])+wordlist[i].length] == " " || greeting_results.indexOf((wordlist[i])+wordlist[i].length) < 0)){
+                            
+                                if (different == 1) {
+                                    window.alert(result[resultlist + i]);
+                                    responsiveVoice.speak(result[resultlist + i])
+                                } else {
+                                    window.alert(result[resultlist]);
+                                    responsiveVoice.speak(result[resultlist])
+                                }
+                                empty.push(main[i]);
+                                found = true;
+                                break;
+                            }
+                        }
+                        i = i + 1;
+                    }
+                }
+                var v = "";
+                var str = document.getElementById('uq').value;
+                str = str.toLowerCase();
+                var charactder = "";
+                var j = 0;
+                var calc = "";
+                var userQ = [];
+                var countwords = 0;
+                var n = str.length;
+                var z = "";
+                var character = "";
+                while (j <= n) {
+                    if (str.charAt(j) == " " || n == j || str.charAt(j) == "/" || str.charAt(j) == "*" || str.charAt(j) == "-" || str.charAt(j) == "+") {
+                        if (countwords === "") {
+                            z = z + "First word/ " + charactder;
+                            userQ.push(charactder);
+                            charactder = '';
+                            countwords++;
+                        } else {
+                            z = z + " // " + charactder;
+                            if (str.charAt(j) == "/" || str.charAt(j) == "*" || str.charAt(j) == "-" || str.charAt(j) == "+") {
+                                userQ.push(charactder);
+                                charactder = str.charAt(j);
+                                userQ.push(charactder);
+                                countwords++;
+
+                            } else {
+                                userQ.push(charactder);
+                            }
+                            charactder = '';
+                            countwords++;
+                        }
+                    } else {
+                        charactder = charactder + str.charAt(j);
+                    }
+                    j++;
+                }
+
+                if (userQ.indexOf("/") != -1 || userQ.indexOf("*") != -1 || userQ.indexOf("-") != -1 || userQ.indexOf("+") != -1) {
+                    calc = eval(str);
+                    window.alert(calc);
+                }
+                // listto check, UserQ, item for response, 1 = move, 0 = individual/same.
+                var listdata = [];
+                var ansdata = [];
+                if (localStorage.ansdata) {
+                    window.alert("answer AI loaded!");
+                    var test2 = localStorage.getItem("listdata");
+                    listdata = JSON.parse(test2);
+                    test2 = localStorage.getItem("ansdata");
+                    ansdata = JSON.parse(test2);
+                } else {
+                    window.alert("No answer AI in local storage. creating one..");
+                    localStorage.setItem("listdata", JSON.stringify(listdata));
+                    localStorage.setItem("ansdata", JSON.stringify(ansdata));
+                    var test2 = localStorage.getItem("listdata");
+                    listdata = JSON.parse(test2);
+                    test2 = localStorage.getItem("ansdata");
+                    ansdata = JSON.parse(test2); //var test is now re-loaded!
+                }
+                //window.alert(ansdata);
+                //window.alert(listdata);
+                var zeta = userQ.join(" ");
+                var reedy;
+                if (zeta == ".clr") {
+                    if (listdata.length != 0) {
+                        reedy = prompt("are you sure? the things you going to delete are : " + listdata[listdata.length - 1] + " as the keyterm and " + ansdata[ansdata.length - 1] + " as the answer. Say yes or no ")
+                        if (reedy = "yes") {
+                            ansdata.pop();
+                            listdata.pop();
+                            localStorage.setItem("listdata", JSON.stringify(listdata));
+                            localStorage.setItem("ansdata", JSON.stringify(ansdata));
+                            return;
+                        } else {
+                            window.alert("deletion canceled");
+                            return;
+                        }
+
+                    } else {
+                        window.alert("error: empty");
+                        localStorage.clear();
+                        return;
+                    }
+                }
+                if (zeta == ".download") {
+                    var textToSave = listdata.concat(ansdata);
+                    var hiddenElement = document.createElement('a');
+                    hiddenElement.href = 'data:attachment/text,' + encodeURI(textToSave);
+                    hiddenElement.target = '_blank';
+                    hiddenElement.download = 'localStorage.txt';
+                    hiddenElement.click();
+                    return;
+
+                }
+                
+                if (zeta == ".replace" && keytermm !== "asd"){
+                    var replaceLocal = prompt("are you sure you want to replace localstorage?");
+                    if (replaceLocal == "yes"){
+                        localStorage.clear();
+                        ansdata = answerd;
+                        listdata = keytermm;
+                        localStorage.setItem("listdata", JSON.stringify(listdata));
+                        localStorage.setItem("ansdata", JSON.stringify(ansdata));
+                        return;
+                    }else{
+                        window.alert("canceled");
+                        return;
+                    }
+                }
+                
+                if (zeta == ".add" && keytermm !== "asd"){
+                    var replaceLocal = prompt("are you sure you want to add localstorage?");
+                    if (replaceLocal == "yes"){
+                        localStorage.clear();
+                        ansdata = ansdata.concat(answerd);
+                        listdata = listdata.concat(keytermm);
+                        localStorage.setItem("listdata", JSON.stringify(listdata));
+                        localStorage.setItem("ansdata", JSON.stringify(ansdata));
+                        return;
+                    }else{
+                        window.alert("canceled");
+                        return;
+                    }
+                }
+                
+                
+                
+
+                greeting(greetingWords, userQ, 0, 0);
+                if (found == false) {
+                    i = 0;
+                    while (i < listdata.length) {
+                        if (zeta.indexOf(listdata[i]) !== -1) {
+                            window.alert(ansdata[i]);
+                            responsiveVoice.speak(ansdata[i]);
+                            found = true;
+                            break;
+                        }
+                        i++;
+                    }
+                }
+                if (found == false) {
+                    var ask = prompt("Please enter what i was supposed to say, or you can leave it blank");
+                    if (ask !== null && ask != "") {
+                        var keywerd = prompt("Please key words");
+                        keywerd = keywerd.toLowerCase();
+                        ask = ask.toLowerCase();
+                        ansdata.push(ask);
+                        listdata.push(keywerd);
+                        localStorage.setItem("listdata", JSON.stringify(listdata));
+                        localStorage.setItem("ansdata", JSON.stringify(ansdata));
+                    } else {
+                        window.alert("its ok if youre shy :)");
+                    }
+                }
+
+                audio.pause();
+                audio.play();
+
+                //beta-test
+
+                //  not needed anymore :D  window.alert(userQ[0] + " is the first word and " + userQ[userQ.length - 1] + " is the last word");
+
+            }
+        </script>
+
   </div>
 
 </div>
