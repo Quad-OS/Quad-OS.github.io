@@ -26,7 +26,7 @@
     <style>
         body {
             background-color: darkgray;
-            z-index: 2;
+            z-index: 0;
         }
         .button {
             background-color: green;
@@ -40,7 +40,7 @@
             font-size: 16px;
             cursor: pointer;
             width: 15%;
-            z-index: 2;
+            z-index: 1;
             position: relative;
             left: 1;
             display: inline-block;
@@ -91,14 +91,6 @@
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
     right: 0px; 
 }
-canvas {
-  display:block;
-  margin: 40px auto 20px;
-  border: 1px solid #333;
-  box-shadow: 0 0 16px 2px rgba(0,0,0,0.8);
-  display: inline-block;
-  right: 1px;
-}
 #boxButton {
     display: inline-block;
 }
@@ -108,7 +100,7 @@ canvas {
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 10; /* Sit on top */
+    z-index: 2; /* Sit on top */
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
@@ -192,7 +184,7 @@ canvas {
             font-size: 16px;
             cursor: pointer;
             width: 15%;
-            z-index-: 2;
+            z-index-: 3;
             }
             input[type=text] {
                 position: relative;
@@ -227,7 +219,7 @@ canvas {
                 -wekbit-animation-name: boxin;
                 -wekbit-animation-duration: 10s;
                 -wekbit-animation-iteration-count: infinite;
-                z-index: -2;
+                z-index: 3;
                 animation-name: boxout;
                 animation-duration: 10s;
                 animation-iteration-count: infinite;
@@ -242,7 +234,7 @@ canvas {
                 -wekbit-animation-name: boxout;
                 -wekbit-animation-duration: 10s;
                 -wekbit-animation-iteration-count: infinite;
-                z-index: -1;
+                z-index: 4;
                 animation-name: boxin;
                 animation-duration: 10s;
                 animation-iteration-count: infinite;
