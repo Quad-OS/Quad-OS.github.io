@@ -168,6 +168,7 @@
             <br>
             <a href = "scribble.html" class = button>Scribble</a>
             <br>
+            <div id="level"></div>
             <!-- Trigger/Open The Modal -->
 <!-- <button id = "myBtn">Box</button> -->
 
@@ -1508,6 +1509,15 @@ window.onclick = function(event) {
         modal3.style.display = "none";
     }
 }
+
+//BATTERY LEVEL
+
+navigator.getBattery().then(function(battery) {
+    $('#level').text(battery.level * 100 + "%");
+   battery.addEventListener('levelchange', function() {
+    $('#level').text(battery.level * 100 + "%");
+  }); 
+});
         </script>
     </body>
 </html>
