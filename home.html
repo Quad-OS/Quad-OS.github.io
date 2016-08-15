@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
     <head>
-        <title>Quad -OS</title>
+        <title>Quad-OS</title>
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
@@ -158,41 +158,533 @@
     cursor: pointer;
     
 /*battery stuff*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-#batteryBody {
-    float: left;
-    width: 200px;
-    height: 75px;
-    border: 10px #CCC solid;
+h1 {
+  padding: 0 1rem;
 }
-.container {
-    width: 240px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
+
+#battery-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.batteryEnd {
-    float: left;
-    height: 95px;
-    width: 15px;
+
+#battery-percentage {
+  position: absolute;
+  right: 0;
+  bottom: 0.5rem;
+  left: 0;
+  z-index: 3;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
 }
-.batteryEnd div {
-    width: 15px;
-    height: 35px;
-    margin-top: 30px;
-    margin-left: 5px;
-    background-color: #CCC;
+
+#battery {
+  position: relative;
+  margin: 0 auto;
+  width: 140px;
+  height: 220px;
+  border: 2px solid #fff;
 }
-#indicator {
-    height: 100%;
-    width: 50%;
+#battery #charge-status {
+  display: none;
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 120px;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/97547/blitz_(1).svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
-#indicator.charging {
-    background-color: #BFFF00;
+#battery.is-charging #charge-status {
+  display: block;
 }
-#indicator.notCharging {
-    background-color: #FFFF00;
+#battery:before {
+  content: ' ';
+  display: block;
+  width: 60px;
+  height: 20px;
+  background: #fff;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
 }
+#battery:after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+#battery.charge-1:after {
+  height: 1%;
+  background: #c21515;
+}
+#battery.charge-2:after {
+  height: 2%;
+  background: #c21515;
+}
+#battery.charge-3:after {
+  height: 3%;
+  background: #c21515;
+}
+#battery.charge-4:after {
+  height: 4%;
+  background: #c21515;
+}
+#battery.charge-5:after {
+  height: 5%;
+  background: #c21515;
+}
+#battery.charge-6:after {
+  height: 6%;
+  background: #c21515;
+}
+#battery.charge-7:after {
+  height: 7%;
+  background: #c21515;
+}
+#battery.charge-8:after {
+  height: 8%;
+  background: #c21515;
+}
+#battery.charge-9:after {
+  height: 9%;
+  background: #c21515;
+}
+#battery.charge-10:after {
+  height: 10%;
+}
+#battery.charge-11:after {
+  height: 11%;
+  background: #fed024;
+}
+#battery.charge-12:after {
+  height: 12%;
+  background: #fed024;
+}
+#battery.charge-13:after {
+  height: 13%;
+  background: #fed024;
+}
+#battery.charge-14:after {
+  height: 14%;
+  background: #fed024;
+}
+#battery.charge-15:after {
+  height: 15%;
+  background: #fed024;
+}
+#battery.charge-16:after {
+  height: 16%;
+  background: #fed024;
+}
+#battery.charge-17:after {
+  height: 17%;
+  background: #fed024;
+}
+#battery.charge-18:after {
+  height: 18%;
+  background: #fed024;
+}
+#battery.charge-19:after {
+  height: 19%;
+  background: #fed024;
+}
+#battery.charge-20:after {
+  height: 20%;
+  background: #fed024;
+}
+#battery.charge-21:after {
+  height: 21%;
+  background: #fed024;
+}
+#battery.charge-22:after {
+  height: 22%;
+  background: #fed024;
+}
+#battery.charge-23:after {
+  height: 23%;
+  background: #fed024;
+}
+#battery.charge-24:after {
+  height: 24%;
+  background: #fed024;
+}
+#battery.charge-25:after {
+  height: 25%;
+  background: #fed024;
+}
+#battery.charge-26:after {
+  height: 26%;
+  background: #fed024;
+}
+#battery.charge-27:after {
+  height: 27%;
+  background: #fed024;
+}
+#battery.charge-28:after {
+  height: 28%;
+  background: #fed024;
+}
+#battery.charge-29:after {
+  height: 29%;
+  background: #fed024;
+}
+#battery.charge-30:after {
+  height: 30%;
+  background: #fed024;
+}
+#battery.charge-31:after {
+  height: 31%;
+  background: #fed024;
+}
+#battery.charge-32:after {
+  height: 32%;
+  background: #fed024;
+}
+#battery.charge-33:after {
+  height: 33%;
+  background: #fed024;
+}
+#battery.charge-34:after {
+  height: 34%;
+  background: #fed024;
+}
+#battery.charge-35:after {
+  height: 35%;
+  background: #fed024;
+}
+#battery.charge-36:after {
+  height: 36%;
+  background: #fed024;
+}
+#battery.charge-37:after {
+  height: 37%;
+  background: #fed024;
+}
+#battery.charge-38:after {
+  height: 38%;
+  background: #fed024;
+}
+#battery.charge-39:after {
+  height: 39%;
+  background: #fed024;
+}
+#battery.charge-40:after {
+  height: 40%;
+  background: #fed024;
+}
+#battery.charge-41:after {
+  height: 41%;
+  background: #fed024;
+}
+#battery.charge-42:after {
+  height: 42%;
+  background: #fed024;
+}
+#battery.charge-43:after {
+  height: 43%;
+  background: #fed024;
+}
+#battery.charge-44:after {
+  height: 44%;
+  background: #fed024;
+}
+#battery.charge-45:after {
+  height: 45%;
+  background: #fed024;
+}
+#battery.charge-46:after {
+  height: 46%;
+  background: #fed024;
+}
+#battery.charge-47:after {
+  height: 47%;
+  background: #fed024;
+}
+#battery.charge-48:after {
+  height: 48%;
+  background: #fed024;
+}
+#battery.charge-49:after {
+  height: 49%;
+  background: #fed024;
+}
+#battery.charge-50:after {
+  height: 50%;
+  background: #fed024;
+}
+#battery.charge-51:after {
+  height: 51%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-52:after {
+  height: 52%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-53:after {
+  height: 53%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-54:after {
+  height: 54%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-55:after {
+  height: 55%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-56:after {
+  height: 56%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-57:after {
+  height: 57%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-58:after {
+  height: 58%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-59:after {
+  height: 59%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-60:after {
+  height: 60%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-61:after {
+  height: 61%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-62:after {
+  height: 62%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-63:after {
+  height: 63%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-64:after {
+  height: 64%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-65:after {
+  height: 65%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-66:after {
+  height: 66%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-67:after {
+  height: 67%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-68:after {
+  height: 68%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-69:after {
+  height: 69%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-70:after {
+  height: 70%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-71:after {
+  height: 71%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-72:after {
+  height: 72%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-73:after {
+  height: 73%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-74:after {
+  height: 74%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-75:after {
+  height: 75%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-76:after {
+  height: 76%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-77:after {
+  height: 77%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-78:after {
+  height: 78%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-79:after {
+  height: 79%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-80:after {
+  height: 80%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-81:after {
+  height: 81%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-82:after {
+  height: 82%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-83:after {
+  height: 83%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-84:after {
+  height: 84%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-85:after {
+  height: 85%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-86:after {
+  height: 86%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-87:after {
+  height: 87%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-88:after {
+  height: 88%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-89:after {
+  height: 89%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-90:after {
+  height: 90%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-91:after {
+  height: 91%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-92:after {
+  height: 92%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-93:after {
+  height: 93%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-94:after {
+  height: 94%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-95:after {
+  height: 95%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-96:after {
+  height: 96%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-97:after {
+  height: 97%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-98:after {
+  height: 98%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-99:after {
+  height: 99%;
+  background: #fed024;
+  background: #bada55;
+}
+#battery.charge-100:after {
+  height: 100%;
+  background: #fed024;
+  background: #bada55;
+}
+
+@media screen and (orientation: landscape) {
+  h1 {
+    text-align: left;
+  }
+}
+
     </style>
     <body id = "body1">
         <center>
@@ -209,7 +701,12 @@
             <br>
             <a href = "scribble.html" class = button>Scribble</a>
             <br>
-            <div id = "Battery"></div>
+            <div id="battery-container">
+  <div id="battery">
+    <div id="charge-status"></div>
+    <div id="battery-percentage"></div>
+  </div>
+</div>
             <!-- Trigger/Open The Modal -->
 <!-- <button id = "myBtn">Box</button> -->
 
@@ -1553,17 +2050,59 @@ window.onclick = function(event) {
 
 //BATTERY LEVEL
 
-var battery = navigator.battery || navigator.mozBattery;
-if (battery) {
-    // battery status for firefox 
-    alert(battery.level * 100 + '%');
-} else if (navigator.getBattery) {
-    //battery status for chrome
+/** 
+ @module Battery
+ */
+var Battery = function() {
+  'use strict';
+  
+  var self = this;
+  
+  this._elements = {};
+  this._elements.battery = void(0);
+  this._elements.percentage = void(0);
+  
+  this._level = 0;
+  this._charging = false;
+  
+  /** Called when battery level changes */
+  this._update = function _update(data) {
+    this._level = Math.floor(data.level * 100);;
+    this._isCharging = data.charging;
+    
+    this._elements.battery.className = 'charge-' + this._level;
+    this._elements.percentage.innerText = this._level + '%';
+    
+    // Doesn't need to be reset because class list is reset above
+    if(this._isCharging) {
+      this._elements.battery.classList.add('is-charging');
+    }
+  };
+  
+  /** Called to initialize module */
+  this._init = function _init() {
+    this._elements.battery = document.getElementById('battery');
+    this._elements.percentage = document.getElementById('battery-percentage');
+    
     navigator.getBattery().then(function(battery) {
-      var batterylvl = (battery.level * 100 + '%');
-      document.getElementById("Battery").innerHTML = batterylvl;
+      battery.addEventListener('chargingchange', function(e) {
+        self._update(battery);
+      });
+      battery.addEventListener('levelchange', function(e) {
+        self._update(battery);
+      });
+      self._update(battery);
     });
-}
+  };
+  
+  // --- Implicit constructor
+  this._init();
+  
+  return {};
+};
+
+// --- Kick off
+var myBattery = new Battery();
        </script>
     </body>
 </html>
