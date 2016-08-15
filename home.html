@@ -159,9 +159,39 @@
     
 /*battery stuff*/
 
-.main{
-  width: 70%;
-  margin: 5% auto;
+#batteryBody {
+    float: left;
+    width: 200px;
+    height: 75px;
+    border: 10px #CCC solid;
+}
+.container {
+    width: 240px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+.batteryEnd {
+    float: left;
+    height: 95px;
+    width: 15px;
+}
+.batteryEnd div {
+    width: 15px;
+    height: 35px;
+    margin-top: 30px;
+    margin-left: 5px;
+    background-color: #CCC;
+}
+#indicator {
+    height: 100%;
+    width: 50%;
+}
+#indicator.charging {
+    background-color: #BFFF00;
+}
+#indicator.notCharging {
+    background-color: #FFFF00;
 }
     </style>
     <body id = "body1">
@@ -179,12 +209,17 @@
             <br>
             <a href = "scribble.html" class = button>Scribble</a>
             <br>
-            <div class="main">
-  <h1 id="level" class="animated fadeIn">Battery level: 00%</h1>
-  <div class="progress">
-    <div class="progress-bar" style="width: 0%">
+            <div class="container">
+    <div id="batteryBody">
+        <div id="indicator">
+         
+        </div>
     </div>
-  </div>
+    <div class="batteryEnd">
+        <div>
+         
+        </div>
+    </div>
 </div>
             <!-- Trigger/Open The Modal -->
 <!-- <button id = "myBtn">Box</button> -->
@@ -1529,14 +1564,39 @@ window.onclick = function(event) {
 
 //BATTERY LEVEL
 
-navigator.getBattery().then(function(battery) {
-    $('.progress-bar').css('width', battery.level * 100 + '%');
-    $('#level').html('Battery level: ' + (battery.level * 100).toFixed() + '%')
-    battery.onlevelchange = function() {
-        $('#level').html('Battery level: ' + (this.level * 100).toFixed() + '%')
-        $('.progress-bar').css('width', this.level * 100 + '%');
-    };
-});
-        </script>
+var battery;
+ 
+navigator.getBattery()
+    .then(function (b) {
+        battery = b;
+        handleBattery();
+    }
+);
+ 
+var batteryIndicator = document.querySelector("#indicator");
+ 
+function handleBattery() {
+    if (battery) {
+        battery.addEventListener("chargingchange", updateBatteryNotification);
+        battery.addEventListener("levelchange", updateBatteryNotification);
+        updateBatteryNotification();
+    }
+}
+ 
+function updateBatteryNotification() {
+    // draw battery level
+    batteryIndicator.style.width = battery.level * 100 + "%";
+ 
+    // check if battery is charging
+    if (battery.charging) {
+        setClass(batteryIndicator, "charging");
+    } else {
+        setClass(batteryIndicator, "notCharging");
+    }
+}
+ 
+function setClass(element, classToAdd) {
+    element.className = classToAdd;
+}        </script>
     </body>
 </html>
