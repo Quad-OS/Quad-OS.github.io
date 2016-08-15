@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
     <head>
-        <title>Quad- OS</title>
+        <title>Quad-OS</title>
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
@@ -156,40 +156,44 @@
     color: #000;
     text-decoration: none;
     cursor: pointer;
+    
+/*battery stuff*/
+
+.battery:after {
+    background-color: #fff;
+    border: 2px solid #000;
+    content: "";
+    display: block;
+    height: 16px;
+    position: absolute;
+    right: -6px;
+    top: 6px;
+    width: 6px;
 }
-#batteryBody {
-    float: left;
-    width: 200px;
-    height: 75px;
-    border: 10px #CCC solid;
-}
-.container {
-    width: 240px;
+.battery {
+    background-color: #fff;
+    border: 2px solid #000;
+    height: 32px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
+    position: relative;
+    width: 100px;
 }
-.batteryEnd {
-    float: left;
-    height: 95px;
-    width: 15px;
-}
-.batteryEnd div {
-    width: 15px;
-    height: 35px;
-    margin-top: 30px;
-    margin-left: 5px;
-    background-color: #CCC;
-}
-#indicator {
+.battery .battery-level {
+    background-color: #666;
     height: 100%;
-    width: 50%;
 }
-#indicator.charging {
-    background-color: #BFFF00;
+.battery .battery-level.high {
+    background-color: #66CD00;
 }
-#indicator.notCharging {
-    background-color: #FFFF00;
+.battery .battery-level.medium {
+    background-color: #FCD116;
+}
+.battery .battery-level.low {
+    background-color: #FF3333;
+}
+.battery .battery-level {
+    text-align: center;
 }
     </style>
     <body id = "body1">
@@ -207,18 +211,7 @@
             <br>
             <a href = "scribble.html" class = button>Scribble</a>
             <br>
-            <div class="container">
-    <div id="batteryBody">
-        <div id="indicator">
-         
-        </div>
-    </div>
-    <div class="batteryEnd">
-        <div>
-         
-        </div>
-    </div>
-</div>
+            <div id="battery"><div id="battery-level"></div></div>
             <!-- Trigger/Open The Modal -->
 <!-- <button id = "myBtn">Box</button> -->
 
@@ -1562,40 +1555,57 @@ window.onclick = function(event) {
 
 //BATTERY LEVEL
 
-var battery;
- 
-navigator.getBattery()
-    .then(function (b) {
-        battery = b;
-        handleBattery();
-    }
-);
- 
-var batteryIndicator = document.querySelector("#indicator");
- 
-function handleBattery() {
-    if (battery) {
-        battery.addEventListener("chargingchange", updateBatteryNotification);
-        battery.addEventListener("levelchange", updateBatteryNotification);
-        updateBatteryNotification();
-    }
+var battery = navigator.battery;
+var level    = battery.level * 100;
+var batteryLevel = jQuery('.battery .battery-level');
+batteryLevel.css('width', level + '%');
+batteryLevel.text(level + '%');
+if (battery.charging) {
+    batteryLevel.addClass('charging');
+} else if (level > 50) {  
+    batteryLevel.addClass('high');  
+} else if (level >= 25 ) {  
+    batteryLevel.addClass('medium');  
+} else {  
+    batteryLevel.addClass('low');  
 }
- 
-function updateBatteryNotification() {
-    // draw battery level
-    batteryIndicator.style.width = battery.level * 100 + "%";
- 
-    // check if battery is charging
-    if (batteryIndicator >= 20) {
-        setClass(batteryIndicator, "charging");
-    } else {
-        setClass(batteryIndicator, "notCharging");
-    }
+
+function updateBatteryDisplay(battery) {
+	var level = battery.level * 100;
+	var batteryLevel = jQuery('.battery .battery-level');
+	batteryLevel.css('width', level + '%');
+	batteryLevel.text(level + '%');
+	if (battery.charging) {
+	    batteryLevel.addClass('charging');
+	    batteryLevel.removeClass('high');  
+	    batteryLevel.removeClass('medium');  
+	    batteryLevel.removeClass('low');  
+	} else if (level > 50) {  
+	    batteryLevel.addClass('high');  
+	    batteryLevel.removeClass('charging');
+	    batteryLevel.removeClass('medium');  
+	    batteryLevel.removeClass('low');  
+	} else if (level >= 25 ) {  
+	    batteryLevel.addClass('medium');  
+	    batteryLevel.removeClass('charging');
+	    batteryLevel.removeClass('high');  
+	    batteryLevel.removeClass('low');  
+	} else {  
+	    batteryLevel.addClass('low');  
+	    batteryLevel.removeClass('charging');
+	    batteryLevel.removeClass('high');  
+	    batteryLevel.removeClass('medium');  
+	}
 }
- 
-function setClass(element, classToAdd) {
-    element.className = classToAdd;
-}
+
+var battery = navigator.battery;
+updateBatteryDisplay(battery);
+battery.onchargingchange = function () {
+    updateBatteryDisplay(battery);
+};
+battery.onlevelchange = function () {
+    updateBatteryDisplay(battery);
+};
         </script>
     </body>
 </html>
