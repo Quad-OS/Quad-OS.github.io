@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
     <head>
-        <title>Quad-OS</title>
+        <title>Quad -OS</title>
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
@@ -159,41 +159,9 @@
     
 /*battery stuff*/
 
-.battery:after {
-    background-color: #fff;
-    border: 2px solid #000;
-    content: "";
-    display: block;
-    height: 16px;
-    position: absolute;
-    right: -6px;
-    top: 6px;
-    width: 6px;
-}
-.battery {
-    background-color: #fff;
-    border: 2px solid #000;
-    height: 32px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    width: 100px;
-}
-.battery .battery-level {
-    background-color: #666;
-    height: 100%;
-}
-.battery .battery-level.high {
-    background-color: #66CD00;
-}
-.battery .battery-level.medium {
-    background-color: #FCD116;
-}
-.battery .battery-level.low {
-    background-color: #FF3333;
-}
-.battery .battery-level {
-    text-align: center;
+.main{
+  width: 70%;
+  margin: 5% auto;
 }
     </style>
     <body id = "body1">
@@ -211,7 +179,13 @@
             <br>
             <a href = "scribble.html" class = button>Scribble</a>
             <br>
-            <div id="battery"><div id="battery-level"></div></div>
+            <div class="main">
+  <h1 id="level" class="animated fadeIn">Battery level: 00%</h1>
+  <div class="progress">
+    <div class="progress-bar" style="width: 0%">
+    </div>
+  </div>
+</div>
             <!-- Trigger/Open The Modal -->
 <!-- <button id = "myBtn">Box</button> -->
 
@@ -1555,57 +1529,14 @@ window.onclick = function(event) {
 
 //BATTERY LEVEL
 
-var battery = navigator.battery;
-var level    = battery.level * 100;
-var batteryLevel = jQuery('.battery .battery-level');
-batteryLevel.css('width', level + '%');
-batteryLevel.text(level + '%');
-if (battery.charging) {
-    batteryLevel.addClass('charging');
-} else if (level > 50) {  
-    batteryLevel.addClass('high');  
-} else if (level >= 25 ) {  
-    batteryLevel.addClass('medium');  
-} else {  
-    batteryLevel.addClass('low');  
-}
-
-function updateBatteryDisplay(battery) {
-	var level = battery.level * 100;
-	var batteryLevel = jQuery('.battery .battery-level');
-	batteryLevel.css('width', level + '%');
-	batteryLevel.text(level + '%');
-	if (battery.charging) {
-	    batteryLevel.addClass('charging');
-	    batteryLevel.removeClass('high');  
-	    batteryLevel.removeClass('medium');  
-	    batteryLevel.removeClass('low');  
-	} else if (level > 50) {  
-	    batteryLevel.addClass('high');  
-	    batteryLevel.removeClass('charging');
-	    batteryLevel.removeClass('medium');  
-	    batteryLevel.removeClass('low');  
-	} else if (level >= 25 ) {  
-	    batteryLevel.addClass('medium');  
-	    batteryLevel.removeClass('charging');
-	    batteryLevel.removeClass('high');  
-	    batteryLevel.removeClass('low');  
-	} else {  
-	    batteryLevel.addClass('low');  
-	    batteryLevel.removeClass('charging');
-	    batteryLevel.removeClass('high');  
-	    batteryLevel.removeClass('medium');  
-	}
-}
-
-var battery = navigator.battery;
-updateBatteryDisplay(battery);
-battery.onchargingchange = function () {
-    updateBatteryDisplay(battery);
-};
-battery.onlevelchange = function () {
-    updateBatteryDisplay(battery);
-};
+navigator.getBattery().then(function(battery) {
+    $('.progress-bar').css('width', battery.level * 100 + '%');
+    $('#level').html('Battery level: ' + (battery.level * 100).toFixed() + '%')
+    battery.onlevelchange = function() {
+        $('#level').html('Battery level: ' + (this.level * 100).toFixed() + '%')
+        $('.progress-bar').css('width', this.level * 100 + '%');
+    };
+});
         </script>
     </body>
 </html>
