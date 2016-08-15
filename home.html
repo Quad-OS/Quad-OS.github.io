@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
     <head>
-        <title>Quad-OS</title>
+        <title>Quad -OS</title>
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
@@ -209,18 +209,7 @@
             <br>
             <a href = "scribble.html" class = button>Scribble</a>
             <br>
-            <div class="container">
-    <div id="batteryBody">
-        <div id="indicator">
-         
-        </div>
-    </div>
-    <div class="batteryEnd">
-        <div>
-         
-        </div>
-    </div>
-</div>
+            <div id = "Battery"></div>
             <!-- Trigger/Open The Modal -->
 <!-- <button id = "myBtn">Box</button> -->
 
@@ -1564,39 +1553,17 @@ window.onclick = function(event) {
 
 //BATTERY LEVEL
 
-var battery;
- 
-navigator.getBattery()
-    .then(function (b) {
-        battery = b;
-        handleBattery();
-    }
-);
- 
-var batteryIndicator = document.querySelector("#indicator");
- 
-function handleBattery() {
-    if (battery) {
-        battery.addEventListener("chargingchange", updateBatteryNotification);
-        battery.addEventListener("levelchange", updateBatteryNotification);
-        updateBatteryNotification();
-    }
+var battery = navigator.battery || navigator.mozBattery;
+if (battery) {
+    // battery status for firefox 
+    alert(battery.level * 100 + '%');
+} else if (navigator.getBattery) {
+    //battery status for chrome
+    navigator.getBattery().then(function(battery) {
+      var batterylvl = (battery.level * 100 + '%');
+      document.getElementById("Battery").innerHTML = batterylvl;
+    });
 }
- 
-function updateBatteryNotification() {
-    // draw battery level
-    batteryIndicator.style.width = battery.level * 100 + "%";
- 
-    // check if battery is charging
-    if (battery.charging) {
-        setClass(batteryIndicator, "charging");
-    } else {
-        setClass(batteryIndicator, "notCharging");
-    }
-}
- 
-function setClass(element, classToAdd) {
-    element.className = classToAdd;
-}        </script>
+       </script>
     </body>
 </html>
