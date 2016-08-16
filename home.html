@@ -273,28 +273,13 @@ h1 {
             <h1>Quad-OS</h1>
         </center>
             <!-- Trigger/Open The Modal -->
-            <button id = "myBtn">Box</button>
-            <br>
-            <button id = "myBtn2">Google</button>
-            <br>
-            <button id = "myBtn3">Game</button>
-            <br>
-            <a href = "about.html" class = "button">About</a>
-            <br>
-            <a href = "scribble.html" class = button>Scribble</a>
-            <br>
-    <div id="batterypercentage"></div>
+            <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn">Box</button>
 
-            <!-- Trigger/Open The Modal -->
-<!-- <button id = "myBtn">Box</button> -->
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">×</span>
-            <style type="text/css">
+<div id="id01" class="w3-modal">
+  <div class="w3-modal-content">
+    <div class="w3-container">
+      <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn">&times;</span>
+      <style type="text/css">
             body {
                 background-color: darkgray;
             }
@@ -752,6 +737,31 @@ h1 {
             }
         </script>
 
+      </div>
+  </div>
+</div>
+
+            <br>
+            <button id = "myBtn2">Google</button>
+            <br>
+            <button id = "myBtn3">Game</button>
+            <br>
+            <a href = "about.html" class = "button">About</a>
+            <br>
+            <a href = "scribble.html" class = button>Scribble</a>
+            <br>
+    <div id="batterypercentage"></div>
+
+            <!-- Trigger/Open The Modal -->
+<!-- <button id = "myBtn">Box</button> -->
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">×</span>
+            
   </div>
 
 </div>
