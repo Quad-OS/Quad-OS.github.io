@@ -1,3 +1,4 @@
+
 <DOCTYPE html>
 <html>
     <head>
@@ -177,6 +178,12 @@ h1 {
   font-size: 40px;
   color: #333;
 }
+div {
+	text-align: center;
+	font-size: 40px;
+	color: #333;
+}
+         
                 .onoffswitch {
     position: relative; width: 100px;
     -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
@@ -228,76 +235,43 @@ h1 {
 }
 
 /*modal*/
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
 
-.modalDialog {
-	position: fixed;
-	font-family: Arial, Helvetica, sans-serif;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background: rgba(0,0,0,0.8);
-	z-index: 99999;
-	opacity:0;
-	-webkit-transition: opacity 400ms ease-in;
-	-moz-transition: opacity 400ms ease-in;
-	transition: opacity 400ms ease-in;
-	pointer-events: none;
-	
-	/*odal*/
-	
-	.modalDialog {
-        position: fixed;
-        font-family: Arial, Helvetica, sans-serif;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: rgba(0,0,0,0.8);
-        z-index: 99999;
-        opacity:0;
-        -webkit-transition: opacity 400ms ease-in;
-        -moz-transition: opacity 400ms ease-in;
-        transition: opacity 400ms ease-in;
-        pointer-events: none;
-    }
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
 
-    .modalDialog:target {
-        opacity:1;
-        pointer-events: auto;
-    }
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
 
-    .modalDialog > div {
-        width: 400px;
-        position: relative;
-        margin: 10% auto;
-        padding: 5px 20px 13px 20px;
-        background: #fff;
-        /*background: -moz-linear-gradient(#fff, #999);
-        background: -webkit-linear-gradient(#fff, #999);
-        background: -o-linear-gradient(#fff, #999);*/
-    }
-
-    .close {
-        background: #606061;
-        color: #FFFFFF;
-        line-height: 25px;
-        position: absolute;
-        right: 0px;
-        text-align: center;
-        top: -7px;
-        width: 24px;
-        text-decoration: none;
-        font-weight: bold;
-        /*-webkit-border-radius: 12px;
-        -moz-border-radius: 12px;
-        border-radius: 12px;
-        -moz-box-shadow: 1px 1px 3px #000;
-        -webkit-box-shadow: 1px 1px 3px #000;
-        box-shadow: 1px 1px 3px #000;*/
-    }
-
-    .close:hover { background: #00d9ff; }
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
 
     </style>
@@ -305,13 +279,29 @@ h1 {
         <center>
             <h1>Quad-OS</h1>
         </center>
-            <!-- Trigger/Open The Modal 
-                  <a href="#openModal1">Box 1</a>
+            <!-- Trigger/Open The Modal -->
+            <button id = "myBtn">Box</button>
+            <br>
+            <button id = "myBtn2">Google</button>
+            <br>
+            <button id = "myBtn3">Game</button>
+            <br>
+            <a href = "about.html" class = "button">About</a>
+            <br>
+            <a href = "scribble.html" class = button>Scribble</a>
+            <br>
+    <div id="batterypercentage"></div>
 
-<div id="openModal1" class="modalDialog">
-<div>
-    <a href="#close" title="Close" class="close">X</a>
-         <style type="text/css">
+            <!-- Trigger/Open The Modal -->
+<!-- <button id = "myBtn">Box</button> -->
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">Ã—</span>
+            <style type="text/css">
             body {
                 background-color: darkgray;
             }
@@ -447,6 +437,8 @@ h1 {
              <div class="divboxin"></div>
              <div class="divboxborder1"></div>
              <div class="divboxborder2"></div>
+             
+             <a href = "home.html" class = "button">Home</a>
              <br><br><br><br><br><br><br><br><br><br>
              <form id="labnol" method="get" action="https://www.google.com/search">
              <div class="speech">
@@ -483,6 +475,7 @@ h1 {
                             
                         };
                     })(f);
+
                 r.readAsText(f);
                 }   
         } else {
@@ -495,13 +488,20 @@ h1 {
             var das = 0;
             var c = document.getElementById("myCanvas");
             var ctx = c.getContext("2d");
+
+
             function startDictation() {
+
                 if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
                     var recognition = new webkitSpeechRecognition();
+
                     recognition.continuous = false;
                     recognition.interimResults = false;
+
                     recognition.lang = "en-US";
                     recognition.start();
+
                     recognition.onresult = function(e) {
                         document.getElementById('uq').value = e.results[0][0].transcript;
                         recognition.stop();
@@ -509,17 +509,24 @@ h1 {
                         document.getElementById('uq').value = u;
                         question();
                     };
+
                     recognition.onerror = function(e) {
                         window.alert("err");
                         recognition.stop();
                     }
+
                 }
             }
+
             function wow() {
                 var sounds = document.getElementsByTagName('audio');
                 for (i = 0; i < sounds.length; i++) sounds[i].pause();
             };
+
+
+
             var ng = 0;
+
             function question() {
                 var aodio = das % 10;
                 audio = new Audio("snd" + aodio + '.mp3');
@@ -527,11 +534,13 @@ h1 {
                 var currentTime = new Date()
                 var hours = currentTime.getHours()
                 var minutes = currentTime.getMinutes()
+
                 if (minutes < 10) {
                     minutes = "0" + minutes;
                 }
                 if (document.getElementById('uq').value == "/time") {
                     window.alert("its " + hours + ":" + minutes);
+
                 }
                 if (document.getElementById('uq').value.indexOf("/music") > -1) {
                     audio.pause();
@@ -541,11 +550,13 @@ h1 {
                     window.alert("soundtrack is now soundtrack " + das % 10);
                     audio.pause();
                     return;
+
                 }
                 if (document.getElementById('uq').value == "/clear") {
                     localStorage.clear();
                     window.alert("loacal storage cleared");
                     return;
+
                 }
                 audio.pause();
                 audio.currentTime = 0.0;
@@ -557,6 +568,7 @@ h1 {
                 var fivequestions = [];
                 var result = [];
                 wow();
+
                 function greeting(wordlist, main, resultlist, different) {
                     empty = [];
                     i = 0;
@@ -606,6 +618,7 @@ h1 {
                                 charactder = str.charAt(j);
                                 userQ.push(charactder);
                                 countwords++;
+
                             } else {
                                 userQ.push(charactder);
                             }
@@ -617,6 +630,7 @@ h1 {
                     }
                     j++;
                 }
+
                 if (userQ.indexOf("/") != -1 || userQ.indexOf("*") != -1 || userQ.indexOf("-") != -1 || userQ.indexOf("+") != -1) {
                     calc = eval(str);
                     window.alert(calc);
@@ -656,6 +670,7 @@ h1 {
                             window.alert("deletion canceled");
                             return;
                         }
+
                     } else {
                         window.alert("error: empty");
                         localStorage.clear();
@@ -670,6 +685,7 @@ h1 {
                     hiddenElement.download = 'localStorage.txt';
                     hiddenElement.click();
                     return;
+
                 }
                 
                 if (zeta == ".replace" && keytermm !== "asd"){
@@ -704,6 +720,7 @@ h1 {
                 
                 
                 
+
                 greeting(greetingWords, userQ, 0, 0);
                 if (found == false) {
                     i = 0;
@@ -731,44 +748,17 @@ h1 {
                         window.alert("its ok if youre shy :)");
                     }
                 }
+
                 audio.pause();
                 audio.play();
+
                 //beta-test
+
                 //  not needed anymore :D  window.alert(userQ[0] + " is the first word and " + userQ[userQ.length - 1] + " is the last word");
+
             }
         </script>
- 
-</div>
-</div>
-<a href="#openModal2">Box 2</a>
 
-  <div id="openModal2" class="modalDialog">
-<div>
-    <a href="#close" title="Close" class="close">X</a>
-</div>
-</div>
-            <br>
-            <button id = "myBtn2">Google</button>
-            <br>
-            <button id = "myBtn3">Game</button>
-            <br>
-            <a href = "about.html" class = "button">About</a>
-            <br>
-            <a href = "scribble.html" class = button>Scribble</a>
-            <br>
-    <div id="batterypercentage"></div>
-
-            <!-- Trigger/Open The Modal -->
-<!-- <button id = "myBtn">Box</button> -->
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  
-  <div class="modal-content">
-    <span class="close">×</span>
-            
   </div>
 
 </div>
@@ -777,7 +767,7 @@ h1 {
 	
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="close">×</span>
+    <span class="close">Ã—</span>
     <div>
             <script>
   (function() {
@@ -798,7 +788,7 @@ h1 {
 	
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="close">×</span>
+    <span class="close">Ã—</span>
     <div>
         <style>
             .button {
@@ -1480,7 +1470,7 @@ var Loop = function() {
 };
 
 Loop();
-            </script>-->
+            </script>
   </div>
 
 </div>
