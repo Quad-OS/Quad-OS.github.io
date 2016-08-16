@@ -243,6 +243,61 @@ h1 {
 	-moz-transition: opacity 400ms ease-in;
 	transition: opacity 400ms ease-in;
 	pointer-events: none;
+	
+	/*odal*/
+	
+	.modalDialog {
+        position: fixed;
+        font-family: Arial, Helvetica, sans-serif;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0,0,0,0.8);
+        z-index: 99999;
+        opacity:0;
+        -webkit-transition: opacity 400ms ease-in;
+        -moz-transition: opacity 400ms ease-in;
+        transition: opacity 400ms ease-in;
+        pointer-events: none;
+    }
+
+    .modalDialog:target {
+        opacity:1;
+        pointer-events: auto;
+    }
+
+    .modalDialog > div {
+        width: 400px;
+        position: relative;
+        margin: 10% auto;
+        padding: 5px 20px 13px 20px;
+        background: #fff;
+        /*background: -moz-linear-gradient(#fff, #999);
+        background: -webkit-linear-gradient(#fff, #999);
+        background: -o-linear-gradient(#fff, #999);*/
+    }
+
+    .close {
+        background: #606061;
+        color: #FFFFFF;
+        line-height: 25px;
+        position: absolute;
+        right: 0px;
+        text-align: center;
+        top: -7px;
+        width: 24px;
+        text-decoration: none;
+        font-weight: bold;
+        /*-webkit-border-radius: 12px;
+        -moz-border-radius: 12px;
+        border-radius: 12px;
+        -moz-box-shadow: 1px 1px 3px #000;
+        -webkit-box-shadow: 1px 1px 3px #000;
+        box-shadow: 1px 1px 3px #000;*/
+    }
+
+    .close:hover { background: #00d9ff; }
 }
 
     </style>
@@ -251,12 +306,12 @@ h1 {
             <h1>Quad-OS</h1>
         </center>
             <!-- Trigger/Open The Modal -->
-            <a href="#openModal">Box</a>
+                  <a href="#openModal1">Box 1</a>
 
-<div id="openModal" class="modalDialog">
-	<div>
-		<a href="#close" title="Close" class="close">X</a>
-      <style type="text/css">
+<div id="openModal1" class="modalDialog">
+<div>
+    <a href="#close" title="Close" class="close">X</a>
+         <style type="text/css">
             body {
                 background-color: darkgray;
             }
@@ -428,7 +483,6 @@ h1 {
                             
                         };
                     })(f);
-
                 r.readAsText(f);
                 }   
         } else {
@@ -441,20 +495,13 @@ h1 {
             var das = 0;
             var c = document.getElementById("myCanvas");
             var ctx = c.getContext("2d");
-
-
             function startDictation() {
-
                 if (window.hasOwnProperty('webkitSpeechRecognition')) {
-
                     var recognition = new webkitSpeechRecognition();
-
                     recognition.continuous = false;
                     recognition.interimResults = false;
-
                     recognition.lang = "en-US";
                     recognition.start();
-
                     recognition.onresult = function(e) {
                         document.getElementById('uq').value = e.results[0][0].transcript;
                         recognition.stop();
@@ -462,24 +509,17 @@ h1 {
                         document.getElementById('uq').value = u;
                         question();
                     };
-
                     recognition.onerror = function(e) {
                         window.alert("err");
                         recognition.stop();
                     }
-
                 }
             }
-
             function wow() {
                 var sounds = document.getElementsByTagName('audio');
                 for (i = 0; i < sounds.length; i++) sounds[i].pause();
             };
-
-
-
             var ng = 0;
-
             function question() {
                 var aodio = das % 10;
                 audio = new Audio("snd" + aodio + '.mp3');
@@ -487,13 +527,11 @@ h1 {
                 var currentTime = new Date()
                 var hours = currentTime.getHours()
                 var minutes = currentTime.getMinutes()
-
                 if (minutes < 10) {
                     minutes = "0" + minutes;
                 }
                 if (document.getElementById('uq').value == "/time") {
                     window.alert("its " + hours + ":" + minutes);
-
                 }
                 if (document.getElementById('uq').value.indexOf("/music") > -1) {
                     audio.pause();
@@ -503,13 +541,11 @@ h1 {
                     window.alert("soundtrack is now soundtrack " + das % 10);
                     audio.pause();
                     return;
-
                 }
                 if (document.getElementById('uq').value == "/clear") {
                     localStorage.clear();
                     window.alert("loacal storage cleared");
                     return;
-
                 }
                 audio.pause();
                 audio.currentTime = 0.0;
@@ -521,7 +557,6 @@ h1 {
                 var fivequestions = [];
                 var result = [];
                 wow();
-
                 function greeting(wordlist, main, resultlist, different) {
                     empty = [];
                     i = 0;
@@ -571,7 +606,6 @@ h1 {
                                 charactder = str.charAt(j);
                                 userQ.push(charactder);
                                 countwords++;
-
                             } else {
                                 userQ.push(charactder);
                             }
@@ -583,7 +617,6 @@ h1 {
                     }
                     j++;
                 }
-
                 if (userQ.indexOf("/") != -1 || userQ.indexOf("*") != -1 || userQ.indexOf("-") != -1 || userQ.indexOf("+") != -1) {
                     calc = eval(str);
                     window.alert(calc);
@@ -623,7 +656,6 @@ h1 {
                             window.alert("deletion canceled");
                             return;
                         }
-
                     } else {
                         window.alert("error: empty");
                         localStorage.clear();
@@ -638,7 +670,6 @@ h1 {
                     hiddenElement.download = 'localStorage.txt';
                     hiddenElement.click();
                     return;
-
                 }
                 
                 if (zeta == ".replace" && keytermm !== "asd"){
@@ -673,7 +704,6 @@ h1 {
                 
                 
                 
-
                 greeting(greetingWords, userQ, 0, 0);
                 if (found == false) {
                     i = 0;
@@ -701,20 +731,22 @@ h1 {
                         window.alert("its ok if youre shy :)");
                     }
                 }
-
                 audio.pause();
                 audio.play();
-
                 //beta-test
-
                 //  not needed anymore :D  window.alert(userQ[0] + " is the first word and " + userQ[userQ.length - 1] + " is the last word");
-
             }
         </script>
+ 
+</div>
+</div>
+<a href="#openModal2">Box 2</a>
 
-      </div>
-  </div>
-
+  <div id="openModal2" class="modalDialog">
+<div>
+    <a href="#close" title="Close" class="close">X</a>
+</div>
+</div>
             <br>
             <button id = "myBtn2">Google</button>
             <br>
