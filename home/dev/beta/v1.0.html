@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
     <head>
-        <title>Quad-OS DEV</title>
+        <title>Quad -OS DEV</title>
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
@@ -230,13 +230,27 @@ h1 {
 /*modal*/
 
 .modalDialog {
-        position: fixed;
+/*        position: fixed;
         font-family: Arial, Helvetica, sans-serif;
         top: 0;
         right: 0;
         bottom: 0;
-        left: 0;
-        background: rgba(0,0,0,0.8);
+        left: 0;*/
+        background-color: green;
+        color: white;
+        border: none;
+        padding: 15px;
+        margin: 4px 2px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        width: 15%;
+        position: relative;
+        left: 1;
+        display: inline-block;
+        background: rgba(0,0,0,0.5);
         z-index: 99999;
         opacity:0;
         -webkit-transition: opacity 400ms ease-in;
@@ -288,7 +302,7 @@ h1 {
         </center>
             <a href="#openModal1">Box 1</a>
 
-<div id="openModal1" class="modalDialog" class = "button">
+<div id="openModal1" class="modalDialog">
 <div>
     <a href="#close" title="Close" class="close">X</a>
          <style type="text/css">
@@ -722,7 +736,7 @@ h1 {
 </div>
 <a href="#openModal2">Google</a>
 
-  <div id="openModal2" class="modalDialog" class = "button">
+  <div id="openModal2" class="modalDialog">
 <div>
     <a href="#close" title="Close" class="close">X</a>
     <script>
@@ -743,7 +757,7 @@ h1 {
 </div>
 <a href="#openModal3">Game</a>
 
-  <div id="openModal3" class="modalDialog" class = "button>"
+  <div id="openModal3" class="modalDialog">"
 <div>
     <a href="#close" title="Close" class="close">X</a>
 </div>
