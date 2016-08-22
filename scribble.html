@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
         <head>
-                <title>Q -Scribble</title>
+                <title>Q-Scribble</title>
         </head>
         
         <style>
@@ -45,7 +45,7 @@
     font-size: 12px;
     border: none;
     cursor: pointer;
-    max-width: 25%;
+    width: 160px;
     height: 35px;
     margin-right: -4px;
     display: inline-block;
@@ -92,23 +92,23 @@
                 <center>
                         <h1>Scribble</h1>
                 </center>
-<button class="dropdown">
+<div class="dropdown">
   <button class="dropbtn">Highlighting</button>
-  <button class="dropdown-content">
+  <div class="dropdown-content">
     <button onclick = "document.execCommand('SelectAll');">Select All</button>
     <button onclick = "document.execCommand('Unselect');">Unselect All</button>
-  </button>
-</button>
-<button class="dropdown">
+  </div>
+</div>
+<div class="dropdown">
   <button class="dropbtn">Copying</button> <!--Removed due to issues with web browser security, will be added back when Manifest Permissions are set  https://developer.chrome.com/extensions/manifest#permissions-->
    <!--class="dropbtn"-->
-  <button class="dropdown-content">
+  <div class="dropdown-content">
     <button onclick -=- "document.execCommand('Copy');"><strike>Copy</strike>  Ctrl+C</button>
     <button onclick -=- "document.execCommand('Cut');"><strike>Cut</strike>  Ctrl+X</button>
     <button onclick -=- "document.execCommand('Paste');"><strike>Paste</strike>  Ctrl+V</button>
     <button>Removed due to issues with web browser security, will be added back when Manifest Permissions are set  https://developer.chrome.com<br>/extensions/manifest#permissions</button>
-  </button>
-</button>
+  </div>
+</div>
 <div class="dropdown">
   <button class="dropbtn">Text Format</button>
   <div class="dropdown-content">
