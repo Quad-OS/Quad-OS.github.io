@@ -272,13 +272,20 @@ h1 {
         -webkit-box-shadow: 1px 1px 3px #000;
         box-shadow: 1px 1px 3px #000;*/
     }
-    .close:hover { background: #00d9ff; }
+    .close:hover {
+    	background: #00d9ff; 
+    	
+    }
+    
+    .inlineBlock {
+    	display: inline-block;
+    }
     </style>
     <body id = "body1">
         <center>
             <h1>Quad-OS</h1>
         </center>
-            <button onclick="location.href = '#openModal1'">Box</button>
+            <button onclick="location.href = '#openModal1'" class = "inlineBlock">Box</button>
 
 <div id="openModal1" class="modalDialog">
 <div>
@@ -712,6 +719,18 @@ h1 {
  
 </div>
 </div>
+<h2 id="powerDisplay" class = "inlineBblock"></h2>
+<script>
+var powerDisplay = document.getElementById( 'powerDisplay' );
+
+console.log('outside function');
+navigator.getBattery().then(function(battery) {
+console.log('inside function');
+  
+  powerDisplay.innerHTML = 'Battery level is: ' + battery.level;  
+  console.log(battery.level);
+});
+</script>
 <br>
 <button onclick = "location.href='#openModal2'">Google</button>
 
