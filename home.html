@@ -1,8 +1,7 @@
-
 <DOCTYPE html>
 <html>
     <head>
-        <title>Quad-OS</title>
+        <title>Quad-OS DEV</title>
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
@@ -18,12 +17,11 @@
 <link rel="icon" type="image/png" href="favicon-128.png" sizes="128x128" />
 <meta name="application-name" content="&nbsp;"/>
 <meta name="msapplication-TileColor" content="#FFFFFF" />
-<meta name="msapplication-TileImage" content="mstile-144x144.png" />
+<meta name="msapplication-TileImage" content="mstile-144x144.png" /> 
 <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
 <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
 <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
 <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
-<link rel="stylesheet" type="text/scss">
 </head>
     <style type = "text/scss">
     	* {
@@ -31,23 +29,19 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   color: #fff;
   text-align: center;
 }
-
 h1 {
   padding: 0 1rem;
 }
-
 #battery-container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 #battery-percentage {
   position: absolute;
   right: 0;
@@ -58,7 +52,6 @@ h1 {
   font-weight: bold;
   text-align: center;
 }
-
 #battery {
   position: relative;
   margin: 0 auto;
@@ -100,7 +93,6 @@ h1 {
     transform: translateX(-50%);
   }
   
-
   // Battery meter filling
   &:after {
     content: ' ';
@@ -129,7 +121,6 @@ h1 {
     }
   }
 }
-
 @media screen and (orientation:landscape) {
   h1 { text-align: left; }
 }
@@ -173,17 +164,17 @@ h1 {
             left: 1;
             display: inline-block;
             }
+            button:hover {
+            	background-color: black;	
+            }
+            .button:hover {
+            	background-color: black;	
+            }
             p {
   text-align: center;
   font-size: 40px;
   color: #333;
 }
-div {
-	text-align: center;
-	font-size: 40px;
-	color: #333;
-}
-         
                 .onoffswitch {
     position: relative; width: 100px;
     -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
@@ -233,75 +224,66 @@ div {
 #boxButton {
     display: inline-block;
 }
-
 /*modal*/
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 2; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-/* The Close Button */
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
+.modalDialog {
+        position: fixed;
+        font-family: Arial, Helvetica, sans-serif;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 99999;
+        opacity:0;
+        -webkit-transition: opacity 400ms ease-in;
+        -moz-transition: opacity 400ms ease-in;
+        transition: opacity 400ms ease-in;
+        pointer-events: none;
+    }
+    .modalDialog:target {
+        opacity:1;
+        pointer-events: auto;
+    }
+    .modalDialog > div {
+        width: 75%;
+        position: relative;
+        margin: 10% auto;
+        padding: 5px 20px 13px 20px;
+        background: #fff;
+        /*background: -moz-linear-gradient(#fff, #999);
+        background: -webkit-linear-gradient(#fff, #999);
+        background: -o-linear-gradient(#fff, #999);*/
+    }
+    .close {
+        background: #606061;
+        color: #FFFFFF;
+        line-height: 25px;
+        position: absolute;
+        right: 0px;
+        text-align: center;
+        top: -7px;
+        width: 24px;
+        text-decoration: none;
+        font-weight: bold;
+        /*-webkit-border-radius: 12px;
+        -moz-border-radius: 12px;
+        border-radius: 12px;
+        -moz-box-shadow: 1px 1px 3px #000;
+        -webkit-box-shadow: 1px 1px 3px #000;
+        box-shadow: 1px 1px 3px #000;*/
+    }
+    .close:hover { background: #00d9ff; }
     </style>
     <body id = "body1">
         <center>
             <h1>Quad-OS</h1>
         </center>
-            <!-- Trigger/Open The Modal -->
-            <button id = "myBtn">Box</button>
-            <br>
-            <button id = "myBtn2">Google</button>
-            <br>
-            <button id = "myBtn3">Game</button>
-            <br>
-            <a href = "about.html" class = "button">About</a>
-            <br>
-            <a href = "scribble.html" class = button>Scribble</a>
-            <br>
-    <div id="batterypercentage"></div>
+            <button onclick="location.href = '#openModal1'">Box</button>
 
-            <!-- Trigger/Open The Modal -->
-<!-- <button id = "myBtn">Box</button> -->
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">X</span>
-            <style type="text/css">
+<div id="openModal1" class="modalDialog">
+<div>
+    <a href="#close" title="Close" class="close">X</a>
+         <style type="text/css">
             body {
                 background-color: darkgray;
             }
@@ -357,7 +339,7 @@ div {
                 width: 120px;
                 height: 120px;
                 left: 50%;
-                top: 350px;
+                top: 150px;
                 transform: translateX(-50%);
                 -wekbit-animation-name: boxin;
                 -wekbit-animation-duration: 10s;
@@ -372,7 +354,7 @@ div {
                 width: 110px;
                 height: 110px;
                 left: 50%;
-                top: 355px;
+                top: 155px;
                 transform: translateX(-50%);
                 -wekbit-animation-name: boxout;
                 -wekbit-animation-duration: 10s;
@@ -437,8 +419,6 @@ div {
              <div class="divboxin"></div>
              <div class="divboxborder1"></div>
              <div class="divboxborder2"></div>
-             
-             <a href = "home.html" class = "button">Home</a>
              <br><br><br><br><br><br><br><br><br><br>
              <form id="labnol" method="get" action="https://www.google.com/search">
              <div class="speech">
@@ -475,7 +455,6 @@ div {
                             
                         };
                     })(f);
-
                 r.readAsText(f);
                 }   
         } else {
@@ -488,20 +467,13 @@ div {
             var das = 0;
             var c = document.getElementById("myCanvas");
             var ctx = c.getContext("2d");
-
-
             function startDictation() {
-
                 if (window.hasOwnProperty('webkitSpeechRecognition')) {
-
                     var recognition = new webkitSpeechRecognition();
-
                     recognition.continuous = false;
                     recognition.interimResults = false;
-
                     recognition.lang = "en-US";
                     recognition.start();
-
                     recognition.onresult = function(e) {
                         document.getElementById('uq').value = e.results[0][0].transcript;
                         recognition.stop();
@@ -509,24 +481,17 @@ div {
                         document.getElementById('uq').value = u;
                         question();
                     };
-
                     recognition.onerror = function(e) {
                         window.alert("err");
                         recognition.stop();
                     }
-
                 }
             }
-
             function wow() {
                 var sounds = document.getElementsByTagName('audio');
                 for (i = 0; i < sounds.length; i++) sounds[i].pause();
             };
-
-
-
             var ng = 0;
-
             function question() {
                 var aodio = das % 10;
                 audio = new Audio("snd" + aodio + '.mp3');
@@ -534,13 +499,11 @@ div {
                 var currentTime = new Date()
                 var hours = currentTime.getHours()
                 var minutes = currentTime.getMinutes()
-
                 if (minutes < 10) {
                     minutes = "0" + minutes;
                 }
                 if (document.getElementById('uq').value == "/time") {
                     window.alert("its " + hours + ":" + minutes);
-
                 }
                 if (document.getElementById('uq').value.indexOf("/music") > -1) {
                     audio.pause();
@@ -550,13 +513,11 @@ div {
                     window.alert("soundtrack is now soundtrack " + das % 10);
                     audio.pause();
                     return;
-
                 }
                 if (document.getElementById('uq').value == "/clear") {
                     localStorage.clear();
                     window.alert("loacal storage cleared");
                     return;
-
                 }
                 audio.pause();
                 audio.currentTime = 0.0;
@@ -568,7 +529,6 @@ div {
                 var fivequestions = [];
                 var result = [];
                 wow();
-
                 function greeting(wordlist, main, resultlist, different) {
                     empty = [];
                     i = 0;
@@ -618,7 +578,6 @@ div {
                                 charactder = str.charAt(j);
                                 userQ.push(charactder);
                                 countwords++;
-
                             } else {
                                 userQ.push(charactder);
                             }
@@ -630,7 +589,6 @@ div {
                     }
                     j++;
                 }
-
                 if (userQ.indexOf("/") != -1 || userQ.indexOf("*") != -1 || userQ.indexOf("-") != -1 || userQ.indexOf("+") != -1) {
                     calc = eval(str);
                     window.alert(calc);
@@ -670,7 +628,6 @@ div {
                             window.alert("deletion canceled");
                             return;
                         }
-
                     } else {
                         window.alert("error: empty");
                         localStorage.clear();
@@ -685,7 +642,6 @@ div {
                     hiddenElement.download = 'localStorage.txt';
                     hiddenElement.click();
                     return;
-
                 }
                 
                 if (zeta == ".replace" && keytermm !== "asd"){
@@ -720,7 +676,6 @@ div {
                 
                 
                 
-
                 greeting(greetingWords, userQ, 0, 0);
                 if (found == false) {
                     i = 0;
@@ -748,28 +703,22 @@ div {
                         window.alert("its ok if youre shy :)");
                     }
                 }
-
                 audio.pause();
                 audio.play();
-
                 //beta-test
-
                 //  not needed anymore :D  window.alert(userQ[0] + " is the first word and " + userQ[userQ.length - 1] + " is the last word");
-
             }
         </script>
-
-  </div>
-
+ 
 </div>
+</div>
+<br>
+<button onclick = "location.href='#openModal2'">Google</button>
 
-<div id="myModal2" class = "modal">
-	
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">X</span>
-    <div>
-            <script>
+  <div id="openModal2" class="modalDialog">
+<div>
+    <a href="#close" title="Close" class="close">X</a>
+    <script>
   (function() {
     var cx = '009127461549445650691:when3gkyx50';
     var gcse = document.createElement('script');
@@ -783,71 +732,28 @@ div {
 <gcse:searchbox></gcse:searchbox>
 <gcse:searchresults></gcse:searchresults>
 </div>
+</div>
+</div>
+<br>
+<button onclick = "location.href='#openModal3'">Game</button>
 
-<div id="myModal3" class = "modal">
-	
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">X</span>
-    <div>
-        <style>
-            .button {
-            background-color: green;
-            color: white;
-            border: none;
-            padding: 15px;
-            margin: 4px 2px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            cursor: pointer;
-            width: 15%;
-            z-index-: 2;
-            * {
-  margin: 0;
-  padding: 0;
-}
-
-canvas {
+  <div id="openModal3" class="modalDialog">"
+<div>
+    <a href="#close" title="Close" class="close">X</a>
+    <style>
+    	canvas {
   display:block;
   margin: 40px auto 20px;
   border: 1px solid #333;
   box-shadow: 0 0 16px 2px rgba(0,0,0,0.8);
 }
-
-p, a {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 19px;
-  color: #777;
-  display: block;
-  width: 400px;
-  margin: 0 auto;
-  text-align: center;
-  text-decoration:none;
-}
-
-.info {
-  margin:14px auto;
-  text-align: justify;
-  font-size: 18px;
-  color: #999;
-}
-
-a {
-  color:#3377ee;
-}
-        </style>
-            <center>
-            <canvas id="canvas"></canvas>
-            <script>
+    </style>
+    <canvas id="canvas"></canvas>
+                <script>
                 
 /* Customisable map data */
-
 var map = {
-
     tile_size: 16,
-
     /*
     
     Key vairables:
@@ -878,7 +784,6 @@ var map = {
         {id: 10,colour: '#555',solid: 1},
         {id: 11,colour: '#0FF',solid: 0,script: 'unlock'}
     ],
-
     /* An array representing the map tiles. Each number corresponds to a key */
     data: [
         [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
@@ -943,7 +848,6 @@ var map = {
         [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5, 1, 1, 1, 1, 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2],
         [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
     ],
-
     /* Default gravity of the map */
     
     gravity: {
@@ -952,12 +856,10 @@ var map = {
     },
     
     /* Velocity limits */
-
     vel_limit: {
         x: 2,
         y: 16
     },
-
     /* Movement speed when the key is pressed */
     
     movement_speed: {
@@ -967,7 +869,6 @@ var map = {
     },
     
     /* The coordinates at which the player spawns and the colour of the player */
-
     player: {
         x: 2,
         y: 2,
@@ -975,7 +876,6 @@ var map = {
     },
     
     /* scripts refered to by the "script" variable in the tile keys */
-
     scripts: {
         /* you can just use "this" instead of your engine variable ("game"), but Codepen doesn't like it */
         change_colour: 'game.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);',
@@ -985,11 +885,8 @@ var map = {
         unlock: 'game.current_map.keys[10].solid = 0;game.current_map.keys[10].colour = "#888";'
     }
 };
-
 /* Clarity engine */
-
 var Clarity = function () {
-
     this.alert_errors   = false;
     this.log_info       = true;
     this.tile_size      = 16;
@@ -1011,9 +908,7 @@ var Clarity = function () {
         right: false,
         up: false
     };
-
     this.player = {
-
         loc: {
             x: 0,
             y: 0
@@ -1026,32 +921,22 @@ var Clarity = function () {
         
         can_jump: true
     };
-
     window.onkeydown = this.keydown.bind(this);
     window.onkeyup   = this.keyup.bind(this);
 };
-
 Clarity.prototype.error = function (message) {
-
     if (this.alert_errors) alert(message);
     if (this.log_info) console.log(message);
 };
-
 Clarity.prototype.log = function (message) {
-
     if (this.log_info) console.log(message);
 };
-
 Clarity.prototype.set_viewport = function (x, y) {
-
     this.viewport.x = x;
     this.viewport.y = y;
 };
-
 Clarity.prototype.keydown = function (e) {
-
     var _this = this;
-
     switch (e.keyCode) {
     case 37:
         _this.key.left = true;
@@ -1064,11 +949,8 @@ Clarity.prototype.keydown = function (e) {
         break;
     }
 };
-
 Clarity.prototype.keyup = function (e) {
-
     var _this = this;
-
     switch (e.keyCode) {
     case 37:
         _this.key.left = false;
@@ -1081,39 +963,28 @@ Clarity.prototype.keyup = function (e) {
         break;
     }
 };
-
 Clarity.prototype.load_map = function (map) {
-
     if (typeof map      === 'undefined'
      || typeof map.data === 'undefined'
      || typeof map.keys === 'undefined') {
-
         this.error('Error: Invalid map data!');
-
         return false;
     }
-
     this.current_map = map;
-
     this.current_map.background = map.background || '#333';
     this.current_map.gravity = map.gravity || {x: 0, y: 0.3};
     this.tile_size = map.tile_size || 16;
-
     var _this = this;
     
     this.current_map.width = 0;
     this.current_map.height = 0;
-
     map.keys.forEach(function (key) {
-
         map.data.forEach(function (row, y) {
             
             _this.current_map.height = Math.max(_this.current_map.height, y);
-
             row.forEach(function (tile, x) {
                 
                 _this.current_map.width = Math.max(_this.current_map.width, x);
-
                 if (tile == key.id)
                     _this.current_map.data[y][x] = key;
             });
@@ -1122,7 +993,6 @@ Clarity.prototype.load_map = function (map) {
     
     this.current_map.width_p = this.current_map.width * this.tile_size;
     this.current_map.height_p = this.current_map.height * this.tile_size;
-
     this.player.loc.x = map.player.x * this.tile_size || 0;
     this.player.loc.y = map.player.y * this.tile_size || 0;
     this.player.colour = map.player.colour || '#000';
@@ -1140,21 +1010,14 @@ Clarity.prototype.load_map = function (map) {
         x: 0,
         y: 0
     };
-
     this.log('Successfully loaded map data.');
-
     return true;
 };
-
 Clarity.prototype.get_tile = function (x, y) {
-
     return (this.current_map.data[y] && this.current_map.data[y][x]) ? this.current_map.data[y][x] : 0;
 };
-
 Clarity.prototype.draw_tile = function (x, y, tile, context) {
-
     if (!tile || !tile.colour) return;
-
     context.fillStyle = tile.colour;
     context.fillRect(
         x,
@@ -1163,15 +1026,10 @@ Clarity.prototype.draw_tile = function (x, y, tile, context) {
         this.tile_size
     );
 };
-
 Clarity.prototype.draw_map = function (context, fore) {
-
     for (var y = 0; y < this.current_map.data.length; y++) {
-
         for (var x = 0; x < this.current_map.data[y].length; x++) {
-
             if ((!fore && !this.current_map.data[y][x].fore) || (fore && this.current_map.data[y][x].fore)) {
-
                 var t_x = (x * this.tile_size) - this.camera.x;
                 var t_y = (y * this.tile_size) - this.camera.y;
                 
@@ -1189,17 +1047,12 @@ Clarity.prototype.draw_map = function (context, fore) {
             }
         }
     }
-
     if (!fore) this.draw_map(context, true);
 };
-
 Clarity.prototype.move_player = function () {
-
     var tX = this.player.loc.x + this.player.vel.x;
     var tY = this.player.loc.y + this.player.vel.y;
-
     var offset = Math.round((this.tile_size / 2) - 1);
-
     var tile = this.get_tile(
         Math.round(this.player.loc.x / this.tile_size),
         Math.round(this.player.loc.y / this.tile_size)
@@ -1217,21 +1070,17 @@ Clarity.prototype.move_player = function () {
     }
     
     if (tile.friction) {
-
         this.player.vel.x *= tile.friction.x;
         this.player.vel.y *= tile.friction.y;
     }
-
     var t_y_up   = Math.floor(tY / this.tile_size);
     var t_y_down = Math.ceil(tY / this.tile_size);
     var y_near1  = Math.round((this.player.loc.y - offset) / this.tile_size);
     var y_near2  = Math.round((this.player.loc.y + offset) / this.tile_size);
-
     var t_x_left  = Math.floor(tX / this.tile_size);
     var t_x_right = Math.ceil(tX / this.tile_size);
     var x_near1   = Math.round((this.player.loc.x - offset) / this.tile_size);
     var x_near2   = Math.round((this.player.loc.x + offset) / this.tile_size);
-
     var top1    = this.get_tile(x_near1, t_y_up);
     var top2    = this.get_tile(x_near2, t_y_up);
     var bottom1 = this.get_tile(x_near1, t_y_down);
@@ -1240,10 +1089,7 @@ Clarity.prototype.move_player = function () {
     var left2   = this.get_tile(t_x_left, y_near2);
     var right1  = this.get_tile(t_x_right, y_near1);
     var right2  = this.get_tile(t_x_right, y_near2);
-
-
     if (tile.jump && this.jump_switch > 15) {
-
         this.player.can_jump = true;
         
         this.jump_switch = 0;
@@ -1259,42 +1105,32 @@ Clarity.prototype.move_player = function () {
     this.player.vel.x *= .9;
     
     if (left1.solid || left2.solid || right1.solid || right2.solid) {
-
         /* fix overlap */
-
         while (this.get_tile(Math.floor(this.player.loc.x / this.tile_size), y_near1).solid
             || this.get_tile(Math.floor(this.player.loc.x / this.tile_size), y_near2).solid)
             this.player.loc.x += 0.1;
-
         while (this.get_tile(Math.ceil(this.player.loc.x / this.tile_size), y_near1).solid
             || this.get_tile(Math.ceil(this.player.loc.x / this.tile_size), y_near2).solid)
             this.player.loc.x -= 0.1;
-
         /* tile bounce */
-
         var bounce = 0;
-
         if (left1.solid && left1.bounce > bounce) bounce = left1.bounce;
         if (left2.solid && left2.bounce > bounce) bounce = left2.bounce;
         if (right1.solid && right1.bounce > bounce) bounce = right1.bounce;
         if (right2.solid && right2.bounce > bounce) bounce = right2.bounce;
-
         this.player.vel.x *= -bounce || 0;
         
     }
     
     if (top1.solid || top2.solid || bottom1.solid || bottom2.solid) {
-
         /* fix overlap */
         
         while (this.get_tile(x_near1, Math.floor(this.player.loc.y / this.tile_size)).solid
             || this.get_tile(x_near2, Math.floor(this.player.loc.y / this.tile_size)).solid)
             this.player.loc.y += 0.1;
-
         while (this.get_tile(x_near1, Math.ceil(this.player.loc.y / this.tile_size)).solid
             || this.get_tile(x_near2, Math.ceil(this.player.loc.y / this.tile_size)).solid)
             this.player.loc.y -= 0.1;
-
         /* tile bounce */
         
         var bounce = 0;
@@ -1305,7 +1141,6 @@ Clarity.prototype.move_player = function () {
         if (bottom2.solid && bottom2.bounce > bounce) bounce = bottom2.bounce;
         
         this.player.vel.y *= -bounce || 0;
-
         if ((bottom1.solid || bottom2.solid) && !tile.jump) {
             
             this.player.on_floor = true;
@@ -1315,7 +1150,6 @@ Clarity.prototype.move_player = function () {
     }
     
     // adjust camera
-
     var c_x = Math.round(this.player.loc.x - this.viewport.x/2);
     var c_y = Math.round(this.player.loc.y - this.viewport.y/2);
     var x_dif = Math.abs(c_x - this.camera.x);
@@ -1378,39 +1212,27 @@ Clarity.prototype.move_player = function () {
     
     this.last_tile = tile.id;
 };
-
 Clarity.prototype.update_player = function () {
-
     if (this.key.left) {
-
         if (this.player.vel.x > -this.current_map.vel_limit.x)
             this.player.vel.x -= this.current_map.movement_speed.left;
     }
-
     if (this.key.up) {
-
         if (this.player.can_jump && this.player.vel.y > -this.current_map.vel_limit.y) {
             
             this.player.vel.y -= this.current_map.movement_speed.jump;
             this.player.can_jump = false;
         }
     }
-
     if (this.key.right) {
-
         if (this.player.vel.x < this.current_map.vel_limit.x)
             this.player.vel.x += this.current_map.movement_speed.left;
     }
-
     this.move_player();
 };
-
 Clarity.prototype.draw_player = function (context) {
-
     context.fillStyle = this.player.colour;
-
     context.beginPath();
-
     context.arc(
         this.player.loc.x + this.tile_size / 2 - this.camera.x,
         this.player.loc.y + this.tile_size / 2 - this.camera.y,
@@ -1418,23 +1240,16 @@ Clarity.prototype.draw_player = function (context) {
         0,
         Math.PI * 2
     );
-
     context.fill();
 };
-
 Clarity.prototype.update = function () {
-
     this.update_player();
 };
-
 Clarity.prototype.draw = function (context) {
-
     this.draw_map(context, false);
     this.draw_player(context);
 };
-
 /* Setup of the engine */
-
 window.requestAnimFrame =
   window.requestAnimationFrame ||
   window.webkitRequestAnimationFrame ||
@@ -1444,20 +1259,15 @@ window.requestAnimFrame =
   function(callback) {
     return window.setTimeout(callback, 1000 / 60);
   };
-
 var canvas = document.getElementById('canvas'),
     ctx = canvas.getContext('2d');
-
 canvas.width = 400;
 canvas.height = 400;
-
 var game = new Clarity();
     game.set_viewport(canvas.width, canvas.height);
     game.load_map(map);
-
     /* Limit the viewport to the confines of the map */
     game.limit_viewport = true;
-
 var Loop = function() {
   
   ctx.fillStyle = '#333';
@@ -1468,182 +1278,159 @@ var Loop = function() {
   
   window.requestAnimFrame(Loop);
 };
-
 Loop();
             </script>
+</div>
+</div>
+<br>
+<button onclick = "location.href = '#openModal4'">Scribble</button>
+
+  <div id="openModal4" class="modalDialog">
+<div>
+    <a href="#close" title="Close" class="close">X</a>
+          <style>
+                div{
+                        position: relative;
+                }
+                #editor1 {
+      border: 5px inset grey;
+      height: 100%;
+      width: 100%;
+      /*margin: 10px auto 0;*/
+      background-color: white;
+     }
+/*    button {
+      width: 5ex;
+      padding: 1px 3px;
+    }*/
+    .menuButton {
+  width: 16%;
+  display: inline-block;
+  margin-right: -4px;
+  border: 3px solid green;
+  background-color: green;
+  text-decoration: none;
+  color: white;
+  height: 35px;
+  padding: 1px 1px;
+}
+.menuButton:Hover {
+  border: 3px solid black;
+  background-color: black;
+}
+/*DROPDOWN MENU*/
+.dropbtn {
+    background-color: black;
+    color: white;
+    /*padding: 16px;*/
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    width: 160px;
+    height: 35px;
+    margin-right: -4px;
+    display: inline-block;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: gray;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+.dropdown-content button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border: 3px solid #f2f2f2;
+    background-color: #f2f2f2;
+    width: 160px;
+    z-index: 2;
+}
+.dropdown-content button:hover {background-color: lightgreen}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown:hover .dropbtn {
+    background-color: gray;
+}
+/*DROPDOWN MENU*/
+        </style>
+        <body>
+                <center>
+                        <h1>Scribble</h1>
+                </center>
+<div class="dropdown">
+  <button class="dropbtn">Highlighting</button>
+  <div class="dropdown-content">
+    <button onclick = "document.execCommand('SelectAll');">Select All</button>
+    <button onclick = "document.execCommand('Unselect');">Unselect All</button>
   </div>
-
+</div>
+<div class="dropdown">
+  <button class="dropbtn">Copying</button> <!--Removed due to issues with web browser security, will be added back when Manifest Permissions are set  https://developer.chrome.com/extensions/manifest#permissions-->
+   <!--class="dropbtn"-->
+  <div class="dropdown-content">
+    <button onclick -=- "document.execCommand('Copy');"><strike>Copy</strike>  Ctrl+C</button>
+    <button onclick -=- "document.execCommand('Cut');"><strike>Cut</strike>  Ctrl+X</button>
+    <button onclick -=- "document.execCommand('Paste');"><strike>Paste</strike>  Ctrl+V</button>
+    <button>Removed due to issues with web browser security, will be added back when Manifest Permissions are set  https://developer.chrome.com<br>/extensions/manifest#permissions</button>
+  </div>
+</div>
+<div class="dropdown">
+  <button class="dropbtn">Text Format</button>
+  <div class="dropdown-content">
+    <button onclick = "document.execCommand('bold');"><b>B</b></button>
+    <button onclick = "document.execCommand('italic');"><i>I</i></button>
+    <button onclick = "document.execCommand('underline');"><u>U</u></button>
+    <button onclick = "document.execCommand('StrikeThrough');"><Strike>S</strike></button>
+    <button onclick = "document.execCommand('Superscript');">X<sup>2</sup></button>
+    <button onclick = "document.execCommand('Subscript');">X<sub>2</sub></button>
+    <button onclick = "document.execCommand('RemoveFormat');">Default Text</button>
+  </div>
+</div>
+<div class="dropdown">
+  <button class="dropbtn">Alignment</button>
+  <div class="dropdown-content">
+    <button onclick = "document.execCommand('JustifyLeft');">Left</button>
+    <button onclick = "document.execCommand('JustifyRight');">Right</button>
+    <button onclick = "document.execCommand('JustifyCenter');">Center</button>
+    <button onclick = "document.execCommand('JustifyFull');">Full</button>
+    <button onclick = "document.execCommand('');"></button>
+  </div>
+</div>
+<br>
+    <button class = "menuButton" onclick = "document.execCommand('bold');" title="Bold Highlighted Text" style = "font-size: 12px;" style = "text-align: center;"><b>B</b>
+    </button>
+    <button class = "menuButton" onclick = "document.execCommand('italic');" title="Italicize Highlighted Text" style = "font-size: 12px;" style = "text-align: center;"><i>I</i>
+    </button>
+    <button class = "menuButton" onclick = "document.execCommand('underline');" style = "font-size: 12px;" style = "text-align: center;"><u>U</u>
+    </button>
+    <button class = "menuButton" onclick = "document.execCommand('StrikeThrough');" style = "font-size: 12px;" style = "text-align: center;"><Strike>S</strike>
+    </button>
+    <button class = "menuButton" onclick = "document.execCommand('InsertUnorderedList');" style = "font-size: 10px;">
+    <ul>
+      <li>-</li>
+      <li>-</li>
+      <li>-</li>
+    </ul>
+    </button>
+    <button class = "menuButton" onclick = "document.execCommand('InsertOrderedList');" style = "font-size: 10px;">
+    <ol>
+      <li>-</li>
+      <li>-</li>
+      <li>-</li>
+    </ol>
+    </button>
+                <div id="editor1" contenteditable="true"></div>
+</div>
 </div>
 
-
-        <script>
-/*<h1>Fullscreen</h1>
-<div class="onoffswitch">
-    <input type='checkbox' onclick="toggleFullScreen()" name="onoffswitch2" class="onoffswitch-checkbox" id="myonoffswitch2" checked>
-    <label class="onoffswitch-label" for="myonoffswitch2">
-        <span class="onoffswitch-inner"></span>
-        <span class="onoffswitch-switch"></span>
-    </label>
-</div>
-
-<h1>Allow Box</h1>
-            <div class="onoffswitch">
-    <input type='checkbox' store="checkbox1" onclick="if(this.checked){boxAllowed()} else {boxNotAllowed()}"name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-    <label class="onoffswitch-label" for="myonoffswitch">
-        <span class="onoffswitch-inner"></span>
-        <span class="onoffswitch-switch"></span>
-    </label>
-        <script>
-        </div>
-        */
-        /*    function toggleFullScreen() {
-  if ((document.fullScreenElement && document.fullScreenElement !== null) ||    
-   (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-    if (document.documentElement.requestFullScreen) {  
-      document.documentElement.requestFullScreen();  
-    } else if (document.documentElement.mozRequestFullScreen) {  
-      document.documentElement.mozRequestFullScreen();  
-    } else if (document.documentElement.webkitRequestFullScreen) {  
-      document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);  
-    }  
-  } else {  
-    if (document.cancelFullScreen) {  
-      document.cancelFullScreen();  
-    } else if (document.mozCancelFullScreen) {  
-      document.mozCancelFullScreen();  
-    } else if (document.webkitCancelFullScreen) {  
-      document.webkitCancelFullScreen();  
-    }  
-  }  
-}
-            var boxStatus = 0;
-            function boxNotAllowed() {
-                document.getElementById("boxButton").style.visibility = "hidden";
-                boxStatus = 0;
-            }
-            function boxAllowed() {
-                document.getElementById("boxButton").style.visibility = "visible";
-                boxStatus = 1;
-            }
-            (function() {
-    var boxes = document.querySelectorAll("input[type='checkbox']");
-    for (var i = 0; i < boxes.length; i++) {
-        var box = boxes[i];
-        if (box.hasAttribute("store")) {
-            setupBox(box);
-        }
-    }
-    
-    function setupBox(box) {
-        var storageId = box.getAttribute("store");
-        var oldVal    = localStorage.getItem(storageId);
-        console.log(oldVal);
-        box.checked = oldVal === "true" ? true : false;
-        
-        box.addEventListener("change", function() {
-            localStorage.setItem(storageId, this.checked); 
-        });
-    }
-})();
-            if(boxStatus = 1){
-                boxAllowed();
-                
-            } else {
-                boxNotAllowed();
-            }*/
-            // Get the modal
-var modal = document.getElementById('myModal');
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-//////////////////////////////////
-
-            // Get the modal
-var modal2 = document.getElementById('myModal2');
-
-// Get the button that opens the modal
-var btn2 = document.getElementById("myBtn2");
-
-// Get the <span> element that closes the modal
-var span2 = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal
-btn2.onclick = function() {
-    modal2.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal2.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal2) {
-        modal2.style.display = "none";
-    }
-}
-
-//////////////////////////////////
-
-            // Get the modal
-var modal3 = document.getElementById('myModal3');
-
-// Get the button that opens the modal
-var btn3= document.getElementById("myBtn3");
-
-// Get the <span> element that closes the modal
-var span3 = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal
-btn3.onclick = function() {
-    modal3.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal3.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal3) {
-        modal3.style.display = "none";
-    }
-}
-
-//BATTERY LEVEL
-
-var powerDisplay = document.getElementById( 'powerDisplay' );
-
-console.log('outside function');
-navigator.getBattery().then(function(battery) {
-console.log('inside function');
-  
-  batterypercentage.innerHTML = 'Battery level is: ' + battery.level;  
-  console.log(battery.level);
-});
-       </script>
     </body>
 </html>
