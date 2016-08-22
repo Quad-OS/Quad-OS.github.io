@@ -22,7 +22,6 @@
 <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
 <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
 <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
-<script type = "text/javascript" src = "https://rawgit.com/Quad-OS/Quad-OS.github.io/master/batteryapi.js"></script>
 </head>
     <style type = "text/scss">
     	* {
@@ -723,16 +722,6 @@ h1 {
                 //  not needed anymore :D  window.alert(userQ[0] + " is the first word and " + userQ[userQ.length - 1] + " is the last word");
             }
         </script>
- 
-</div>
-</div>
-<div id="battery-container">
-  <div id="battery">
-    <div id="charge-status"></div>
-    <div id="battery-percentage"></div>
-  </div>
-</div>
-<br>
 <button onclick = "location.href='#openModal2'">Google</button>
 
   <div id="openModal2" class="modalDialog">
@@ -1302,6 +1291,155 @@ Loop();
             </script>
 </div>
 </div>
+<button href="#openModal4">Scribble</button>
 
+  <div id="openModal4" class="modalDialog">
+<div>
+    <a href="#close" title="Close" class="close">X</a>
+            <style>
+                body {
+                        background-color: lightgray;
+                }
+                div{
+                        position: relative;
+                }
+                #editor1 {
+      border: 5px inset grey;
+      height: 100%;
+      width: 100%;
+      /*margin: 10px auto 0;*/
+      background-color: white;
+     }
+/*    button {
+      width: 5ex;
+      padding: 1px 3px;
+    }*/
+    .menuButton {
+  width: 16%;
+  display: inline-block;
+  margin-right: -4px;
+  border: 3px solid green;
+  background-color: green;
+  text-decoration: none;
+  color: white;
+  height: 35px;
+  padding: 1px 1px;
+}
+.menuButton:Hover {
+  border: 3px solid black;
+  background-color: black;
+}
+/*DROPDOWN MENU*/
+.dropbtn {
+    background-color: black;
+    color: white;
+    /*padding: 16px;*/
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    width: 160px;
+    height: 35px;
+    margin-right: -4px;
+    display: inline-block;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: gray;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+.dropdown-content button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border: 3px solid #f2f2f2;
+    background-color: #f2f2f2;
+    width: 160px;
+    z-index: 2;
+}
+.dropdown-content button:hover {background-color: lightgreen}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown:hover .dropbtn {
+    background-color: gray;
+}
+/*DROPDOWN MENU*/
+        </style>
+        <body>
+                <center>
+                        <h1>Scribble</h1>
+                </center>
+<div class="dropdown">
+  <button class="dropbtn">Highlighting</button>
+  <div class="dropdown-content">
+    <button onclick = "document.execCommand('SelectAll');">Select All</button>
+    <button onclick = "document.execCommand('Unselect');">Unselect All</button>
+  </div>
+</div>
+<div class="dropdown">
+  <button class="dropbtn">Copying</button> <!--Removed due to issues with web browser security, will be added back when Manifest Permissions are set  https://developer.chrome.com/extensions/manifest#permissions-->
+   <!--class="dropbtn"-->
+  <div class="dropdown-content">
+    <button onclick -=- "document.execCommand('Copy');"><strike>Copy</strike>  Ctrl+C</button>
+    <button onclick -=- "document.execCommand('Cut');"><strike>Cut</strike>  Ctrl+X</button>
+    <button onclick -=- "document.execCommand('Paste');"><strike>Paste</strike>  Ctrl+V</button>
+    <button>Removed due to issues with web browser security, will be added back when Manifest Permissions are set  https://developer.chrome.com<br>/extensions/manifest#permissions</button>
+  </div>
+</div>
+<div class="dropdown">
+  <button class="dropbtn">Text Format</button>
+  <div class="dropdown-content">
+    <button onclick = "document.execCommand('bold');"><b>B</b></button>
+    <button onclick = "document.execCommand('italic');"><i>I</i></button>
+    <button onclick = "document.execCommand('underline');"><u>U</u></button>
+    <button onclick = "document.execCommand('StrikeThrough');"><Strike>S</strike></button>
+    <button onclick = "document.execCommand('Superscript');">X<sup>2</sup></button>
+    <button onclick = "document.execCommand('Subscript');">X<sub>2</sub></button>
+    <button onclick = "document.execCommand('RemoveFormat');">Default Text</button>
+  </div>
+</div>
+<div class="dropdown">
+  <button class="dropbtn">Alignment</button>
+  <div class="dropdown-content">
+    <button onclick = "document.execCommand('JustifyLeft');">Left</button>
+    <button onclick = "document.execCommand('JustifyRight');">Right</button>
+    <button onclick = "document.execCommand('JustifyCenter');">Center</button>
+    <button onclick = "document.execCommand('JustifyFull');">Full</button>
+    <button onclick = "document.execCommand('');"></button>
+  </div>
+</div>
+<br>
+    <button class = "menuButton" onclick = "document.execCommand('bold');" title="Bold Highlighted Text" style = "font-size: 12px;" style = "text-align: center;"><b>B</b>
+    </button>
+    <button class = "menuButton" onclick = "document.execCommand('italic');" title="Italicize Highlighted Text" style = "font-size: 12px;" style = "text-align: center;"><i>I</i>
+    </button>
+    <button class = "menuButton" onclick = "document.execCommand('underline');" style = "font-size: 12px;" style = "text-align: center;"><u>U</u>
+    </button>
+    <button class = "menuButton" onclick = "document.execCommand('StrikeThrough');" style = "font-size: 12px;" style = "text-align: center;"><Strike>S</strike>
+    </button>
+    <button class = "menuButton" onclick = "document.execCommand('InsertUnorderedList');" style = "font-size: 10px;">
+    <ul>
+      <li>-</li>
+      <li>-</li>
+      <li>-</li>
+    </ul>
+    </button>
+    <button class = "menuButton" onclick = "document.execCommand('InsertOrderedList');" style = "font-size: 10px;">
+    <ol>
+      <li>-</li>
+      <li>-</li>
+      <li>-</li>
+    </ol>
+    </button>
+</div>
+</div>
     </body>
 </html>
