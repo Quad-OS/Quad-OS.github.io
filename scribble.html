@@ -39,7 +39,6 @@
 }
 /*DROPDOWN MENU*/
 .dropbtn {
-    position: static;
     background-color: black;
     color: white;
     /*padding: 16px;*/
@@ -93,23 +92,23 @@
                 <center>
                         <h1>Scribble</h1>
                 </center>
-<div class="dropdown">
+<button class="dropdown">
   <button class="dropbtn">Highlighting</button>
-  <div class="dropdown-content">
+  <button class="dropdown-content">
     <button onclick = "document.execCommand('SelectAll');">Select All</button>
     <button onclick = "document.execCommand('Unselect');">Unselect All</button>
-  </div>
-</div>
-<div class="dropdown">
+  </button>
+</button>
+<button class="dropdown">
   <button class="dropbtn">Copying</button> <!--Removed due to issues with web browser security, will be added back when Manifest Permissions are set  https://developer.chrome.com/extensions/manifest#permissions-->
    <!--class="dropbtn"-->
-  <div class="dropdown-content">
+  <button class="dropdown-content">
     <button onclick -=- "document.execCommand('Copy');"><strike>Copy</strike>  Ctrl+C</button>
     <button onclick -=- "document.execCommand('Cut');"><strike>Cut</strike>  Ctrl+X</button>
     <button onclick -=- "document.execCommand('Paste');"><strike>Paste</strike>  Ctrl+V</button>
     <button>Removed due to issues with web browser security, will be added back when Manifest Permissions are set  https://developer.chrome.com<br>/extensions/manifest#permissions</button>
-  </div>
-</div>
+  </button>
+</button>
 <div class="dropdown">
   <button class="dropbtn">Text Format</button>
   <div class="dropdown-content">
