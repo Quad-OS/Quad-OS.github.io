@@ -290,7 +290,7 @@ h1 {
     	float: right;
     }
     </style>
-    <body id = "body1">
+    <body id = "body1" onload = "startTime()">
         <center>
             <h1>Quad-OS</h1>
         </center>
@@ -728,7 +728,7 @@ h1 {
  
 </div>
 </div>
-<h2 id="powerDisplay" class = "inlineBblock"></h2>
+<div id="powerDisplay" class = "inlineBblock"></div>
 <script>
 var powerDisplay = document.getElementById( 'powerDisplay' );
 
@@ -762,6 +762,25 @@ console.log('inside function');
 </div>
 </div>
 </div>
+<div id="txt"></div>
+<script>
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
+
 <br>
 <button onclick = "location.href='#openModal3'">Game</button>
 
