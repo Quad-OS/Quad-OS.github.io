@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
     <head>
-        <title>Quad -OS</title>
+        <title>Quad-OS</title>
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
@@ -288,7 +288,7 @@ h1 {
         <center>
             <h1>Quad-OS</h1>
         </center>
-            <button onclick="location.href = '#openModal1'" class = "inlineBlock">Box</button>
+            <button onclick="location.href = '#openModal1'; notifyBox();" class = "inlineBlock">Box</button>
 
 <div id="openModal1" class="modalDialog">
 <div>
@@ -1324,7 +1324,7 @@ Loop();
 </div>
 </div>
 <br>
-<button onclick = "location.href = '#openModal4'; notifyMe();">Scribble</button>
+<button onclick = "location.href = '#openModal4'; notifyScribble();">Scribble</button>
 
   <div id="openModal4" class="modalDialog">
 <div>
@@ -1508,7 +1508,41 @@ Loop();
     </div>
     </div>
     <script>
-    	function notifyMe() {
+        	function notifyBox() {
+  // Let's check if the browser supports notifications
+  if (!("Notification" in window)) {
+    alert("This browser does not support desktop notification");
+  }
+
+  // Let's check whether notification permissions have already been granted
+  else if (Notification.permission === "granted") {
+    // If it's okay let's create a notification
+    var notification = new Notification("Box does support saving files in its current version, but only up to 5 megabytes.");
+  }
+
+  // Otherwise, we need to ask the user for permission
+  else if (Notification.permission !== 'denied') {
+    Notification.requestPermission(function (permission) {
+      // If the user accepts, let's create a notification
+      if (permission === "granted") {
+        var notification = new Notification("Box does support saving files in its current version, but only up to 5 megabytes.");
+      }
+    });
+  }
+
+  // At last, if the user has denied notifications, and you 
+  // want to be respectful there is no need to bother them any more.
+}Notification.requestPermission().then(function(result) {
+  console.log(result);
+});function spawnNotification(theBody,theIcon,theTitle) {
+  var options = {
+      body: theBody,
+      icon: theIcon
+  }
+  var n = new Notification(theTitle,options);
+}
+//space
+    	function notifyScribble() {
   // Let's check if the browser supports notifications
   if (!("Notification" in window)) {
     alert("This browser does not support desktop notification");
