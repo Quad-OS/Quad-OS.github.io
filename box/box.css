@@ -1,1 +1,123 @@
-
+            body {
+                background-color: darkgray;
+            }
+            h1, h3 {
+                color: black;
+                float: center;
+            }
+            hr {
+                display: block;
+                margin: 0.5em;
+                border-style: inset;
+                border-width: 1px;
+            }
+            .button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 15px;
+            margin: 4px 2px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            width: 15%;
+            z-index-: 2;
+            }
+            input[type=text] {
+                position: relative;
+                width: 25%;
+                box-sizing: border-box;
+                border: 2px solid #ccc;
+                border-radius: 4px;
+                font-size: 16px;
+                background-color: white;
+                background-image: url('search_button.png');
+                background-position: 4px 5px;
+                background-repeat: no-repeat;
+                padding: 12px 20px 12px 40px;
+                -moz-transition: width 0.4s ease-in-out;
+                -webkit-transition: width 0.4s ease-in-out;
+                -o-transition: width 0.4s ease-in-out;
+                transition: width 0.4s ease-in-out;
+            }
+            input[type=text]:focus {
+                width: 70%;
+            }
+            .speech {
+                position: 4px 5px;
+            }
+            .divboxout {
+                position: absolute;
+                width: 120px;
+                height: 120px;
+                left: 50%;
+                top: 190px;
+                transform: translateX(-50%);
+                -wekbit-animation-name: boxin;
+                -wekbit-animation-duration: 10s;
+                -wekbit-animation-iteration-count: infinite;
+                z-index: -2;
+                animation-name: boxout;
+                animation-duration: 10s;
+                animation-iteration-count: infinite;
+            }
+            .divboxin {
+                position: absolute;
+                width: 110px;
+                height: 110px;
+                left: 50%;
+                top: 195px;
+                transform: translateX(-50%);
+                -wekbit-animation-name: boxout;
+                -wekbit-animation-duration: 10s;
+                -wekbit-animation-iteration-count: infinite;
+                z-index: -1;
+                animation-name: boxin;
+                animation-duration: 10s;
+                animation-iteration-count: infinite;
+            }
+            @keyframes boxout {
+                0% {
+                    background-color: #000000;
+                }
+                25% {
+                    background-color: darkgray;
+                }
+                50% {
+                    background-color: #00ff00;
+                }
+                75% {
+                    background-color: darkgray;
+                }
+                100% {
+                    background-color: #000000;
+                }
+            }
+            @keyframes boxin {
+                0% {
+                    background-color: #00ff00;
+                }
+                25% {
+                    background-color: darkgray;
+                }
+                50% {
+                    background-color: #000000;
+                }
+                75% {
+                    background-color: darkgray;
+                }
+                100% {
+                    background-color: #00ff00;
+                }
+            }
+            #canvas {
+                display:block;
+                margin: 40px auto 20px;
+                border: 1px solid #333;
+                box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.8);
+            }
+            .speech img {
+                float:width: 40px;
+            }
