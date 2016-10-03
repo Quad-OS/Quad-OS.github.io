@@ -289,7 +289,7 @@ h1 {
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 10;
     top: 0;
     left: 0;
     background-color: #111;
@@ -814,7 +814,29 @@ function checkTime(i) {
     return i;
 }
 </script>
+	<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
 
+<div id="main">
+  <span style="font-size:30px;cursor:pointer; float: right; font-size: 200%;" onclick="openNav()"">open &#9776;</span>
+</div>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.body.style.backgroundColor = "rgba(0,0,0,0)";
+}
+</script>
 <br>
 <button onclick = "location.href='#openModal3'">Game</button>
 
@@ -1363,29 +1385,6 @@ Loop();
             </script>
 </div>
 </div>
-	<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
-</div>
-
-<div id="main">
-  <span style="font-size:30px;cursor:pointer; float: right; font-size: 200%;" onclick="openNav()"">open &#9776;</span>
-</div>
-
-<script>
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.body.style.backgroundColor = "white";
-}
-</script>
 <br>
 <button onclick = "location.href = '#openModal4'; notifyScribble();">Scribble</button>
 
