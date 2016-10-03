@@ -1372,20 +1372,17 @@ Loop();
 </div>
 
 <div id="main">
-  <h2>Sidenav Push Example</h2>
-  <span style="font-size:30px;cursor:pointer" onclick="openNav()" style = "float: right; font-size: 200%;">&#9776; open</span>
+  <span style="font-size:30px;cursor:pointer; float: right; font-size: 200%;" onclick="openNav()"">open &#9776;</span>
 </div>
 
 <script>
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
     document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 }
 
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
     document.body.style.backgroundColor = "white";
 }
 </script>
