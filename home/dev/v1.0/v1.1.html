@@ -306,6 +306,14 @@ h1 {
     display: block;
     transition: 0.3s
 }
+sidenavText {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
 
 .sidenav a:hover, .offcanvas a:focus{
     color: #f1f1f1;
@@ -816,7 +824,7 @@ function checkTime(i) {
 </script>
 	<div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <h1 style = "color: #818181;">Allow Box</h1>
+  <h1 class = "sidenavText">Allow Box</h1>
             <div class="onoffswitch">
     <input type='checkbox' store="checkbox1" onclick="if(this.checked){boxAllowed()} else {boxNotAllowed()}"name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
     <label class="onoffswitch-label" for="myonoffswitch">
@@ -824,7 +832,7 @@ function checkTime(i) {
         <span class="onoffswitch-switch"></span>
     </label>
 </div>
-<h1 style = "color: #818181;">Something</h1>
+<h1 class = "sidenavText">Something</h1>
 <div class="onoffswitch">
     <input type='checkbox' store="checkbox2" name="onoffswitch2" class="onoffswitch-checkbox" id="myonoffswitch2" checked>
     <label class="onoffswitch-label" for="myonoffswitch2">
