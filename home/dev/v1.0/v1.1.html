@@ -210,7 +210,7 @@ h1 {
 }
 .onoffswitch-switch {
     display: block; width: 30px; margin: 0px;
-    background: #000000;
+    background: #fff;
     position: absolute; top: 0; bottom: 0;
     right: 70px;
     transition: all 0.3s ease-in 0s; 
@@ -249,7 +249,7 @@ h1 {
         position: relative;
         margin: 10% auto;
         padding: 5px 20px 13px 20px;
-        background: #fff;
+        background: darkgray;
         /*background: -moz-linear-gradient(#fff, #999);
         background: -webkit-linear-gradient(#fff, #999);
         background: -o-linear-gradient(#fff, #999);*/
@@ -816,7 +816,7 @@ function checkTime(i) {
 </script>
 	<div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <h1>Allow Box</h1>
+  <h1 style = "color: white;">Allow Box</h1>
             <div class="onoffswitch">
     <input type='checkbox' store="checkbox1" onclick="if(this.checked){boxAllowed()} else {boxNotAllowed()}"name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
     <label class="onoffswitch-label" for="myonoffswitch">
@@ -824,7 +824,7 @@ function checkTime(i) {
         <span class="onoffswitch-switch"></span>
     </label>
 </div>
-<h1>Something</h1>
+<h1 style = "color: white;">Something</h1>
 <div class="onoffswitch">
     <input type='checkbox' store="checkbox2" name="onoffswitch2" class="onoffswitch-checkbox" id="myonoffswitch2" checked>
     <label class="onoffswitch-label" for="myonoffswitch2">
