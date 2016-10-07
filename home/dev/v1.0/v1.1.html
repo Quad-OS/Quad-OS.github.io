@@ -297,7 +297,6 @@ h1 {
     transition: 0.5s;
     padding-top: 60px;
 }
-
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -314,11 +313,9 @@ h1 {
     display: block;
     transition: 0.3s
 }
-
 .sidenav a:hover, .offcanvas a:focus{
     color: #f1f1f1;
 }
-
 .sidenav .closebtn {
     position: absolute;
     top: 0;
@@ -326,7 +323,6 @@ h1 {
     font-size: 36px;
     margin-left: 50px;
 }
-
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
@@ -822,9 +818,93 @@ function checkTime(i) {
     return i;
 }
 </script>
+	<center>
+	<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <p class = "sidenavText">Allow Box</p>
+            <div class="onoffswitch">
+    <input type='checkbox' store="checkbox1" onclick="if(this.checked){boxAllowed()} else {boxNotAllowed()}"name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+    <label class="onoffswitch-label" for="myonoffswitch">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+</div>
+<p class = "sidenavText">Something</p>
+<div class="onoffswitch">
+    <input type='checkbox' store="checkbox2" name="onoffswitch2" class="onoffswitch-checkbox" id="myonoffswitch2" checked>
+    <label class="onoffswitch-label" for="myonoffswitch2">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+</div>
+  <a href="http://quad-os.github.io/Quad-OSNews/home.html" target = "_blank">News Letter</a>
+</div>
+
+<div id="main">
+  <span style="font-size:30px;cursor:pointer; float: right; font-size: 200%;" onclick="openNav()"">NavBar &#9776;</span>
+</div>
+												  </center>
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.7)";
+}
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.body.style.backgroundColor = "rgb(166, 166, 166)";
+}
+</script>
+        <script>
+            var boxStatus = 1;
+            /*var siBoxAllowed = localStorage.getItem("isBoxAllowed");
+            if (siBoxAllowed == 1){
+                document.getElementById("myonoffswitch").checked = true;
+            } else {
+                document.getElementById("myonoffswitch").checked = false;
+            }*/
+            (function() {
+    var boxes = document.querySelectorAll("input[type='checkbox']");
+    for (var i = 0; i < boxes.length; i++) {
+        var box = boxes[i];
+        if (box.hasAttribute("store")) {
+            setupBox(box);
+        }
+    }
+    
+    function setupBox(box) {
+        var storageId = box.getAttribute("store");
+        var oldVal    = localStorage.getItem(storageId);
+        console.log(oldVal);
+        box.checked = oldVal === "true" ? true : false;
+        
+        box.addEventListener("change", function() {
+            localStorage.setItem(storageId, this.checked); 
+        });
+    }
+})();
+            function boxNotAllowed() {
+                document.getElementById("boxButton").style.visibility = "hidden";
+                boxStatus = 0;
+                /*if (typeof(Storage) !== "undefined") {
+                    localStorage.setItem("isBoxAllowed", boxStatus);
+                    document.getElementById("example").innerHTML = localStorage.getItem("isBoxAllowed");
+                } else {
+                    document.getElementById("example").innerHTML = "Sorry, your browser does not support Web Storage...";
+                }*/
+            function boxAllowed() {
+                document.getElementById("boxButton").style.visibility = "visible";
+                boxStatus = 1;
+                /*if (typeof(Storage) !== "undefined") {
+                    localStorage.setItem("isBoxAllowed", boxStatus);
+                    document.getElementById("example").innerHTML = localStorage.getItem("isBoxAllowed");
+                } else {
+                    document.getElementById("example").innerHTML = "Sorry, your browser does not support Web Storage...";
+                }*/
+            }
+            }
+        </script>
 <br>
 <button onclick = "location.href='#openModal3'">Game</button>
-
   <div id="openModal3" class="modalDialog">"
 <div>
     <a href="#close" title="Close" class="close">X</a>
@@ -1370,90 +1450,6 @@ Loop();
             </script>
 </div>
 </div>
-		<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <p class = "sidenavText">Allow Box</p>
-            <div class="onoffswitch">
-    <input type='checkbox' store="checkbox1" onclick="if(this.checked){boxAllowed()} else {boxNotAllowed()}"name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-    <label class="onoffswitch-label" for="myonoffswitch">
-        <span class="onoffswitch-inner"></span>
-        <span class="onoffswitch-switch"></span>
-    </label>
-</div>
-<p class = "sidenavText">Something</p>
-<div class="onoffswitch">
-    <input type='checkbox' store="checkbox2" name="onoffswitch2" class="onoffswitch-checkbox" id="myonoffswitch2" checked>
-    <label class="onoffswitch-label" for="myonoffswitch2">
-        <span class="onoffswitch-inner"></span>
-        <span class="onoffswitch-switch"></span>
-    </label>
-</div>
-  <a href="http://quad-os.github.io/Quad-OSNews/home.html" target = "_blank">News Letter</a>
-</div>
-
-<div id="main">
-  <span style="font-size:30px;cursor:pointer; float: right; font-size: 200%;" onclick="openNav()"">NavBar &#9776;</span>
-</div>
-<script>
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    document.body.style.backgroundColor = "rgba(0,0,0,0.7)";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.body.style.backgroundColor = "rgb(166, 166, 166)";
-}
-</script>
-        <script>
-            var boxStatus = 1;
-            /*var siBoxAllowed = localStorage.getItem("isBoxAllowed");
-            if (siBoxAllowed == 1){
-                document.getElementById("myonoffswitch").checked = true;
-            } else {
-                document.getElementById("myonoffswitch").checked = false;
-            }*/
-            (function() {
-    var boxes = document.querySelectorAll("input[type='checkbox']");
-    for (var i = 0; i < boxes.length; i++) {
-        var box = boxes[i];
-        if (box.hasAttribute("store")) {
-            setupBox(box);
-        }
-    }
-    
-    function setupBox(box) {
-        var storageId = box.getAttribute("store");
-        var oldVal    = localStorage.getItem(storageId);
-        console.log(oldVal);
-        box.checked = oldVal === "true" ? true : false;
-        
-        box.addEventListener("change", function() {
-            localStorage.setItem(storageId, this.checked); 
-        });
-    }
-})();
-            function boxNotAllowed() {
-                document.getElementById("boxButton").style.visibility = "hidden";
-                boxStatus = 0;
-                /*if (typeof(Storage) !== "undefined") {
-                    localStorage.setItem("isBoxAllowed", boxStatus);
-                    document.getElementById("example").innerHTML = localStorage.getItem("isBoxAllowed");
-                } else {
-                    document.getElementById("example").innerHTML = "Sorry, your browser does not support Web Storage...";
-                }*/
-            function boxAllowed() {
-                document.getElementById("boxButton").style.visibility = "visible";
-                boxStatus = 1;
-                /*if (typeof(Storage) !== "undefined") {
-                    localStorage.setItem("isBoxAllowed", boxStatus);
-                    document.getElementById("example").innerHTML = localStorage.getItem("isBoxAllowed");
-                } else {
-                    document.getElementById("example").innerHTML = "Sorry, your browser does not support Web Storage...";
-                }*/
-            }
-            }
-        </script>
 <br>
 <button onclick = "location.href = '#openModal4'; notifyScribble();">Scribble</button>
 
