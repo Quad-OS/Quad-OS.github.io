@@ -18,7 +18,7 @@
   margin: 0;
   padding: 0;
 }
-.canvas {
+#canvas {
   display:block;
   margin: 40px auto 20px;
   border: 1px solid #333;
