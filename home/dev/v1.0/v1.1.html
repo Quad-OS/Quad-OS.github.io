@@ -1,769 +1,2859 @@
- <DOCTYPE html>
+<DOCTYPE html>
+
 <html>
+
     <head>
+
         <title>Quad -OS</title>
+
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
+
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
+
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
+
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144.png" />
+
 <link rel="apple-touch-icon-precomposed" sizes="60x60" href="apple-touch-icon-60x60.png" />
+
 <link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120x120.png" />
+
 <link rel="apple-touch-icon-precomposed" sizes="76x76" href="apple-touch-icon-76x76.png" />
+
 <link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152.png" />
+
 <link rel="icon" type="image/png" href="favicon-196x196.png" sizes="196x196" />
+
 <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+
 <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+
 <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+
 <link rel="icon" type="image/png" href="favicon-128.png" sizes="128x128" />
+
 <meta name="application-name" content="&nbsp;"/>
+
 <meta name="msapplication-TileColor" content="#FFFFFF" />
+
 <meta name="msapplication-TileImage" content="mstile-144x144.png" /> 
+
 <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+
 <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+
 <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+
 <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
-	    <link rel = "stylesheet" type = "text/css" href = "box.css">
+
 	    <link rel = "javascript" type = "text/javascript" href = "box.js">
-	    <link rel = "stylesheet" type = "text/css" href = "game.css">
-	    <link rel = "javascript" type = "text/javascript" href = "game.js">
+
 </head>
+
     <style type = "text/scss">
+
     	* {
+
   margin: 0;
+
   padding: 0;
+
   box-sizing: border-box;
+
 }
+
 body {
+
   color: #fff;
+
   text-align: center;
+
 }
+
 h1 {
+
   padding: 0 1rem;
+
 }
+
 #battery-container {
+
   position: absolute;
+
   top: 50%;
+
   left: 50%;
+
   transform: translate(-50%, -50%);
+
 }
+
 #battery-percentage {
+
   position: absolute;
+
   right: 0;
+
   bottom: 0.5rem;
+
   left: 0;
+
   z-index: 3;
+
   font-size: 1.25rem;
+
   font-weight: bold;
+
   text-align: center;
+
 }
+
 #battery {
+
   position: relative;
+
   margin: 0 auto;
+
   width: 140px;
+
   height: 220px;
+
   border: 2px solid #fff;
+
   
+
   #charge-status {
+
     display: none;
+
     position: absolute;
+
     z-index: 5;
+
     top: 50%;
+
     left: 50%;
+
     transform: translate(-50%, -50%);
+
     width: 60px;
+
     height: 120px;
+
     background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/97547/blitz_(1).svg');
+
     background-size: 100%;
+
     background-repeat: no-repeat;
+
     background-position: center center;
+
   }
+
   
+
   &.is-charging {
+
     #charge-status {
+
       display: block;
+
     }
+
   }
+
   
+
   // Plus pole
+
   &:before {
+
     content: ' ';
+
     display: block;
+
     width: 60px;
+
     height: 20px;
+
     background: #fff;
+
     position: absolute;
+
     top: -20px;
+
     left: 50%;
+
     transform: translateX(-50%);
+
   }
+
   
+
   // Battery meter filling
+
   &:after {
+
     content: ' ';
+
     display: block;
+
     position: absolute;
+
     right: 0;
+
     bottom: 0;
+
     left: 0;
+
   }
+
   
+
   @for $i from 1 through 100 {
+
     &.charge-#{$i}:after {
+
       height: 0% + $i;
+
       
+
       @if $i < 10 {
+
         background: #c21515;
+
       }
+
       
+
       @if $i > 10 {
+
         background: #fed024;
+
       }
+
       
+
       @if $i > 50 {
+
         background: #bada55;
+
       }
+
     }
+
   }
+
 }
+
 @media screen and (orientation:landscape) {
+
   h1 { text-align: left; }
+
 }
+
     </style>
+
     <style>
+
         body {
+
             background-color: darkgray;
+
             z-index: 0;
+
         }
+
         .button {
+
             background-color: green;
+
             color: white;
+
             border: none;
+
             padding: 15px;
+
             margin: 4px 2px;
+
             text-align: center;
+
             text-decoration: none;
+
             display: inline-block;
+
             font-size: 16px;
+
             cursor: pointer;
+
             width: 15%;
+
             z-index: 1;
+
             position: relative;
+
             left: 1;
+
             display: inline-block;
+
             }
+
             button {
+
             background-color: green;
+
             color: white;
+
             border: none;
+
             padding: 15px;
+
             margin: 4px 2px;
+
             text-align: center;
+
             text-decoration: none;
+
             display: inline-block;
+
             font-size: 16px;
+
             cursor: pointer;
+
             width: 15%;
+
             z-index: 1;
+
             position: relative;
+
             left: 1;
+
             display: inline-block;
+
             }
+
             button:hover {
+
             	background-color: black;	
+
             }
+
             .button:hover {
+
             	background-color: black;	
+
             }
+
             p {
+
   text-align: center;
+
   font-size: 40px;
+
   color: #333;
+
 }
+
                 .onoffswitch {
+
     position: relative; width: 100px;
+
     -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+
 }
+
 .onoffswitch-checkbox {
+
     display: none;
+
 }
+
 .onoffswitch-label {
+
     display: block; overflow: hidden; cursor: pointer;
+
     border: 2px solid #999999; border-radius: 0px;
+
 }
+
 .onoffswitch-inner {
+
     display: block; width: 200%; margin-left: -100%;
+
     transition: margin 0.3s ease-in 0s;
+
 }
+
 .onoffswitch-inner:before, .onoffswitch-inner:after {
+
     display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 26px;
+
     font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+
     box-sizing: border-box;
+
     border: 2px solid transparent;
+
     background-clip: padding-box;
+
 }
+
 .onoffswitch-inner:before {
+
     content: "On";
+
     padding-left: 10px;
+
     background-color: green; color: #FFFFFF;
+
 }
+
 .onoffswitch-inner:after {
+
     content: "Off";
+
     padding-right: 10px;
+
     background-color: darkgray; color: #333333;
+
     text-align: right;
+
 }
+
 .onoffswitch-switch {
+
     display: block; width: 30px; margin: 0px;
+
     background: #fff;
+
     position: absolute; top: 0; bottom: 0;
+
     right: 70px;
+
     transition: all 0.3s ease-in 0s; 
+
 }
+
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+
     margin-left: 0;
+
 }
+
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+
     right: 0px; 
+
 }
+
 #boxButton {
+
     display: inline-block;
+
 }
+
 /*modal*/
+
 .modalDialog {
+
         position: fixed;
+
         font-family: Arial, Helvetica, sans-serif;
+
         top: 0;
+
         right: 0;
+
         bottom: 0;
+
         left: 0;
+
         background: rgba(0,0,0,0.5);
+
         z-index: 99999;
+
         opacity:0;
+
         -webkit-transition: opacity 400ms ease-in;
+
         -moz-transition: opacity 400ms ease-in;
+
         transition: opacity 400ms ease-in;
+
         pointer-events: none;
+
     }
+
     .modalDialog:target {
+
         opacity:1;
+
         pointer-events: auto;
+
     }
+
     .modalDialog > div {
+
         width: 75%;
+
 	height: 100%; 
+
         position: relative;
+
         margin: 10% auto;
+
         padding: 5px 20px 13px 20px;
+
         background: darkgray;
+
 	overflow: scroll;
+
         /*background: -moz-linear-gradient(#fff, #999);
+
         background: -webkit-linear-gradient(#fff, #999);
+
         background: -o-linear-gradient(#fff, #999);*/
+
     }
+
     .close {
+
         background: #606061;
+
         color: #FFFFFF;
+
         line-height: 25px;
+
         position: absolute;
+
         right: 0px;
+
         text-align: center;
+
         top: -7px;
+
         width: 24px;
+
         text-decoration: none;
+
         font-weight: bold;
+
         /*-webkit-border-radius: 12px;
+
         -moz-border-radius: 12px;
+
         border-radius: 12px;
+
         -moz-box-shadow: 1px 1px 3px #000;
+
         -webkit-box-shadow: 1px 1px 3px #000;
+
         box-shadow: 1px 1px 3px #000;*/
+
     }
+
     .close:hover {
+
     	background: #00d9ff; 
+
     	
+
     }
+
     
+
     #powerDisplay {
+
     	float: right;
+
     }
+
     .floatRight {
+
     	float: right;
+
     	font-size: 200%;
+
      }
+
 	    /*navigation bar*/
+
 	.sidenav {
+
     height: 100%;
+
     width: 0;
+
     position: fixed;
+
     z-index: 10;
+
     top: 0;
+
     left: 0;
+
     background-color: #111;
+
     overflow-x: hidden;
+
     transition: 0.5s;
+
     padding-top: 60px;
+
 }
+
 .sidenav a {
+
     padding: 8px 8px 8px 32px;
+
     text-decoration: none;
+
     font-size: 25px;
+
     color: #818181;
+
     display: block;
+
     transition: 0.3s
+
 }
+
 .sidenavText {
+
     padding: 8px 8px 8px 32px;
+
     text-decoration: none;
+
     font-size: 25px;
+
     color: #818181;
+
     display: block;
+
     transition: 0.3s
+
 }
+
 .sidenav a:hover, .offcanvas a:focus{
+
     color: #f1f1f1;
+
 }
+
 .sidenav .closebtn {
+
     position: absolute;
+
     top: 0;
+
     right: 25px;
+
     font-size: 36px;
+
     margin-left: 50px;
+
 }
+
 @media screen and (max-height: 450px) {
+
   .sidenav {padding-top: 15px;}
+
   .sidenav a {font-size: 18px;}
+
 }
+
     </style>
+
     <body id = "body1" onload = "startTime()">
+
         <center>
+
             <h1>Quad-OS</h1>
+
         </center>
+
             <button onclick="location.href = '#openModal1'; notifyBox();" class = "inlineBlock">Box</button>
+
 <div id="openModal1" class="modalDialog">
+
 <div>
+
     <a href="#close" title="Close" class="close">X</a>
+
+         <style type="text/css">
+
+            body {
+
+                background-color: darkgray;
+
+            }
+
+            h1, h3 {
+
+                color: black;
+
+                float: center;
+
+            }
+
+            hr {
+
+                display: block;
+
+                margin: 0.5em;
+
+                border-style: inset;
+
+                border-width: 1px;
+
+            }
+
+            .button {
+
+            background-color: green;
+
+            color: white;
+
+            border: none;
+
+            padding: 15px;
+
+            margin: 4px 2px;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            display: inline-block;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            width: 15%;
+
+            z-index-: 3;
+
+            }
+
+            input[type=text] {
+
+                position: relative;
+
+                width: 25%;
+
+                box-sizing: border-box;
+
+                border: 2px solid #ccc;
+
+                border-radius: 4px;
+
+                font-size: 16px;
+
+                background-color: white;
+
+                background-image: url('search_button.png');
+
+                background-position: 4px 5px;
+
+                background-repeat: no-repeat;
+
+                padding: 12px 20px 12px 40px;
+
+                -moz-transition: width 0.4s ease-in-out;
+
+                -webkit-transition: width 0.4s ease-in-out;
+
+                -o-transition: width 0.4s ease-in-out;
+
+                transition: width 0.4s ease-in-out;
+
+            }
+
+            input[type=text]:focus {
+
+                width: 70%;
+
+            }
+
+            .speech {
+
+                position: 4px 5px;
+
+            }
+
+            .divboxout {
+
+                position: absolute;
+
+                width: 120px;
+
+                height: 120px;
+
+                left: 50%;
+
+                top: 150px;
+
+                transform: translateX(-50%);
+
+                -wekbit-animation-name: boxin;
+
+                -wekbit-animation-duration: 10s;
+
+                -wekbit-animation-iteration-count: infinite;
+
+                z-index: 3;
+
+                animation-name: boxout;
+
+                animation-duration: 10s;
+
+                animation-iteration-count: infinite;
+
+            }
+
+            .divboxin {
+
+                position: absolute;
+
+                width: 110px;
+
+                height: 110px;
+
+                left: 50%;
+
+                top: 155px;
+
+                transform: translateX(-50%);
+
+                -wekbit-animation-name: boxout;
+
+                -wekbit-animation-duration: 10s;
+
+                -wekbit-animation-iteration-count: infinite;
+
+                z-index: 4;
+
+                animation-name: boxin;
+
+                animation-duration: 10s;
+
+                animation-iteration-count: infinite;
+
+            }
+
+            @keyframes boxout {
+
+                0% {
+
+                    background-color: #000000;
+
+                }
+
+                25% {
+
+                    background-color: darkgray;
+
+                }
+
+                50% {
+
+                    background-color: #00ff00;
+
+                }
+
+                75% {
+
+                    background-color: darkgray;
+
+                }
+
+                100% {
+
+                    background-color: #000000;
+
+                }
+
+            }
+
+            @keyframes boxin {
+
+                0% {
+
+                    background-color: #00ff00;
+
+                }
+
+                25% {
+
+                    background-color: darkgray;
+
+                }
+
+                50% {
+
+                    background-color: #000000;
+
+                }
+
+                75% {
+
+                    background-color: darkgray;
+
+                }
+
+                100% {
+
+                    background-color: #00ff00;
+
+                }
+
+            }
+
+            #canvas {
+
+                display:block;
+
+                margin: 40px auto 20px;
+
+                border: 1px solid #333;
+
+                box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.8);
+
+            }
+
+            .speech img {
+
+                float:width: 40px;
+
+            }
+
+        </style>
+
         <center>
+
            <h1>BOX</h1>
+
+
 
             </a>
 
+
+
              <h3>Hello user! I am box. What can I do for you?</h3>
+
              <br>
+
              <div class="divboxout"></div>
+
              <div class="divboxin"></div>
+
              <div class="divboxborder1"></div>
+
              <div class="divboxborder2"></div>
+
              <br><br><br><br><br><br><br><br><br><br>
+
              <form id="labnol" method="get" action="https://www.google.com/search">
+
              <div class="speech">
+
                 <img onclick="startDictation()" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-mic-128.png" width = 25px />
+
              </div>
+
              </form>
+
              <div class = "file">
+
                  <input type="file" id="fileinput">
+
             </div>
+
             <p>Question (Searched in DataBase)</p>
+
             <p>
+
                     <input type="text" id="uq"/>
+
                     <button class = "button" onclick="question();" href="javascript:;">Submit</button>
+
             </p>
+
         </center>
+
         <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+
  
+
 </div>
+
 </div>
+
 <div id="powerDisplay" class = "floatRight"></div>
+
 <script>
+
 var powerDisplay = document.getElementById( 'powerDisplay' );
+
 console.log('outside function');
+
 navigator.getBattery().then(function(battery) {
+
 console.log('inside function');
+
   
+
   powerDisplay.innerHTML = 'Battery level is: ' + battery.level;  
+
   console.log(battery.level);
+
   var t = setTimeout(startTime, 500, updatePage);
+
 });
+
 </script>
+
 <br>
+
 <button onclick = "location.href='#openModal2'">Google</button>
 
+
+
   <div id="openModal2" class="modalDialog">
+
 <div>
+
     <a href="#close" title="Close" class="close">X</a>
+
     <script>
+
   (function() {
+
     var cx = '009127461549445650691:when3gkyx50';
+
     var gcse = document.createElement('script');
+
     gcse.type = 'text/javascript';
+
     gcse.async = true;
+
     gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+
     var s = document.getElementsByTagName('script')[0];
+
     s.parentNode.insertBefore(gcse, s);
+
   })();
+
   Loop();
+
 </script>
+
 <gcse:searchbox></gcse:searchbox>
+
 <gcse:searchresults></gcse:searchresults>
+
 </div>
+
 </div>
+
 </div>
+
 <div id="txt" class= "floatRight"></div>
+
 <script>
+
 function startTime() {
+
     var today = new Date();
+
     var h = today.getHours();
+
     var m = today.getMinutes();
+
     var s = today.getSeconds();
+
     m = checkTime(m);
+
     s = checkTime(s);
+
     document.getElementById('txt').innerHTML =
+
     h + ":" + m + ":" + s;
+
     var t = setTimeout(startTime, 500);
+
 }
+
 function checkTime(i) {
+
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+
     return i;
+
 }
+
 </script>
+
 	<center>
+
 	<div id="mySidenav" class="sidenav">
+
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
   <p class = "sidenavText">Allow Box</p>
+
             <div class="onoffswitch">
+
     <input type='checkbox' store="checkbox1" onclick="if(this.checked){boxAllowed()} else {boxNotAllowed()}"name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+
     <label class="onoffswitch-label" for="myonoffswitch">
+
         <span class="onoffswitch-inner"></span>
+
         <span class="onoffswitch-switch"></span>
+
     </label>
+
 </div>
+
 <p class = "sidenavText">Something</p>
+
 <div class="onoffswitch">
+
     <input type='checkbox' store="checkbox2" name="onoffswitch2" class="onoffswitch-checkbox" id="myonoffswitch2" checked>
+
     <label class="onoffswitch-label" for="myonoffswitch2">
+
         <span class="onoffswitch-inner"></span>
+
         <span class="onoffswitch-switch"></span>
+
     </label>
+
 </div>
+
   <a href="http://quad-os.github.io/Quad-OSNews/home.html" target = "_blank">News Letter</a>
+
 </div>
+
+
 
 <div id="main">
+
   <span style="font-size:30px;cursor:pointer; float: right; font-size: 200%;" onclick="openNav()"">NavBar &#9776;</span>
+
 </div>
+
 												  </center>
+
 <script>
+
 function openNav() {
+
     document.getElementById("mySidenav").style.width = "250px";
+
     document.body.style.backgroundColor = "rgba(0,0,0,0.7)";
+
 }
+
 function closeNav() {
+
     document.getElementById("mySidenav").style.width = "0";
+
     document.body.style.backgroundColor = "rgb(166, 166, 166)";
+
 }
+
 </script>
+
         <script>
+
             var boxStatus = 1;
+
             /*var siBoxAllowed = localStorage.getItem("isBoxAllowed");
+
             if (siBoxAllowed == 1){
+
                 document.getElementById("myonoffswitch").checked = true;
+
             } else {
+
                 document.getElementById("myonoffswitch").checked = false;
+
             }*/
+
             (function() {
+
     var boxes = document.querySelectorAll("input[type='checkbox']");
+
     for (var i = 0; i < boxes.length; i++) {
+
         var box = boxes[i];
+
         if (box.hasAttribute("store")) {
+
             setupBox(box);
+
         }
+
     }
+
     
+
     function setupBox(box) {
+
         var storageId = box.getAttribute("store");
+
         var oldVal    = localStorage.getItem(storageId);
+
         console.log(oldVal);
+
         box.checked = oldVal === "true" ? true : false;
+
         
+
         box.addEventListener("change", function() {
+
             localStorage.setItem(storageId, this.checked); 
+
         });
+
     }
+
 })();
+
             function boxNotAllowed() {
+
                 document.getElementById("boxButton").style.visibility = "hidden";
+
                 boxStatus = 0;
+
                 /*if (typeof(Storage) !== "undefined") {
+
                     localStorage.setItem("isBoxAllowed", boxStatus);
+
                     document.getElementById("example").innerHTML = localStorage.getItem("isBoxAllowed");
+
                 } else {
+
                     document.getElementById("example").innerHTML = "Sorry, your browser does not support Web Storage...";
+
                 }*/
+
             function boxAllowed() {
+
                 document.getElementById("boxButton").style.visibility = "visible";
+
                 boxStatus = 1;
+
                 /*if (typeof(Storage) !== "undefined") {
+
                     localStorage.setItem("isBoxAllowed", boxStatus);
+
                     document.getElementById("example").innerHTML = localStorage.getItem("isBoxAllowed");
+
                 } else {
+
                     document.getElementById("example").innerHTML = "Sorry, your browser does not support Web Storage...";
+
                 }*/
+
             }
+
             }
+
         </script>
+
 <br>
+
 <button onclick = "location.href='#openModal3'">Game</button>
+
   <div id="openModal3" class="modalDialog">"
+
 <div>
+
     <a href="#close" title="Close" class="close">X</a>
+
+    <style>
+
+    	canvas {
+
+  display:block;
+
+  margin: 40px auto 20px;
+
+  border: 1px solid #333;
+
+  box-shadow: 0 0 16px 2px rgba(0,0,0,0.8);
+
+}
+
+    </style>
+
     <canvas id="canvas"></canvas>
-                </div>
+
+                <script>
+
+                
+
+/* Customisable map data */
+
+var map = {
+
+    tile_size: 16,
+
+    /*
+
+    
+
+    Key vairables:
+
+    
+
+    id       [required] - an integer that corresponds with a tile in the data array.
+
+    colour   [required] - any javascript compatible colour variable.
+
+    solid    [optional] - whether the tile is solid or not, defaults to false.
+
+    bounce   [optional] - how much velocity is preserved upon hitting the tile, 0.5 is half.
+
+    jump     [optional] - whether the player can jump while over the tile, defaults to false.
+
+    friction [optional] - friction of the tile, must have X and Y values (e.g {x:0.5, y:0.5}).
+
+    gravity  [optional] - gravity of the tile, must have X and Y values (e.g {x:0.5, y:0.5}).
+
+    fore     [optional] - whether the tile is drawn in front of the player, defaults to false.
+
+    script   [optional] - refers to a script in the scripts section, executed if it is touched.
+
+    
+
+    */
+
+    
+
+    keys: [
+
+        {id: 0, colour: '#333', solid: 0},
+
+        {id: 1, colour: '#888', solid: 0},
+
+        {id: 2,colour: '#555',solid: 1,bounce: 0.35},
+
+        {id: 3,colour: 'rgba(121, 220, 242, 0.4)',friction: {x: 0.9,y: 0.9},gravity: {x: 0,y: 0.1},jump: 1,fore: 1},
+
+        {id: 4,colour: '#777',jump: 1},
+
+        {id: 5,colour: '#E373FA',solid: 1,bounce: 1.1},
+
+        {id: 6,colour: '#666',solid: 1,bounce: 0},
+
+        {id: 7,colour: '#73C6FA',solid: 0,script: 'change_colour'},
+
+        {id: 8,colour: '#FADF73',solid: 0,script: 'next_level'},
+
+        {id: 9,colour: '#C93232',solid: 0,script: 'death'},
+
+        {id: 10,colour: '#555',solid: 1},
+
+        {id: 11,colour: '#0FF',solid: 0,script: 'unlock'}
+
+    ],
+
+    /* An array representing the map tiles. Each number corresponds to a key */
+
+    data: [
+
+        [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 6, 6, 6, 6, 6, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 7, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 4, 2, 2, 2, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2, 2, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
+
+        [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+
+        [2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2],
+
+        [2, 1, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2],
+
+        [2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2],
+
+        [2, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 8, 1, 1, 1, 2],
+
+        [2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2],
+
+        [2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 9, 9, 9, 2, 10, 10, 10, 10, 10, 10, 1, 1, 1, 1, 1, 1, 1, 11, 2, 2, 2, 2, 4, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 10, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 2],
+
+        [2, 6, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2],
+
+        [2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6, 6, 6, 2, 2, 2, 2, 2, 2, 6, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+
+        [2, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 2, 5, 5, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2],
+
+        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5, 1, 1, 1, 1, 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2],
+
+        [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+
+    ],
+
+    /* Default gravity of the map */
+
+    
+
+    gravity: {
+
+        x: 0,
+
+        y: 0.3
+
+    },
+
+    
+
+    /* Velocity limits */
+
+    vel_limit: {
+
+        x: 2,
+
+        y: 16
+
+    },
+
+    /* Movement speed when the key is pressed */
+
+    
+
+    movement_speed: {
+
+        jump: 6,
+
+        left: 0.3,
+
+        right: 0.3
+
+    },
+
+    
+
+    /* The coordinates at which the player spawns and the colour of the player */
+
+    player: {
+
+        x: 2,
+
+        y: 2,
+
+        colour: '#FF9900'
+
+    },
+
+    
+
+    /* scripts refered to by the "script" variable in the tile keys */
+
+    scripts: {
+
+        /* you can just use "this" instead of your engine variable ("game"), but Codepen doesn't like it */
+
+        change_colour: 'game.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);',
+
+        /* you could load a new map variable here */
+
+        next_level: 'alert("Yay! You won! Reloading map.");game.load_map(map);',
+
+        death: 'alert("You died!");game.load_map(map);',
+
+        unlock: 'game.current_map.keys[10].solid = 0;game.current_map.keys[10].colour = "#888";'
+
+    }
+
+};
+
+/* Clarity engine */
+
+var Clarity = function () {
+
+    this.alert_errors   = false;
+
+    this.log_info       = true;
+
+    this.tile_size      = 16;
+
+    this.limit_viewport = false;
+
+    this.jump_switch    = 0;
+
+    
+
+    this.viewport = {
+
+        x: 200,
+
+        y: 200
+
+    };
+
+    
+
+    this.camera = {
+
+        x: 0,
+
+        y: 0
+
+    };
+
+    
+
+    this.key = {
+
+        left: false,
+
+        right: false,
+
+        up: false
+
+    };
+
+    this.player = {
+
+        loc: {
+
+            x: 0,
+
+            y: 0
+
+        },
+
+        
+
+        vel: {
+
+            x: 0,
+
+            y: 0
+
+        },
+
+        
+
+        can_jump: true
+
+    };
+
+    window.onkeydown = this.keydown.bind(this);
+
+    window.onkeyup   = this.keyup.bind(this);
+
+};
+
+Clarity.prototype.error = function (message) {
+
+    if (this.alert_errors) alert(message);
+
+    if (this.log_info) console.log(message);
+
+};
+
+Clarity.prototype.log = function (message) {
+
+    if (this.log_info) console.log(message);
+
+};
+
+Clarity.prototype.set_viewport = function (x, y) {
+
+    this.viewport.x = x;
+
+    this.viewport.y = y;
+
+};
+
+Clarity.prototype.keydown = function (e) {
+
+    var _this = this;
+
+    switch (e.keyCode) {
+
+    case 37:
+
+        _this.key.left = true;
+
+        break;
+
+    case 38:
+
+        _this.key.up = true;
+
+        break;
+
+    case 39:
+
+        _this.key.right = true;
+
+        break;
+
+    }
+
+};
+
+Clarity.prototype.keyup = function (e) {
+
+    var _this = this;
+
+    switch (e.keyCode) {
+
+    case 37:
+
+        _this.key.left = false;
+
+        break;
+
+    case 38:
+
+        _this.key.up = false;
+
+        break;
+
+    case 39:
+
+        _this.key.right = false;
+
+        break;
+
+    }
+
+};
+
+Clarity.prototype.load_map = function (map) {
+
+    if (typeof map      === 'undefined'
+
+     || typeof map.data === 'undefined'
+
+     || typeof map.keys === 'undefined') {
+
+        this.error('Error: Invalid map data!');
+
+        return false;
+
+    }
+
+    this.current_map = map;
+
+    this.current_map.background = map.background || '#333';
+
+    this.current_map.gravity = map.gravity || {x: 0, y: 0.3};
+
+    this.tile_size = map.tile_size || 16;
+
+    var _this = this;
+
+    
+
+    this.current_map.width = 0;
+
+    this.current_map.height = 0;
+
+    map.keys.forEach(function (key) {
+
+        map.data.forEach(function (row, y) {
+
+            
+
+            _this.current_map.height = Math.max(_this.current_map.height, y);
+
+            row.forEach(function (tile, x) {
+
+                
+
+                _this.current_map.width = Math.max(_this.current_map.width, x);
+
+                if (tile == key.id)
+
+                    _this.current_map.data[y][x] = key;
+
+            });
+
+        });
+
+    });
+
+    
+
+    this.current_map.width_p = this.current_map.width * this.tile_size;
+
+    this.current_map.height_p = this.current_map.height * this.tile_size;
+
+    this.player.loc.x = map.player.x * this.tile_size || 0;
+
+    this.player.loc.y = map.player.y * this.tile_size || 0;
+
+    this.player.colour = map.player.colour || '#000';
+
+  
+
+    this.key.left  = false;
+
+    this.key.up    = false;
+
+    this.key.right = false;
+
+    
+
+    this.camera = {
+
+        x: 0,
+
+        y: 0
+
+    };
+
+    
+
+    this.player.vel = {
+
+        x: 0,
+
+        y: 0
+
+    };
+
+    this.log('Successfully loaded map data.');
+
+    return true;
+
+};
+
+Clarity.prototype.get_tile = function (x, y) {
+
+    return (this.current_map.data[y] && this.current_map.data[y][x]) ? this.current_map.data[y][x] : 0;
+
+};
+
+Clarity.prototype.draw_tile = function (x, y, tile, context) {
+
+    if (!tile || !tile.colour) return;
+
+    context.fillStyle = tile.colour;
+
+    context.fillRect(
+
+        x,
+
+        y,
+
+        this.tile_size,
+
+        this.tile_size
+
+    );
+
+};
+
+Clarity.prototype.draw_map = function (context, fore) {
+
+    for (var y = 0; y < this.current_map.data.length; y++) {
+
+        for (var x = 0; x < this.current_map.data[y].length; x++) {
+
+            if ((!fore && !this.current_map.data[y][x].fore) || (fore && this.current_map.data[y][x].fore)) {
+
+                var t_x = (x * this.tile_size) - this.camera.x;
+
+                var t_y = (y * this.tile_size) - this.camera.y;
+
+                
+
+                if(t_x < -this.tile_size
+
+                || t_y < -this.tile_size
+
+                || t_x > this.viewport.x
+
+                || t_y > this.viewport.y) continue;
+
+                
+
+                this.draw_tile(
+
+                    t_x,
+
+                    t_y,
+
+                    this.current_map.data[y][x],
+
+                    context
+
+                );
+
+            }
+
+        }
+
+    }
+
+    if (!fore) this.draw_map(context, true);
+
+};
+
+Clarity.prototype.move_player = function () {
+
+    var tX = this.player.loc.x + this.player.vel.x;
+
+    var tY = this.player.loc.y + this.player.vel.y;
+
+    var offset = Math.round((this.tile_size / 2) - 1);
+
+    var tile = this.get_tile(
+
+        Math.round(this.player.loc.x / this.tile_size),
+
+        Math.round(this.player.loc.y / this.tile_size)
+
+    );
+
+     
+
+    if(tile.gravity) {
+
+        
+
+        this.player.vel.x += tile.gravity.x;
+
+        this.player.vel.y += tile.gravity.y;
+
+        
+
+    } else {
+
+        
+
+        this.player.vel.x += this.current_map.gravity.x;
+
+        this.player.vel.y += this.current_map.gravity.y;
+
+    }
+
+    
+
+    if (tile.friction) {
+
+        this.player.vel.x *= tile.friction.x;
+
+        this.player.vel.y *= tile.friction.y;
+
+    }
+
+    var t_y_up   = Math.floor(tY / this.tile_size);
+
+    var t_y_down = Math.ceil(tY / this.tile_size);
+
+    var y_near1  = Math.round((this.player.loc.y - offset) / this.tile_size);
+
+    var y_near2  = Math.round((this.player.loc.y + offset) / this.tile_size);
+
+    var t_x_left  = Math.floor(tX / this.tile_size);
+
+    var t_x_right = Math.ceil(tX / this.tile_size);
+
+    var x_near1   = Math.round((this.player.loc.x - offset) / this.tile_size);
+
+    var x_near2   = Math.round((this.player.loc.x + offset) / this.tile_size);
+
+    var top1    = this.get_tile(x_near1, t_y_up);
+
+    var top2    = this.get_tile(x_near2, t_y_up);
+
+    var bottom1 = this.get_tile(x_near1, t_y_down);
+
+    var bottom2 = this.get_tile(x_near2, t_y_down);
+
+    var left1   = this.get_tile(t_x_left, y_near1);
+
+    var left2   = this.get_tile(t_x_left, y_near2);
+
+    var right1  = this.get_tile(t_x_right, y_near1);
+
+    var right2  = this.get_tile(t_x_right, y_near2);
+
+    if (tile.jump && this.jump_switch > 15) {
+
+        this.player.can_jump = true;
+
+        
+
+        this.jump_switch = 0;
+
+        
+
+    } else this.jump_switch++;
+
+    
+
+    this.player.vel.x = Math.min(Math.max(this.player.vel.x, -this.current_map.vel_limit.x), this.current_map.vel_limit.x);
+
+    this.player.vel.y = Math.min(Math.max(this.player.vel.y, -this.current_map.vel_limit.y), this.current_map.vel_limit.y);
+
+    
+
+    this.player.loc.x += this.player.vel.x;
+
+    this.player.loc.y += this.player.vel.y;
+
+    
+
+    this.player.vel.x *= .9;
+
+    
+
+    if (left1.solid || left2.solid || right1.solid || right2.solid) {
+
+        /* fix overlap */
+
+        while (this.get_tile(Math.floor(this.player.loc.x / this.tile_size), y_near1).solid
+
+            || this.get_tile(Math.floor(this.player.loc.x / this.tile_size), y_near2).solid)
+
+            this.player.loc.x += 0.1;
+
+        while (this.get_tile(Math.ceil(this.player.loc.x / this.tile_size), y_near1).solid
+
+            || this.get_tile(Math.ceil(this.player.loc.x / this.tile_size), y_near2).solid)
+
+            this.player.loc.x -= 0.1;
+
+        /* tile bounce */
+
+        var bounce = 0;
+
+        if (left1.solid && left1.bounce > bounce) bounce = left1.bounce;
+
+        if (left2.solid && left2.bounce > bounce) bounce = left2.bounce;
+
+        if (right1.solid && right1.bounce > bounce) bounce = right1.bounce;
+
+        if (right2.solid && right2.bounce > bounce) bounce = right2.bounce;
+
+        this.player.vel.x *= -bounce || 0;
+
+        
+
+    }
+
+    
+
+    if (top1.solid || top2.solid || bottom1.solid || bottom2.solid) {
+
+        /* fix overlap */
+
+        
+
+        while (this.get_tile(x_near1, Math.floor(this.player.loc.y / this.tile_size)).solid
+
+            || this.get_tile(x_near2, Math.floor(this.player.loc.y / this.tile_size)).solid)
+
+            this.player.loc.y += 0.1;
+
+        while (this.get_tile(x_near1, Math.ceil(this.player.loc.y / this.tile_size)).solid
+
+            || this.get_tile(x_near2, Math.ceil(this.player.loc.y / this.tile_size)).solid)
+
+            this.player.loc.y -= 0.1;
+
+        /* tile bounce */
+
+        
+
+        var bounce = 0;
+
+        
+
+        if (top1.solid && top1.bounce > bounce) bounce = top1.bounce;
+
+        if (top2.solid && top2.bounce > bounce) bounce = top2.bounce;
+
+        if (bottom1.solid && bottom1.bounce > bounce) bounce = bottom1.bounce;
+
+        if (bottom2.solid && bottom2.bounce > bounce) bounce = bottom2.bounce;
+
+        
+
+        this.player.vel.y *= -bounce || 0;
+
+        if ((bottom1.solid || bottom2.solid) && !tile.jump) {
+
+            
+
+            this.player.on_floor = true;
+
+            this.player.can_jump = true;
+
+        }
+
+        
+
+    }
+
+    
+
+    // adjust camera
+
+    var c_x = Math.round(this.player.loc.x - this.viewport.x/2);
+
+    var c_y = Math.round(this.player.loc.y - this.viewport.y/2);
+
+    var x_dif = Math.abs(c_x - this.camera.x);
+
+    var y_dif = Math.abs(c_y - this.camera.y);
+
+    
+
+    if(x_dif > 5) {
+
+        
+
+        var mag = Math.round(Math.max(1, x_dif * 0.1));
+
+    
+
+        if(c_x != this.camera.x) {
+
+            
+
+            this.camera.x += c_x > this.camera.x ? mag : -mag;
+
+            
+
+            if(this.limit_viewport) {
+
+                
+
+                this.camera.x = 
+
+                    Math.min(
+
+                        this.current_map.width_p - this.viewport.x + this.tile_size,
+
+                        this.camera.x
+
+                    );
+
+                
+
+                this.camera.x = 
+
+                    Math.max(
+
+                        0,
+
+                        this.camera.x
+
+                    );
+
+            }
+
+        }
+
+    }
+
+    
+
+    if(y_dif > 5) {
+
+        
+
+        var mag = Math.round(Math.max(1, y_dif * 0.1));
+
+        
+
+        if(c_y != this.camera.y) {
+
+            
+
+            this.camera.y += c_y > this.camera.y ? mag : -mag;
+
+        
+
+            if(this.limit_viewport) {
+
+                
+
+                this.camera.y = 
+
+                    Math.min(
+
+                        this.current_map.height_p - this.viewport.y + this.tile_size,
+
+                        this.camera.y
+
+                    );
+
+                
+
+                this.camera.y = 
+
+                    Math.max(
+
+                        0,
+
+                        this.camera.y
+
+                    );
+
+            }
+
+        }
+
+    }
+
+    
+
+    if(this.last_tile != tile.id && tile.script) {
+
+    
+
+        eval(this.current_map.scripts[tile.script]);
+
+    }
+
+    
+
+    this.last_tile = tile.id;
+
+};
+
+Clarity.prototype.update_player = function () {
+
+    if (this.key.left) {
+
+        if (this.player.vel.x > -this.current_map.vel_limit.x)
+
+            this.player.vel.x -= this.current_map.movement_speed.left;
+
+    }
+
+    if (this.key.up) {
+
+        if (this.player.can_jump && this.player.vel.y > -this.current_map.vel_limit.y) {
+
+            
+
+            this.player.vel.y -= this.current_map.movement_speed.jump;
+
+            this.player.can_jump = false;
+
+        }
+
+    }
+
+    if (this.key.right) {
+
+        if (this.player.vel.x < this.current_map.vel_limit.x)
+
+            this.player.vel.x += this.current_map.movement_speed.left;
+
+    }
+
+    this.move_player();
+
+};
+
+Clarity.prototype.draw_player = function (context) {
+
+    context.fillStyle = this.player.colour;
+
+    context.beginPath();
+
+    context.arc(
+
+        this.player.loc.x + this.tile_size / 2 - this.camera.x,
+
+        this.player.loc.y + this.tile_size / 2 - this.camera.y,
+
+        this.tile_size / 2 - 1,
+
+        0,
+
+        Math.PI * 2
+
+    );
+
+    context.fill();
+
+};
+
+Clarity.prototype.update = function () {
+
+    this.update_player();
+
+};
+
+Clarity.prototype.draw = function (context) {
+
+    this.draw_map(context, false);
+
+    this.draw_player(context);
+
+};
+
+/* Setup of the engine */
+
+window.requestAnimFrame =
+
+  window.requestAnimationFrame ||
+
+  window.webkitRequestAnimationFrame ||
+
+  window.mozRequestAnimationFrame ||
+
+  window.oRequestAnimationFrame ||
+
+  window.msRequestAnimationFrame ||
+
+  function(callback) {
+
+    return window.setTimeout(callback, 1000 / 60);
+
+  };
+
+var canvas = document.getElementById('canvas'),
+
+    ctx = canvas.getContext('2d');
+
+canvas.width = 400;
+
+canvas.height = 400;
+
+var game = new Clarity();
+
+    game.set_viewport(canvas.width, canvas.height);
+
+    game.load_map(map);
+
+    /* Limit the viewport to the confines of the map */
+
+    game.limit_viewport = true;
+
+var Loop = function() {
+
+  
+
+  ctx.fillStyle = '#333';
+
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  
+
+  game.update();
+
+  game.draw(ctx);
+
+  
+
+  window.requestAnimFrame(Loop);
+
+};
+
+Loop();
+
+            </script>
+
 </div>
+
+</div>
+
 <br>
+
 <button onclick = "location.href = '#openModal4'; notifyScribble();">Scribble</button>
 
+
+
   <div id="openModal4" class="modalDialog">
+
 <div>
+
     <a href="#close" title="Close" class="close">X</a>
+
           <style>
+
                 div{
+
                         position: relative;
+
                 }
+
                 #editor1 {
+
       border: 5px inset grey;
+
       height: 100%;
+
       width: 100%;
+
       /*margin: 10px auto 0;*/
+
       background-color: white;
+
      }
+
 /*    button {
+
       width: 5ex;
+
       padding: 1px 3px;
+
     }*/
+
     .menuButton {
+
   width: 16%;
+
   display: inline-block;
+
   margin-right: -4px;
+
   border: 3px solid green;
+
   background-color: green;
+
   text-decoration: none;
+
   color: white;
+
   height: 35px;
+
   padding: 1px 1px;
+
 }
+
 .menuButton:Hover {
+
   border: 3px solid black;
+
   background-color: black;
+
 }
+
 /*DROPDOWN MENU*/
+
 .dropbtn {
+
     background-color: black;
+
     color: white;
+
     /*padding: 16px;*/
+
     font-size: 12px;
+
     border: none;
+
     cursor: pointer;
+
     width: 160px;
+
     height: 35px;
+
     margin-right: -4px;
+
     display: inline-block;
+
 }
+
 .dropdown {
+
     position: relative;
+
     display: inline-block;
+
 }
+
 .dropdown-content {
+
     display: none;
+
     position: absolute;
+
     background-color: gray;
+
     min-width: 160px;
+
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
     z-index: 2;
+
 }
+
 .dropdown-content button {
+
     color: black;
+
     padding: 12px 16px;
+
     text-decoration: none;
+
     display: block;
+
     border: 3px solid #f2f2f2;
+
     background-color: #f2f2f2;
+
     width: 160px;
+
     z-index: 2;
+
 }
+
 .dropdown-content button:hover {background-color: lightgreen}
+
 .dropdown:hover .dropdown-content {
+
     display: block;
+
 }
+
 .dropdown:hover .dropbtn {
+
     background-color: gray;
+
 }
+
 /*DROPDOWN MENU*/
+
         </style>
+
         <body>
+
                 <center>
+
                         <h1>Scribble</h1>
+
                 </center>
+
 <div class="dropdown">
+
   <button class="dropbtn">Highlighting</button>
+
   <div class="dropdown-content">
+
     <button onclick = "document.execCommand('SelectAll');">Select All</button>
+
     <button onclick = "document.execCommand('Unselect');">Unselect All</button>
+
   </div>
+
 </div>
+
 <div class="dropdown">
+
   <button class="dropbtn">Copying</button> <!--Removed due to issues with web browser security, will be added back when Manifest Permissions are set  https://developer.chrome.com/extensions/manifest#permissions-->
+
    <!--class="dropbtn"-->
+
   <div class="dropdown-content">
+
     <button onclick -=- "document.execCommand('Copy');"><strike>Copy</strike>  Ctrl+C</button>
+
     <button onclick -=- "document.execCommand('Cut');"><strike>Cut</strike>  Ctrl+X</button>
+
     <button onclick -=- "document.execCommand('Paste');"><strike>Paste</strike>  Ctrl+V</button>
+
     <button>Removed due to issues with web browser security, will be added back when Manifest Permissions are set  https://developer.chrome.com<br>/extensions/manifest#permissions</button>
+
   </div>
+
 </div>
+
 <div class="dropdown">
+
   <button class="dropbtn">Text Format</button>
+
   <div class="dropdown-content">
+
     <button onclick = "document.execCommand('bold');"><b>B</b></button>
+
     <button onclick = "document.execCommand('italic');"><i>I</i></button>
+
     <button onclick = "document.execCommand('underline');"><u>U</u></button>
+
     <button onclick = "document.execCommand('StrikeThrough');"><Strike>S</strike></button>
+
     <button onclick = "document.execCommand('Superscript');">X<sup>2</sup></button>
+
     <button onclick = "document.execCommand('Subscript');">X<sub>2</sub></button>
+
     <button onclick = "document.execCommand('RemoveFormat');">Default Text</button>
+
   </div>
+
 </div>
+
 <div class="dropdown">
+
   <button class="dropbtn">Alignment</button>
+
   <div class="dropdown-content">
+
     <button onclick = "document.execCommand('JustifyLeft');">Left</button>
+
     <button onclick = "document.execCommand('JustifyRight');">Right</button>
+
     <button onclick = "document.execCommand('JustifyCenter');">Center</button>
+
     <button onclick = "document.execCommand('JustifyFull');">Full</button>
+
     <button onclick = "document.execCommand('');"></button>
+
   </div>
+
 </div>
+
 <br>
+
     <button class = "menuButton" onclick = "document.execCommand('bold');" title="Bold Highlighted Text" style = "font-size: 12px;" style = "text-align: center;"><b>B</b>
+
     </button>
+
     <button class = "menuButton" onclick = "document.execCommand('italic');" title="Italicize Highlighted Text" style = "font-size: 12px;" style = "text-align: center;"><i>I</i>
+
     </button>
+
     <button class = "menuButton" onclick = "document.execCommand('underline');" style = "font-size: 12px;" style = "text-align: center;"><u>U</u>
+
     </button>
+
     <button class = "menuButton" onclick = "document.execCommand('StrikeThrough');" style = "font-size: 12px;" style = "text-align: center;"><Strike>S</strike>
+
     </button>
+
     <button class = "menuButton" onclick = "document.execCommand('InsertUnorderedList');" style = "font-size: 10px;">
+
     <ul>
+
       <li>-</li>
+
       <li>-</li>
+
       <li>-</li>
+
     </ul>
+
     </button>
+
     <button class = "menuButton" onclick = "document.execCommand('InsertOrderedList');" style = "font-size: 10px;">
+
     <ol>
+
       <li>-</li>
+
       <li>-</li>
+
       <li>-</li>
+
     </ol>
+
     </button>
+
                 <div id="editor1" contenteditable="true"></div>
+
 </div>
+
 </div>
+
 <br>
+
       <button onclick = "location.href = '#openModal5'">About</button>
 
+
+
 <div id="openModal5" class="modalDialog">
+
 <div>
+
     <a href="#close" title="Close" class="close">X</a>
+
             <body>
+
             <center>
+
                 <h1>Quad-OS is a web-based operating system. The thing that is special about Quad-OS is that you never have to log into it, as all the data and changes that you make to your version of Quad-OS is saved on the local storage of your computer. What this means is that any changes you make only affect Quad-OS on your computer, and nobody elses.</h1>
+
                 <br>
+
                 <h2>CREDITS</h2>
+
                 <br>
+
                 <h3>BOX</h3>
+
                 <hr>
+
                 <h4>Kevin K(Most of JS)</h4>
+
                 <br>
+
                 <h4>Amar M(CSS + HTML)</h4>
+
                 <br>
+
                 <h4>Arnav M(CSS + HTML)</h4>
+
                 <br>
+
                 <h4>Lori E(Some JS)</h4>
+
                 <br>
+
                 <h4>Karen M(Art)</h4>
+
                 <br>
+
                 <h3>Quad-OS</h3>
+
                 <br>
+
                 <h4>Amar</h4>
+
                 <br>
+
                 <h3>Google Search Engine</h3>
+
                 <br>
+
                 <h4>Google</h4>
+
             </center>
+
         </body>
+
     </div>
+
     </div>
+
     <script>
+
         	function notifyBox() {
+
   // Let's check if the browser supports notifications
+
   if (!("Notification" in window)) {
+
     alert("This browser does not support desktop notification");
+
   }
+
   // Let's check whether notification permissions have already been granted
+
   else if (Notification.permission === "granted") {
+
     // If it's okay let's create a notification
+
     var notification = new Notification("Box does support saving files in its current version, but only up to 5 megabytes.");
+
   }
+
   // Otherwise, we need to ask the user for permission
+
   else if (Notification.permission !== 'denied') {
+
     Notification.requestPermission(function (permission) {
+
       // If the user accepts, let's create a notification
+
       if (permission === "granted") {
+
         var notification = new Notification("Box does support saving files in its current version, but only up to 5 megabytes.");
+
       }
+
     });
+
   }
+
   // At last, if the user has denied notifications, and you 
+
   // want to be respectful there is no need to bother them any more.
+
 }Notification.requestPermission().then(function(result) {
+
   console.log(result);
+
 });function spawnNotification(theBody,theIcon,theTitle) {
+
   var options = {
+
       body: theBody,
+
       icon: theIcon
+
   }
+
   var n = new Notification(theTitle,options);
+
 }
+
 //space
+
     	function notifyScribble() {
+
   // Let's check if the browser supports notifications
+
   if (!("Notification" in window)) {
+
     alert("This browser does not support desktop notification");
+
   }
+
   // Let's check whether notification permissions have already been granted
+
   else if (Notification.permission === "granted") {
+
     // If it's okay let's create a notification
+
     var notification = new Notification("Scribble does not support saving files in its current version.");
+
   }
+
   // Otherwise, we need to ask the user for permission
+
   else if (Notification.permission !== 'denied') {
+
     Notification.requestPermission(function (permission) {
+
       // If the user accepts, let's create a notification
+
       if (permission === "granted") {
+
         var notification = new Notification("Scribble does not support saving files in its current version.");
+
       }
+
     });
+
   }
+
   // At last, if the user has denied notifications, and you 
+
   // want to be respectful there is no need to bother them any more.
+
 }Notification.requestPermission().then(function(result) {
+
   console.log(result);
+
 });function spawnNotification(theBody,theIcon,theTitle) {
+
   var options = {
+
       body: theBody,
+
       icon: theIcon
+
   }
+
   var n = new Notification(theTitle,options);
+
 }
+
     </script>
+
     </body>
+
 </html>
