@@ -572,9 +572,7 @@ function checkTime(i) {
   <span style="font-size:30px;cursor:pointer; float: right; font-size: 200%;" onclick="openNav()"">NavBar &#9776;</span>
 </div>
 												  </center>
-<script>
-var i = 0;
-while (i < 1) {										  
+<script>									  
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
     document.body.style.backgroundColor = "rgba(0,0,0,0.7)";
@@ -583,8 +581,8 @@ function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     document.body.style.backgroundColor = "rgb(166, 166, 166)";
 }
-</script>
-        <script>
+var i = 0;
+while (i < 1) {	
             var boxStatus = 1;
             /*var siBoxAllowed = localStorage.getItem("isBoxAllowed");
             if (siBoxAllowed == 1){
