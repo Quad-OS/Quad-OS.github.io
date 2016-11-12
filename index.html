@@ -8,41 +8,41 @@
         margin-top: 0;
         margin-left: 0;
       }
-      .menu{
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: black;
+        position: fixed;
+        top: 0;
         width: 100%;
-        border: 3px solid black;
-        background-color: black;
-        padding: 15px;
-        font-size: 15px;
-        text-decoration: none;
-        color: black;
-        position: relative;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    padding: 16px;
+    text-decoration: none;
+}
+      li a:hover {
+        background-color : green;
       }
-      .menuButton {
-        width: 60px;
-        display: inline-block;
-        margin-right: -4px;
-        border: 3px solid black;
-        background-color: black;
-        padding: 15px 32px;
-        font-size: 15px;
-        text-decoration: none;
-        color: white;
-    }
-    .menuButton:Hover {
-        border: 3px solid green;
-        background-color: green;
-    }
-    .textChunck {
+     .textChunck {
          height: 200px;
          background-color: #00802b;
-    }
+     }
     </style>
   </head>
   <body>
-    <a href = "http://quad-os.github.io/home.html" class = "menuButton">Quad-OS</a>
-    <a href = "http://quad-os.github.io/quad-gr.html" class = "menuButton">Quad-GR</a>
-    <a class= "menu">Quad-OS</a>
+  <ul>
+    <li><a href="http://quad-os.github.io/home.html">Quad-OS</a></li>
+    <li><a href="http://quad-so.github.io/quad-gr.html">Quad-GR</a></li>
+  </ul>
     <br>
     <!--<img src = "http://i.imgur.com/hajgP5Y.jpg" width = "49.5%" class = "homePic">
     <img src = "http://i.imgur.com/75pcsaB.png" width = "49.5%" class = "homePic">-->
