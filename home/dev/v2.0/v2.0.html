@@ -36,119 +36,15 @@
 h1 {
   padding: 0 1rem;
 }
-#battery-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-#battery-percentage {
-  position: absolute;
-  right: 0;
-  bottom: 0.5rem;
-  left: 0;
-  z-index: 3;
-  font-size: 1.25rem;
-  font-weight: bold;
-  text-align: center;
-}
-#battery {
-  position: relative;
-  margin: 0 auto;
-  width: 140px;
-  height: 220px;
-  border: 2px solid #fff;
-  
-  #charge-status {
-    display: none;
-    position: absolute;
-    z-index: 5;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 120px;
-    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/97547/blitz_(1).svg');
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
-  
-  &.is-charging {
-    #charge-status {
-      display: block;
-    }
-  }
-  
-  // Plus pole
-  &:before {
-    content: ' ';
-    display: block;
-    width: 60px;
-    height: 20px;
-    background: #fff;
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  // Battery meter filling
-  &:after {
-    content: ' ';
-    display: block;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
-  
-  @for $i from 1 through 100 {
-    &.charge-#{$i}:after {
-      height: 0% + $i;
-      
-      @if $i < 10 {
-        background: #c21515;
-      }
-      
-      @if $i > 10 {
-        background: #fed024;
-      }
-      
-      @if $i > 50 {
-        background: #bada55;
-      }
-    }
-  }
-}
 @media screen and (orientation:landscape) {
   h1 { text-align: left; }
 }
-    </style>
-    <style>
         body {
             background-color: darkgray;
             z-index: 0;
         }
-        .button {
-            background-color: green;
-            color: white;
-            border: none;
-            padding: 15px;
-            margin: 4px 2px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            cursor: pointer;
-            width: 15%;
-            z-index: 1;
-            position: relative;
-            left: 1;
-            display: inline-block;
-            }
             button {
-            background-color: green;
+            background-color: black;
             color: white;
             border: none;
             padding: 15px;
@@ -158,17 +54,14 @@ h1 {
             display: inline-block;
             font-size: 16px;
             cursor: pointer;
-            width: 15%;
+            width: 20%;
             z-index: 1;
             position: relative;
             left: 1;
             display: inline-block;
-            }
-            button:hover {
-            	background-color: black;	
             }
             .button:hover {
-            	background-color: black;	
+            	background-color: green;	
             }
             p {
   text-align: center;
