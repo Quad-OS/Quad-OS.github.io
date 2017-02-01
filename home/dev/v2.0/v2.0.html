@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
     <head>
-        <title>Quad-OS</title>
+        <title>Dev v2.0: Quad-OS</title>
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
@@ -36,6 +36,96 @@ body {
 h1 {
   padding: 0 1rem;
 }
+#battery-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#battery-percentage {
+  position: absolute;
+  right: 0;
+  bottom: 0.5rem;
+  left: 0;
+  z-index: 3;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+}
+#battery {
+  position: relative;
+  margin: 0 auto;
+  width: 140px;
+  height: 220px;
+  border: 2px solid #fff;
+  
+  #charge-status {
+    display: none;
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 120px;
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/97547/blitz_(1).svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  
+  &.is-charging {
+    #charge-status {
+      display: block;
+    }
+  }
+  
+  // Plus pole
+  &:before {
+    content: ' ';
+    display: block;
+    width: 60px;
+    height: 20px;
+    background: #fff;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  // Battery meter filling
+  &:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  
+  @for $i from 1 through 100 {
+    &.charge-#{$i}:after {
+      height: 0% + $i;
+      
+      @if $i < 10 {
+        background: #c21515;
+      }
+      
+      @if $i > 10 {
+        background: #fed024;
+      }
+      
+      @if $i > 50 {
+        background: #bada55;
+      }
+    }
+  }
+}
+@media screen and (orientation:landscape) {
+  h1 { text-align: left; }
+}
+    </style>
+    <style>
         body {
             background-color: darkgray;
             z-index: 0;
