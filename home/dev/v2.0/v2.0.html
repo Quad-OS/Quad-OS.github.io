@@ -471,9 +471,9 @@ console.log('outside function');
 navigator.getBattery().then(function(battery) {
 console.log('inside function');
   
-  powerDisplay.innerHTML = 'Battery level is: ' + battery.level;  
+  powerDisplay.innerHTML = 'Battery: ' + battery.level;  
   console.log(battery.level);
-  var t = setTimeout(startTime, 500, updatePage);
+  var t = setInterval(startTime, 500, updatePage);
 });
 </script>
 <br>
