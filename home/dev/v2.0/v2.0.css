@@ -1,0 +1,171 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: darkgray;
+  z-index: 0;
+}
+h1 {
+  padding: 0 1rem;
+}
+@media screen and (orientation:landscape) {
+  h1 { text-align: left; }
+}
+.button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 15px;
+  margin: 4px 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  width: 20%;
+  height: 75px;
+  z-index: 1;
+  position: relative;
+  left: 1;
+  display: inline-block;
+}
+button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 15px;
+  margin: 4px 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  width: 20%;
+  height: 75px;
+  z-index: 1;
+  position: relative;
+  left: 1;
+  display: inline-block;
+}
+button:hover {
+  background-color: green;	
+}
+.button:hover {
+  background-color: green;	
+}
+p {
+  text-align: center;
+  font-size: 40px;
+  color: #333;
+	}
+.onoffswitch {
+    position: relative; width: 100px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 0px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 26px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+.onoffswitch-inner:before {
+    content: "On";
+    padding-left: 10px;
+    background-color: green; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "Off";
+    padding-right: 10px;
+    background-color: #CCCCCC; color: #333333;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 30px; margin: 0px;
+    background: #000000;
+    position: absolute; top: 0; bottom: 0;
+    right: 70px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
+#boxButton {
+    display: inline-block;
+}
+/*modal*/
+.modalDialog {
+        position: fixed;
+        font-family: Arial, Helvetica, sans-serif;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 99999;
+        opacity:0;
+        -webkit-transition: opacity 400ms ease-in;
+        -moz-transition: opacity 400ms ease-in;
+        transition: opacity 400ms ease-in;
+        pointer-events: none;
+    }
+    .modalDialog:target {
+        opacity:1;
+        pointer-events: auto;
+    }
+    .modalDialog > div {
+        width: 75%;
+        position: relative;
+        margin: 10% auto;
+        padding: 5px 20px 13px 20px;
+        background: darkgray;
+        /*background: -moz-linear-gradient(#fff, #999);
+        background: -webkit-linear-gradient(#fff, #999);
+        background: -o-linear-gradient(#fff, #999);*/
+    }
+    .close {
+        background: #606061;
+        color: #FFFFFF;
+        line-height: 25px;
+        position: absolute;
+        right: 0px;
+        text-align: center;
+        top: -7px;
+        width: 24px;
+        text-decoration: none;
+        font-weight: bold;
+        /*-webkit-border-radius: 12px;
+        -moz-border-radius: 12px;
+        border-radius: 12px;
+        -moz-box-shadow: 1px 1px 3px #000;
+        -webkit-box-shadow: 1px 1px 3px #000;
+        box-shadow: 1px 1px 3px #000;*/
+    }
+    .close:hover {
+    	background: #00d9ff; 
+    	
+    }
+    
+    #powerDisplay {
+    	float: right;
+    }
+    .floatRight {
+    	float: right;
+    	font-size: 200%;
+}
