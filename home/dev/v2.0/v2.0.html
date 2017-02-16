@@ -505,11 +505,10 @@ function startTime() {
     var today = new Date();
     var h = today.getHours();
     var m = today.getMinutes();
-    var s = today.getSeconds();
     m = checkTime(m);
     s = checkTime(s);
     document.getElementById('txt').innerHTML =
-    h + ":" + m + ":" + s;
+    h + ":" + m;
     var t = setTimeout(startTime, 500);
 }
 function checkTime(i) {
@@ -1149,7 +1148,6 @@ Loop();
         <body>
                 <center>
                         <h1>Scribble</h1>
-                </center>
 <div class="dropdown">
   <button class="dropbtn">Highlighting</button>
   <div class="dropdown-content">
@@ -1198,13 +1196,14 @@ Loop();
 	  </button>
 			<button class = "menuButton" onclick = "document.execCommand('StrikeThrough');" style = "font-size: 12px;" style = "text-align: center;"><Strike>S</strike>
 		</button>
-			<button class = "menuButton" onclick = "document.execCommand('InsertUnorderedList');" style = "font-size: 10px;">1.)
+			<button class = "menuButton" onclick = "document.execCommand('InsertUnorderedList');" style = "font-size: 10px;">•
     </button>
-			<button class = "menuButton" onclick = "document.execCommand('InsertOrderedList');" style = "font-size: 10px;">•
+			<button class = "menuButton" onclick = "document.execCommand('InsertOrderedList');" style = "font-size: 10px;">1.)
     </button>
                 <div id="editor1" contenteditable="true"></div>
 </div>
 </div>
+	</center>
 <br>
       <button onclick = "location.href = '#openModal5'">About</button>
 
