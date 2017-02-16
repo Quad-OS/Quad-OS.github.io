@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
     <head>
-        <title>Dev v2.0:Quad-OS</title>
+        <title>Dev v2.0: Quad-OS</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
@@ -1164,7 +1164,7 @@ Loop();
     <button onclick = "document.execCommand('Copy');"><strike>Copy</strike>  Ctrl+C</button>
     <button onclick = "document.execCommand('Cut');"><strike>Cut</strike>  Ctrl+X</button>
     <button onclick = "document.execCommand('Paste');"><strike>Paste</strike>  Ctrl+V</button>
-    <button>Removed due to issues with web browser security, will be added back when Manifest Permissions are set  https://developer.chrome.com<br>/extensions/manifest#permissions</button>
+    <!--<button>Removed due to issues with web browser security, will be added back when Manifest Permissions are set  https://developer.chrome.com<br>/extensions/manifest#permissions</button>-->
   </div>
 </div>
 <div class="dropdown">
@@ -1190,28 +1190,22 @@ Loop();
   </div>
 </div>
 <br>
-    <button class = "menuButton" onclick = "document.execCommand('bold');" title="Bold Highlighted Text" style = "font-size: 12px;" style = "text-align: center;"><b>B</b>
-    </button>
-    <button class = "menuButton" onclick = "document.execCommand('italic');" title="Italicize Highlighted Text" style = "font-size: 12px;" style = "text-align: center;"><i>I</i>
-    </button>
-    <button class = "menuButton" onclick = "document.execCommand('underline');" style = "font-size: 12px;" style = "text-align: center;"><u>U</u>
-    </button>
-    <button class = "menuButton" onclick = "document.execCommand('StrikeThrough');" style = "font-size: 12px;" style = "text-align: center;"><Strike>S</strike>
-    </button>
-    <button class = "menuButton" onclick = "document.execCommand('InsertUnorderedList');" style = "font-size: 10px;">
-    <ul>
-      <li>-</li>
-      <li>-</li>
-      <li>-</li>
-    </ul>
-    </button>
-    <button class = "menuButton" onclick = "document.execCommand('InsertOrderedList');" style = "font-size: 10px;">
-    <ol>
-      <li>-</li>
-      <li>-</li>
-      <li>-</li>
-    </ol>
-    </button>
+  <table>
+    <tr>
+			<th><button class = "menuButton" onclick = "document.execCommand('bold');" title="Bold Highlighted Text" style = "font-size: 12px;" style = "text-align: center;"><b>B</b>
+    </button></th>
+			<th><button class = "menuButton" onclick = "document.execCommand('italic');" title="Italicize Highlighted Text" style = "font-size: 12px;" style = "text-align: center;"><i>I</i>
+    </button></th>
+			<th><button class = "menuButton" onclick = "document.execCommand('underline');" style = "font-size: 12px;" style = "text-align: center;"><u>U</u>
+	  </button></th>
+			<th><button class = "menuButton" onclick = "document.execCommand('StrikeThrough');" style = "font-size: 12px;" style = "text-align: center;"><Strike>S</strike>
+		</button></th>
+			<th><button class = "menuButton" onclick = "document.execCommand('InsertUnorderedList');" style = "font-size: 10px;">1.)
+    </button></th>
+			<th><button class = "menuButton" onclick = "document.execCommand('InsertOrderedList');" style = "font-size: 10px;">•
+    </button></th>
+    </tr>
+  </table>
                 <div id="editor1" contenteditable="true"></div>
 </div>
 </div>
