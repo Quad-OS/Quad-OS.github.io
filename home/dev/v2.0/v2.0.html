@@ -38,8 +38,8 @@
             body {
                 background-color: black;
             }
-            h1, h3, p {
-                color: black;
+            .wText {
+                color: white;
                 text-align: center;
             }
             hr {
@@ -160,11 +160,8 @@
             }
         </style>
         <center>
-           <h1>BOX</h1>
-
-            </a>
-
-             <h3>Hello user! I am box. What can I do for you?</h3>
+           <h1 class = "wText">BOX</h1>
+             <h3 class = "wText">Hello user! I am box. What can I do for you?</h3>
              <br>
              <div class="divboxout"></div>
              <div class="divboxin"></div>
@@ -179,7 +176,7 @@
              <div class = "file">
                  <input type="file" id="fileinput">
             </div>
-            <p>Question (Searched in DataBase)</p>
+            <h3 class = "wText">Question (Searched in DataBase)</h3>
             <p>
                     <input type="text" id="uq"/>
                     <button class = "button" onclick="question();" href="javascript:;">Submit</button>
