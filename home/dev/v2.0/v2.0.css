@@ -113,8 +113,10 @@ p {
 }
 /*modal*/
 .modalDialog {
+	overflow: scroll;
         position: fixed;
         font-family: Arial, Helvetica, sans-serif;
+	color: white;
         top: 0;
         right: 0;
         bottom: 0;
