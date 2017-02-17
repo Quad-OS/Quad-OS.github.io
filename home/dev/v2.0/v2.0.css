@@ -60,7 +60,8 @@ p {
   text-align: center;
   font-size: 40px;
   color: #333;
-	overflow: scroll;
+  overflow: hidden;
+  text-align:justify;
 	}
 .onoffswitch {
     position: relative; width: 100px;
@@ -113,7 +114,8 @@ p {
 }
 /*modal*/
 .modalDialog {
-	overflow: scroll;
+	overflow: hidden;
+	text-align:justify;
         position: fixed;
         font-family: Arial, Helvetica, sans-serif;
 	color: white;
@@ -134,7 +136,8 @@ p {
         pointer-events: auto;
     }
     .modalDialog > div {
-			overflow: scroll;
+	overflow: hidden;
+	text-align:justify;
         width: 75%;
         position: relative;
         margin: 10% auto;
