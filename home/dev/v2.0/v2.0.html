@@ -25,6 +25,11 @@
     <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
     <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
     <link rel="stylesheet" type="text/css" href="v2.0.css"> 
+    <link rel="stylesheet" type="text/css" href="box/box.css">
+    <link rel="stylesheet" type="text/css" href="game/game.css">
+    <link rel="stylesheet" type="text/css" href="scribble/scribble.css">
+    <script src = "box/box.js"></script>
+    <script src = "v2.0.js"></script>
   </head>
   <body id="body1" onload="startTime()" background="13680241_10209892554059970_2304191900395909244_o.jpg" width="100%">
     <center>
@@ -32,119 +37,6 @@
     <button onclick="location.href = '#openModal1'; notifyBox();" class="inlineBlock">Box</button>
     <div id="openModal1" class="modalDialog">
       <div> <a href="#close" title="Close" class="close">X</a>
-        <style type="text/css">
-          body {
-            background-color: black;
-          }
-          .wText {
-            color: white;
-            text-align: center;
-          }
-          hr {
-            display: block;
-            margin: 0.5em;
-            border-style: inset;
-            border-width: 1px;
-          }
-          .button {
-            background-color: green;
-            color: white;
-            border: none;
-            padding: 15px;
-            margin: 4px 2px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            cursor: pointer;
-            width: 15%;
-            z-index: 3;
-          }
-          input[type=text] {
-            position: relative;
-            width: 25%;
-            box-sizing: border-box;
-            border: 2px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            background-color: white;
-            background-image: url('search_button.png');
-            background-position: 4px 5px;
-            background-repeat: no-repeat;
-            padding: 12px 20px 12px 40px;
-            -moz-transition: width 0.4s ease-in-out;
-            -webkit-transition: width 0.4s ease-in-out;
-            -o-transition: width 0.4s ease-in-out;
-            transition: width 0.4s ease-in-out;
-          }
-          input[type=text]:focus {
-            width: 70%;
-          }
-          .speech {
-            position: 4px 5px;
-          }
-          .divboxout {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            left: 50%;
-            top: 150px;
-            transform: translateX(-50%);
-            -wekbit-animation-name: boxin;
-            -wekbit-animation-duration: 10s;
-            -wekbit-animation-iteration-count: infinite;
-            z-index: 3;
-            animation-name: boxout;
-            animation-duration: 10s;
-            animation-iteration-count: infinite;
-          }
-          .divboxin {
-            position: absolute;
-            width: 110px;
-            height: 110px;
-            left: 50%;
-            top: 155px;
-            transform: translateX(-50%);
-            -wekbit-animation-name: boxout;
-            -wekbit-animation-duration: 10s;
-            -wekbit-animation-iteration-count: infinite;
-            z-index: 4;
-            animation-name: boxin;
-            animation-duration: 10s;
-            animation-iteration-count: infinite;
-          }
-          @keyframes boxout {
-            0% {
-              background-color: #000000;
-            }
-            50% {
-              background-color: #00ff00;
-            }
-            100% {
-              background-color: #000000;
-            }
-          }
-          @keyframes boxin {
-            0% {
-              background-color: #00ff00;
-            }
-            50% {
-              background-color: #000000;
-            }
-            100% {
-              background-color: #00ff00;
-            }
-          }
-          #canvas {
-            display: block;
-            margin: 40px auto 20px;
-            border: 1px solid #333;
-            box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.8);
-          }
-          .speech img {
-            float: width: 40px;
-          }
-        </style>
         <center>
           <h1 class="wText">BOX</h1>
           <h3 class="wText">Hello user! I am box. What can I do for you?</h3>
@@ -173,271 +65,6 @@
           </p>
         </center>
         <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
-        <script>
-          var keytermm = "asd";
-          var answerd = "asd";
-
-          function readMultipleFiles(evt) {
-            var files = evt.target.files;
-            if (files) {
-              for (var i = 0, f; f = files[i]; i++) {
-                var r = new FileReader();
-                r.onload = (function(f) {
-                  return function(e) {
-                    var contentsd = e.target.result;
-                    alert(contentsd);
-                    var array = contentsd.split(',');
-                    keytermm = array.slice(0, (array.length / 2));
-                    answerd = array.slice(
-                      (array.length / 2), array.length);
-                  };
-                })(f);
-                r.readAsText(f);
-              }
-            } else {
-              alert("Failed to load files");
-            }
-          }
-          document.getElementById('fileinput').addEventListener('change', readMultipleFiles, false);
-          var audio;
-          var das = 0;
-          var c = document.getElementById("myCanvas");
-          var ctx = c.getContext("2d");
-
-          function startDictation() {
-            if (window.hasOwnProperty('webkitSpeechRecognition')) {
-              var recognition = new webkitSpeechRecognition();
-              recognition.continuous = false;
-              recognition.interimResults = false;
-              recognition.lang = "en-US";
-              recognition.start();
-              recognition.onresult = function(e) {
-                document.getElementById('uq').value = e.results[0][0].transcript;
-                recognition.stop();
-                var u = document.getElementById('uq').value;
-                document.getElementById('uq').value = u;
-                question();
-              };
-              recognition.onerror = function(e) {
-                window.alert("err");
-                recognition.stop();
-              }
-            }
-          }
-
-          function wow() {
-            var sounds = document.getElementsByTagName('audio');
-            for (i = 0; i < sounds.length; i++) sounds[i].pause();
-          };
-          var ng = 0;
-
-          function question() {
-            var aodio = das % 10;
-            audio = new Audio("snd" + aodio + '.mp3');
-            audio.load();
-            var currentTime = new Date()
-            var hours = currentTime.getHours()
-            var minutes = currentTime.getMinutes()
-            if (minutes < 10) {
-              minutes = "0" + minutes;
-            }
-            if (document.getElementById('uq').value == "/time") {
-              window.alert("its " + hours + ":" + minutes);
-            }
-            if (document.getElementById('uq').value.indexOf("/music") > -1) {
-              audio.pause();
-              audio.currentTime = 0;
-              window.alert("changing music..");
-              das = document.getElementById('uq').value.charAt(6);
-              window.alert("soundtrack is now soundtrack " + das % 10);
-              audio.pause();
-              return;
-            }
-            if (document.getElementById('uq').value == "/clear") {
-              localStorage.clear();
-              window.alert("loacal storage cleared");
-              return;
-            }
-            audio.pause();
-            audio.currentTime = 0.0;
-            var empty = [];
-            var i = 0;
-            var greeting_results = "";
-            var found = false;
-            var greetingWords = ["hello box", "hi box", "good morning box", "good evening box", "good night box"];
-            var fivequestions = [];
-            var result = [];
-            wow();
-
-            function greeting(wordlist, main, resultlist, different) {
-              empty = [];
-              i = 0;
-              greeting_results = main.join(" ");
-              while (i <= greeting_results.length) {
-                if (greeting_results.indexOf(wordlist[i]) > -1) {
-                  result = [ /*wordlist[i]*/ "Hello" + " to you also!", "I'm good!", "I dont know how", "Im box, your personal assistant", "I don't know who they are", "I dont know your name, but I know your my friend :)", "I dont know who", "use /time to find the time", "Bored? do /game to play our game", "Did I hear the word game? I love games! do /game to play our featured game", "I don't know when"]
-                  if ((greeting_results[greeting_results.indexOf(wordlist[i]) - 1] == " " || greeting_results.indexOf(wordlist[i]) - 1 < 0) && (greeting_results[greeting_results.indexOf(wordlist[i]) + wordlist[i].length] == " " || greeting_results.indexOf((wordlist[i]) + wordlist[i].length) < 0)) {
-                    if (different == 1) {
-                      window.alert(result[resultlist + i]);
-                      responsiveVoice.speak(result[resultlist + i])
-                    } else {
-                      window.alert(result[resultlist]);
-                      responsiveVoice.speak(result[resultlist])
-                    }
-                    empty.push(main[i]);
-                    found = true;
-                    break;
-                  }
-                }
-                i = i + 1;
-              }
-            }
-            var v = "";
-            var str = document.getElementById('uq').value;
-            str = str.toLowerCase();
-            var charactder = "";
-            var j = 0;
-            var calc = "";
-            var userQ = [];
-            var countwords = 0;
-            var n = str.length;
-            var z = "";
-            var character = "";
-            while (j <= n) {
-              if (str.charAt(j) == " " || n == j || str.charAt(j) == "/" || str.charAt(j) == "*" || str.charAt(j) == "-" || str.charAt(j) == "+") {
-                if (countwords === "") {
-                  z = z + "First word/ " + charactder;
-                  userQ.push(charactder);
-                  charactder = '';
-                  countwords++;
-                } else {
-                  z = z + " // " + charactder;
-                  if (str.charAt(j) == "/" || str.charAt(j) == "*" || str.charAt(j) == "-" || str.charAt(j) == "+") {
-                    userQ.push(charactder);
-                    charactder = str.charAt(j);
-                    userQ.push(charactder);
-                    countwords++;
-                  } else {
-                    userQ.push(charactder);
-                  }
-                  charactder = '';
-                  countwords++;
-                }
-              } else {
-                charactder = charactder + str.charAt(j);
-              }
-              j++;
-            }
-            if (userQ.indexOf("/") != -1 || userQ.indexOf("*") != -1 || userQ.indexOf("-") != -1 || userQ.indexOf("+") != -1) {
-              calc = eval(str);
-              window.alert(calc);
-            }
-            var listdata = [];
-            var ansdata = [];
-            if (localStorage.ansdata) {
-              window.alert("answer AI loaded!");
-              var test2 = localStorage.getItem("listdata");
-              listdata = JSON.parse(test2);
-              test2 = localStorage.getItem("ansdata");
-              ansdata = JSON.parse(test2);
-            } else {
-              window.alert("No answer AI in local storage. creating one..");
-              localStorage.setItem("listdata", JSON.stringify(listdata));
-              localStorage.setItem("ansdata", JSON.stringify(ansdata));
-              var test2 = localStorage.getItem("listdata");
-              listdata = JSON.parse(test2);
-              test2 = localStorage.getItem("ansdata");
-              ansdata = JSON.parse(test2);
-            }
-            var zeta = userQ.join(" ");
-            var reedy;
-            if (zeta == ".clr") {
-              if (listdata.length != 0) {
-                reedy = prompt("are you sure? the things you going to delete are : " + listdata[listdata.length - 1] + " as the keyterm and " + ansdata[ansdata.length - 1] + " as the answer. Say yes or no ")
-                if (reedy = "yes") {
-                  ansdata.pop();
-                  listdata.pop();
-                  localStorage.setItem("listdata", JSON.stringify(listdata));
-                  localStorage.setItem("ansdata", JSON.stringify(ansdata));
-                  return;
-                } else {
-                  window.alert("deletion canceled");
-                  return;
-                }
-              } else {
-                window.alert("error: empty");
-                localStorage.clear();
-                return;
-              }
-            }
-            if (zeta == ".download") {
-              var textToSave = listdata.concat(ansdata);
-              var hiddenElement = document.createElement('a');
-              hiddenElement.href = 'data:attachment/text,' + encodeURI(textToSave);
-              hiddenElement.target = '_blank';
-              hiddenElement.download = 'localStorage.txt';
-              hiddenElement.click();
-              return;
-            }
-            if (zeta == ".replace" && keytermm !== "asd") {
-              var replaceLocal = prompt("are you sure you want to replace localstorage?");
-              if (replaceLocal == "yes") {
-                localStorage.clear();
-                ansdata = answerd;
-                listdata = keytermm;
-                localStorage.setItem("listdata", JSON.stringify(listdata));
-                localStorage.setItem("ansdata", JSON.stringify(ansdata));
-                return;
-              } else {
-                window.alert("canceled");
-                return;
-              }
-            }
-            if (zeta == ".add" && keytermm !== "asd") {
-              var replaceLocal = prompt("are you sure you want to add localstorage?");
-              if (replaceLocal == "yes") {
-                localStorage.clear();
-                ansdata = ansdata.concat(answerd);
-                listdata = listdata.concat(keytermm);
-                localStorage.setItem("listdata", JSON.stringify(listdata));
-                localStorage.setItem("ansdata", JSON.stringify(ansdata));
-                return;
-              } else {
-                window.alert("canceled");
-                return;
-              }
-            }
-            greeting(greetingWords, userQ, 0, 0);
-            if (found == false) {
-              i = 0;
-              while (i < listdata.length) {
-                if (zeta.indexOf(listdata[i]) !== -1) {
-                  window.alert(ansdata[i]);
-                  responsiveVoice.speak(ansdata[i]);
-                  found = true;
-                  break;
-                }
-                i++;
-              }
-            }
-            if (found == false) {
-              var ask = prompt("Please enter what i was supposed to say, or you can leave it blank");
-              if (ask !== null && ask != "") {
-                var keywerd = prompt("Please key words");
-                keywerd = keywerd.toLowerCase();
-                ask = ask.toLowerCase();
-                ansdata.push(ask);
-                listdata.push(keywerd);
-                localStorage.setItem("listdata", JSON.stringify(listdata));
-                localStorage.setItem("ansdata", JSON.stringify(ansdata));
-              } else {
-                window.alert("its ok if youre shy :)");
-              }
-            }
-            audio.pause();
-            audio.play();
-          }
-        </script>
       </div>
     </div>
     <div id="powerDisplay" class="floatRight"></div>
@@ -495,14 +122,6 @@
     <button onclick="location.href='#openModal3'">Game</button>
     <div id="openModal3" class="modalDialog">"
       <div> <a href="#close" title="Close" class="close">X</a>
-        <style>
-          canvas {
-            display: block;
-            margin: 40px auto 20px;
-            border: 1px solid #333;
-            box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.8);
-          }
-        </style>
         <canvas id="canvas"></canvas>
         <script>
           var map = {
@@ -1031,7 +650,6 @@
               unlock: 'game.current_map.keys[10].solid = 0;game.current_map.keys[10].colour = "#888";'
             }
           };
-          /* Clarity engine */
           var Clarity = function() {
             this.alert_errors = false;
             this.log_info = true;
@@ -1322,76 +940,6 @@
     <button onclick="location.href = '#openModal4'; notifyScribble();">Scribble</button>
     <div id="openModal4" class="modalDialog">
       <div> <a href="#close" title="Close" class="close">X</a>
-        <style>
-          div {
-            position: relative;
-          }
-          #editor1 {
-            border: 5px inset grey;
-            height: 100%;
-            width: 100%;
-            background-color: white;
-          }
-          .menuButton {
-            width: 16%;
-            display: inline-block;
-            margin-right: -4px;
-            border: 3px solid green;
-            background-color: green;
-            text-decoration: none;
-            color: white;
-            height: 35px;
-            padding: 1px 1px;
-          }
-          .menuButton:Hover {
-            border: 3px solid black;
-            background-color: black;
-          }
-          
-          .dropbtn {
-            background-color: black;
-            color: white;            
-            font-size: 12px;
-            border: none;
-            cursor: pointer;
-            width: 160px;
-            height: 35px;
-            margin-right: -4px;
-            display: inline-block;
-          }
-          .dropdown {
-            position: relative;
-            display: inline-block;
-          }
-          .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: gray;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 2;
-          }
-          .dropdown-content button {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            border: 3px solid #f2f2f2;
-            background-color: #f2f2f2;
-            width: 160px;
-            z-index: 2;
-          }
-          .dropdown-content button:hover {
-            background-color: lightgreen
-          }
-          .dropdown:hover .dropdown-content {
-            display: block;
-          }
-          .dropdown:hover .dropbtn {
-            background-color: gray;
-          }
-        </style>
-
         <body>
           <center>
             <h1>Scribble</h1>
@@ -1440,8 +988,7 @@
             <button class="menuButton" onclick="document.execCommand('bold');" title="Bold Highlighted Text" style="font-size: 12px;" style="text-align: center;"><b>B</b> </button>
             <button class="menuButton" onclick="document.execCommand('italic');" title="Italicize Highlighted Text" style="font-size: 12px;" style="text-align: center;"><i>I</i> </button>
             <button class="menuButton" onclick="document.execCommand('underline');" style="font-size: 12px;" style="text-align: center;"><u>U</u> </button>
-            <button class="menuButton" onclick="document.execCommand('StrikeThrough');" style="font-size: 12px;" style="text-align: center;">
-              <Strike>S</strike> </button>
+            <button class="menuButton" onclick="document.execCommand('StrikeThrough');" style="font-size: 12px;" style="text-align: center;"><strike>S</strike> </button>
             <button class="menuButton" onclick="document.execCommand('InsertUnorderedList');" style="font-size: 10px;">• </button>
             <button class="menuButton" onclick="document.execCommand('InsertOrderedList');" style="font-size: 10px;">1.) </button>
             <div id="editor1" contenteditable="true" style="color: black; text-align: left;"></div>
@@ -1481,60 +1028,6 @@
         </body>
       </div>
     </div>
-    <script>
-      function notifyBox() {
-        if (!("Notification" in window)) {
-          alert("This browser does not support desktop notification");
-        }
-        else if (Notification.permission === "granted") {
-          var notification = new Notification("Box does support saving files in its current version, but only up to 5 megabytes.");
-        }
-        else if (Notification.permission !== 'denied') {
-          Notification.requestPermission(function(permission) {
-            if (permission === "granted") {
-              var notification = new Notification("Box does support saving files in its current version, but only up to 5 megabytes.");
-            }
-          });
-        }
-      }
-      Notification.requestPermission().then(function(result) {
-        console.log(result);
-      });
-
-      function spawnNotification(theBody, theIcon, theTitle) {
-          var options = {
-            body: theBody,
-            icon: theIcon
-          }
-          var n = new Notification(theTitle, options);
-        }
-      function notifyScribble() {
-        if (!("Notification" in window)) {
-          alert("This browser does not support desktop notification");
-        }
-        else if (Notification.permission === "granted") {
-          var notification = new Notification("Scribble does not support saving files in its current version.");
-        }
-        else if (Notification.permission !== 'denied') {
-          Notification.requestPermission(function(permission) {
-            if (permission === "granted") {
-              var notification = new Notification("Scribble does not support saving files in its current version.");
-            }
-          });
-        }
-      }
-      Notification.requestPermission().then(function(result) {
-        console.log(result);
-      });
-
-      function spawnNotification(theBody, theIcon, theTitle) {
-        var options = {
-          body: theBody,
-          icon: theIcon
-        }
-        var n = new Notification(theTitle, options);
-      }
-    </script>
     </body>
 
   </html>
