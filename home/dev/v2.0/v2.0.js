@@ -50,14 +50,11 @@ function spawnNotification(theBody, theIcon, theTitle) {
 var i = 0;
 while (i < 1) {
   var boxStatus = 1;
-
-  (function() {
     var boxes = document.querySelectorAll("input[type='checkbox']");
     for (var i = 0; i < boxes.length; i++) {
       var box = boxes[i];
       if (box.hasAttribute("store")) {
         setupBox(box);
-      }
     }
 
     function setupBox(box) {
@@ -70,8 +67,7 @@ while (i < 1) {
         localStorage.setItem(storageId, this.checked);
       });
     }
-  })();
-
+  }
   function boxNotAllowed() {
     document.getElementById("boxButton").style.visibility = "hidden";
     boxStatus = 0;
