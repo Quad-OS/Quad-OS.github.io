@@ -47,3 +47,39 @@ function spawnNotification(theBody, theIcon, theTitle) {
   }
   var n = new Notification(theTitle, options);
 }
+var i = 0;
+while (i < 1) {
+  var boxStatus = 1;
+
+  (function() {
+    var boxes = document.querySelectorAll("input[type='checkbox']");
+    for (var i = 0; i < boxes.length; i++) {
+      var box = boxes[i];
+      if (box.hasAttribute("store")) {
+        setupBox(box);
+      }
+    }
+
+    function setupBox(box) {
+      var storageId = box.getAttribute("store");
+      var oldVal = localStorage.getItem(storageId);
+      console.log(oldVal);
+      box.checked = oldVal === "true" ? true : false;
+
+      box.addEventListener("change", function() {
+        localStorage.setItem(storageId, this.checked);
+      });
+    }
+  })();
+
+  function boxNotAllowed() {
+    document.getElementById("boxButton").style.visibility = "hidden";
+    boxStatus = 0;
+
+    function boxAllowed() {
+      document.getElementById("boxButton").style.visibility = "visible";
+      boxStatus = 1;
+    }
+  }
+  i = i - 1;
+}
