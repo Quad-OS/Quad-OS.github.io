@@ -24,14 +24,15 @@
     <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
     <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
     <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
-    <link rel="stylesheet" type="text/css" href="v2.0.css"> 
+    <link rel="stylesheet" type="text/css" href="v2.0.css">
     <link rel="stylesheet" type="text/css" href="box/box.css">
     <link rel="stylesheet" type="text/css" href="game/game.css">
     <link rel="stylesheet" type="text/css" href="scribble/scribble.css">
-    <script src = "box/box.js"></script>
-    <script src = "game/game.js"></script>
-    <script src = "v2.0.js"></script>
+    <script src="box/box.js"></script>
+    <script src="game/game.js"></script>
+    <script src="v2.0.js"></script>
   </head>
+
   <body id="body1" onload="startTime()" background="13680241_10209892554059970_2304191900395909244_o.jpg" width="100%">
     <center>
       <h1>Quad-OS</h1> </center>
@@ -132,6 +133,7 @@
     <button onclick="location.href = '#openModal4'; notifyScribble();">Scribble</button>
     <div id="openModal4" class="modalDialog">
       <div> <a href="#close" title="Close" class="close">X</a>
+
         <body>
           <center>
             <h1>Scribble</h1>
@@ -220,27 +222,22 @@
         </body>
       </div>
     </div>
-      <br>
-      <div class="dropdown">
-  <button class="button">Settings</button>
-  <div class="dropdown-content">
-  <p class = "sidenavText">Allow Box</p>
-    <div class="onoffswitch">
-    <input type='checkbox' store="checkbox1" onclick="if(this.checked){boxAllowed()} else {boxNotAllowed()}"name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-    <label class="onoffswitch-label" for="myonoffswitch">
-        <span class="onoffswitch-inner"></span>
-        <span class="onoffswitch-switch"></span>
-    </label>
-</div>
-<p class = "sidenavText">Something</p>
-<div class="onoffswitch">
-    <input type='checkbox' store="checkbox2" name="onoffswitch2" class="onoffswitch-checkbox" id="myonoffswitch2" checked>
-    <label class="onoffswitch-label" for="myonoffswitch2">
-        <span class="onoffswitch-inner"></span>
-        <span class="onoffswitch-switch"></span>
-    </label>
-  </div>
-</div>
+    <br>
+    <div class="dropdown" style = "float: right;">
+      <button class="dropbtn">Settings</button>
+      <div class="dropdown-content">
+        <p class="sidenavText">Allow Box</p>
+        <div class="onoffswitch">
+          <input type='checkbox' store="checkbox1" onclick="if(this.checked){boxAllowed()} else {boxNotAllowed()}" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+          <label class="onoffswitch-label" for="myonoffswitch"> <span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span> </label>
+        </div>
+        <p class="sidenavText">Something</p>
+        <div class="onoffswitch">
+          <input type='checkbox' store="checkbox2" name="onoffswitch2" class="onoffswitch-checkbox" id="myonoffswitch2" checked>
+          <label class="onoffswitch-label" for="myonoffswitch2"> <span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span> </label>
+        </div>
+      </div>
+    </div>
     </body>
 
   </html>
