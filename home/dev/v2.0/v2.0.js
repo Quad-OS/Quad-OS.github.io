@@ -47,12 +47,12 @@ function spawnNotification(theBody, theIcon, theTitle) {
   }
   var n = new Notification(theTitle, options);
 }
-var i = 0;
-while (i < 1) {
+var b = 0;
+while (b < 1) {
   var boxStatus = 1;
     var boxes = document.querySelectorAll("input[type='checkbox']");
-    for (var i = 0; i < boxes.length; i++) {
-      var box = boxes[i];
+    for (var b = 0; i < boxes.length; b++) {
+      var box = boxes[b];
       if (box.hasAttribute("store")) {
         setupBox(box);
     }
@@ -77,5 +77,5 @@ while (i < 1) {
       boxStatus = 1;
     }
   }
-  i = i - 1;
+  b = b - 1;
 }
