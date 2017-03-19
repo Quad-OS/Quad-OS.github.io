@@ -36,7 +36,7 @@
   <body id="body1" onload="startTime()" background="13680241_10209892554059970_2304191900395909244_o.jpg" width="100%">
     <center>
       <h1>Quad-OS</h1> </center>
-    <button onclick="location.href = '#openModal1'; notifyBox();" class="inlineBlock">Box</button>
+    <button onclick="location.href = '#openModal1'; notifyBox();" class="inlineBlock" id = "boxButton">Box</button>
     <div id="openModal1" class="modalDialog">
       <div> <a href="#close" title="Close" class="close">X</a>
         <center>
@@ -71,17 +71,21 @@
         <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
       </div>
     </div>
-    <div id="powerDisplay" class="floatRight"></div>
-    <script>
-      var powerDisplay = document.getElementById('powerDisplay');
-      console.log('outside function');
-      navigator.getBattery().then(function(battery) {
-        console.log('inside function');
-        powerDisplay.innerHTML = 'Battery: ' + battery.level;
-        console.log(battery.level);
-        var t = setInterval(startTime, 500, updatePage);
-      });
-    </script>
+    <div class = "dropdown" style = "float: right;">
+      <button>Settings</button>
+      <div class="dropdown-content">
+        <p>Allow Box</p>
+        <div class="onoffswitch">
+          <input type='checkbox' store="checkbox1" onclick="if(this.checked){boxAllowed()} else {boxNotAllowed()}" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+          <label class="onoffswitch-label" for="myonoffswitch"> <span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span> </label>
+        </div>
+        <p>Something</p>
+        <div class="onoffswitch">
+          <input type='checkbox' store="checkbox2" name="onoffswitch2" class="onoffswitch-checkbox" id="myonoffswitch2" checked>
+          <label class="onoffswitch-label" for="myonoffswitch2"> <span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span> </label>
+        </div>
+      </div>
+    </div>
     <br>
     <button onclick="location.href='#openModal2'">Google</button>
     <div id="openModal2" class="modalDialog">
@@ -129,26 +133,21 @@
         <canvas id="canvas"></canvas>
       </div>
     </div>
-    <div class = "dropdown" style = "float: right;">
-      <button>Settings</button>
-      <div class="dropdown-content">
-        <p>Allow Box</p>
-        <div class="onoffswitch">
-          <input type='checkbox' store="checkbox1" onclick="if(this.checked){boxAllowed()} else {boxNotAllowed()}" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-          <label class="onoffswitch-label" for="myonoffswitch"> <span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span> </label>
-        </div>
-        <p>Something</p>
-        <div class="onoffswitch">
-          <input type='checkbox' store="checkbox2" name="onoffswitch2" class="onoffswitch-checkbox" id="myonoffswitch2" checked>
-          <label class="onoffswitch-label" for="myonoffswitch2"> <span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span> </label>
-        </div>
-      </div>
-    </div>
+    <div id="powerDisplay" class="floatRight"></div>
+    <script>
+      var powerDisplay = document.getElementById('powerDisplay');
+      console.log('outside function');
+      navigator.getBattery().then(function(battery) {
+        console.log('inside function');
+        powerDisplay.innerHTML = 'Battery: ' + battery.level;
+        console.log(battery.level);
+        var t = setInterval(startTime, 500, updatePage);
+      });
+    </script>
     <br>
     <button onclick="location.href = '#openModal4'; notifyScribble();">Scribble</button>
     <div id="openModal4" class="modalDialog">
       <div> <a href="#close" title="Close" class="close">X</a>
-
         <body>
           <center>
             <h1>Scribble</h1>
